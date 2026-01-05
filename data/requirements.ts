@@ -19,6 +19,8 @@ export type Requirement = {
     address?: string | null;
   };
   lastReviewed: string; // YYYY-MM-DD
+  lastReviewedAt?: string; // optional alias
+  ultimaRevision?: string; // optional alias
 };
 
 const defaultRequirement = {

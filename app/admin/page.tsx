@@ -1,9 +1,12 @@
 import { destinationCountries, originCountries } from "@/data/countries";
 import { requirements } from "@/data/requirements";
+import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
+import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import { notFound } from "next/navigation";
 
 export const metadata = {
-  title: "Panel de revisión | NecesitoVisa.com",
-  description: "Panel interno para revisar combinaciones de visa.",
+  title: "NecesitoVisa.com",
+  description: "Área interna",
 };
 
 export const dynamic = "force-dynamic";
@@ -13,6 +16,8 @@ export const fetchCache = "force-no-store";
 type AdminPageProps = {
   searchParams?: {
     key?: string | string[];
+    status?: string | string[];
+    sort?: string | string[];
   };
 };
 
@@ -25,34 +30,6 @@ const buildLookup = (items: { slug: string; name: string }[]) =>
 const originNameBySlug = buildLookup(originCountries);
 const destinationNameBySlug = buildLookup(destinationCountries);
 
-const RestrictedCard = ({ suggestedKey }: { suggestedKey: string }) => (
-  <div className="card p-6 space-y-4">
-    <div className="space-y-1">
-      <h2 className="text-xl font-semibold text-gray-900">Acceso restringido</h2>
-      <p className="text-gray-700">
-        Para ingresar al panel agrega el parámetro <code>?key=</code> en la URL. Si no tienes la clave, pide acceso al administrador.
-      </p>
-    </div>
-    <div className="space-y-3">
-      <label className="text-sm font-medium text-gray-800" htmlFor="admin-key-input">
-        Ejemplo de URL con clave
-      </label>
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-        <input
-          id="admin-key-input"
-          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm shadow-inner focus:border-brand-primary focus:outline-none"
-          defaultValue={`?key=${suggestedKey || "tu_clave"}`}
-          readOnly
-        />
-        <span className="text-sm text-gray-600">Pegala al final de /admin</span>
-      </div>
-    </div>
-    <p className="text-xs text-gray-500">
-      Configura ADMIN_KEY en Vercel (Preview y Production) y redeploy.
-    </p>
-  </div>
-);
-
 const StatCard = ({ label, value }: { label: string; value: string | number }) => (
   <div className="card p-4 space-y-2 bg-white shadow-sm">
     <p className="text-xs uppercase tracking-wide text-gray-500">{label}</p>
@@ -64,12 +41,14 @@ const RequirementRow = ({
   originSlug,
   destSlug,
   visaRequired,
-  lastReviewed,
+  lastReviewedText,
+  statusKey,
 }: {
   originSlug: string;
   destSlug: string;
   visaRequired: boolean;
-  lastReviewed: string;
+  lastReviewedText: string;
+  statusKey: ReviewStatusKey;
 }) => (
   <tr className="border-b border-gray-100">
     <td className="px-3 py-2 text-sm font-medium text-gray-900">{originNameBySlug[originSlug]}</td>
@@ -83,7 +62,10 @@ const RequirementRow = ({
         {visaRequired ? "Requiere visa" : "Sin visa"}
       </span>
     </td>
-    <td className="px-3 py-2 text-sm text-gray-700">{lastReviewed}</td>
+    <td className="px-3 py-2 text-sm text-gray-700">{lastReviewedText}</td>
+    <td className="px-3 py-2 text-sm">
+      <ReviewStatusBadge statusKey={statusKey} />
+    </td>
   </tr>
 );
 
@@ -93,29 +75,58 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   const envKey = (process.env.ADMIN_KEY ?? "").trim();
   const hasAccess = envKey !== "" && providedKey === envKey;
 
+  if (!hasAccess) {
+    notFound();
+  }
+
   const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
 
-  if (!hasAccess) {
-    return (
-      <div className="container-box py-10 space-y-6">
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-primary">Panel de revisión</p>
-          <h1 className="text-3xl font-bold text-gray-900">Panel de revisión</h1>
-          <p className="text-sm text-gray-600">Configura ADMIN_KEY en Vercel (Preview y Production) y redeploy.</p>
-        </div>
-        <RestrictedCard suggestedKey={envKey} />
-      </div>
-    );
-  }
+  const statusParamRaw = Array.isArray(searchParams?.status) ? searchParams?.status[0] : searchParams?.status;
+  const rawStatusFilter = (statusParamRaw ?? "all").toLowerCase();
+  const allowedStatuses: (ReviewStatusKey | "all")[] = ["all", "green", "yellow", "red"];
+  const statusFilter: ReviewStatusKey | "all" = allowedStatuses.includes(rawStatusFilter as ReviewStatusKey | "all")
+    ? (rawStatusFilter as ReviewStatusKey | "all")
+    : "all";
+
+  const sortParamRaw = Array.isArray(searchParams?.sort) ? searchParams?.sort[0] : searchParams?.sort;
+  const rawSortOption = (sortParamRaw ?? "stale").toLowerCase();
+  const sortOption = ["stale", "recent"].includes(rawSortOption) ? rawSortOption : "stale";
+
+  const requirementsWithMetadata = requirements.map((item) => {
+    const reviewMetadata = getReviewMetadata(item);
+    return {
+      ...item,
+      reviewMetadata,
+    };
+  });
+
+  const statusCounts = requirementsWithMetadata.reduce<Record<ReviewStatusKey, number>>(
+    (acc, item) => {
+      acc[item.reviewMetadata.status.key] += 1;
+      return acc;
+    },
+    { green: 0, yellow: 0, red: 0 }
+  );
+
+  const filteredRequirements = requirementsWithMetadata.filter((item) => {
+    if (statusFilter === "all") return true;
+    const normalizedFilter = statusFilter as ReviewStatusKey;
+    return item.reviewMetadata.status.key === normalizedFilter;
+  });
+
+  const sortedRequirements = [...filteredRequirements].sort((a, b) => {
+    if (sortOption === "recent") {
+      return a.reviewMetadata.ageInMs - b.reviewMetadata.ageInMs;
+    }
+    return b.reviewMetadata.ageInMs - a.reviewMetadata.ageInMs;
+  });
 
   return (
     <div className="container-box py-10 space-y-8">
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-primary">Panel de revisión</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-brand-primary">Administración</p>
         <h1 className="text-3xl font-bold text-gray-900">Dashboard de requisitos</h1>
-        <p className="text-sm text-gray-600">
-          Revisa combinaciones de origen/destino y su estado de visado. Configura ADMIN_KEY en Vercel (Preview y Production) y redeploy.
-        </p>
+        <p className="text-sm text-gray-600">Revisa combinaciones de origen/destino y su estado de visado.</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -128,8 +139,58 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
       <div className="card p-6 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold text-gray-900">Listado de combinaciones</h2>
-          <p className="text-sm text-gray-600">Última revisión por fila.</p>
+          <p className="text-sm text-gray-600">Última revisión y semáforo por fila.</p>
         </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {(["green", "yellow", "red"] as ReviewStatusKey[]).map((statusKey) => (
+            <div
+              key={statusKey}
+              className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800"
+            >
+              <div className="flex items-center gap-2">
+                <ReviewStatusBadge statusKey={statusKey} />
+                <span>{REVIEW_STATUS_CONFIG[statusKey].label}</span>
+              </div>
+              <span className="font-semibold text-gray-900">{statusCounts[statusKey]}</span>
+            </div>
+          ))}
+        </div>
+
+        <form className="grid gap-3 md:grid-cols-3" method="get">
+          <input type="hidden" name="key" value={providedKey} />
+          <label className="flex flex-col gap-1 text-sm text-gray-800">
+            <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">Semáforo</span>
+            <select
+              name="status"
+              defaultValue={statusFilter}
+              className="rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-brand-primary focus:outline-none"
+            >
+              <option value="all">Todas</option>
+              <option value="green">Actualizado (🟢)</option>
+              <option value="yellow">Por revisar (🟡)</option>
+              <option value="red">Desactualizado (🔴)</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm text-gray-800">
+            <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">Ordenar</span>
+            <select
+              name="sort"
+              defaultValue={sortOption}
+              className="rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-brand-primary focus:outline-none"
+            >
+              <option value="stale">Más desactualizado primero</option>
+              <option value="recent">Más actualizado primero</option>
+            </select>
+          </label>
+          <div className="flex items-end">
+            <button
+              type="submit"
+              className="inline-flex w-full items-center justify-center rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark"
+            >
+              Aplicar filtros
+            </button>
+          </div>
+        </form>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left">
             <thead>
@@ -138,16 +199,18 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
                 <th className="px-3 py-2">Destino</th>
                 <th className="px-3 py-2">Visa</th>
                 <th className="px-3 py-2">Última revisión</th>
+                <th className="px-3 py-2">Semáforo</th>
               </tr>
             </thead>
             <tbody>
-              {requirements.map((item) => (
+              {sortedRequirements.map((item) => (
                 <RequirementRow
                   key={`${item.originSlug}-${item.destSlug}`}
                   originSlug={item.originSlug}
                   destSlug={item.destSlug}
                   visaRequired={item.visaRequired}
-                  lastReviewed={item.lastReviewed}
+                  lastReviewedText={item.reviewMetadata.lastReviewedText}
+                  statusKey={item.reviewMetadata.status.key}
                 />
               ))}
             </tbody>
