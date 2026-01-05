@@ -31,10 +31,19 @@ npm start
   - `maxStayDays` (número o `null`)
   - `altPermit` (ej. ESTA, eTA, ETA o `null`)
   - `passportRule`, `onwardTicket`, `fundsProof`
-  - `notes`: string[]
+  - `notes?`: string[]
   - `sources`: `{ label, url }[]`
+  - `verificationStatus?`: `"verified" | "pending" | "outdated"` (opcional; si no se define, el semáforo lo calcula)
   - `embassy`: `{ name, url, email?, phone?, address? }`
   - `lastReviewed`: `YYYY-MM-DD`
+
+El semáforo automático usa estas reglas cuando `verificationStatus` no está definido:
+- 🔴 `outdated`: `lastReviewed` tiene más de 12 meses (365 días).
+- 🟡 `pending`: `sources` está vacío o incompleto.
+- ✅ `verified`: hay al menos una fuente completa y `lastReviewed` es menor o igual a 12 meses.
+
+Para marcar manualmente un estado distinto, agrega `verificationStatus` al objeto correspondiente en `requirements.ts`. Puedes
+agregar `notes` para aclarar revisiones o excepciones.
 
 Para agregar un nuevo país u origen, añade la entrada en `data/countries.ts` y crea (o deja que el generador cree) el objeto correspondiente en `requirements.ts`. El archivo usa un mapa de overrides por destino para facilitar la edición de todos los pares.
 
@@ -45,7 +54,15 @@ Para agregar un nuevo país u origen, añade la entrada en `data/countries.ts` y
 
 ## Sitemap y robots
 - `app/sitemap.ts` genera automáticamente URLs para `/`, `/visa` y cada combinación declarada en `requirements.ts`.
-- `app/robots.ts` expone las reglas básicas y referencia el sitemap.
+- `app/robots.ts` expone las reglas básicas, excluye `/admin` y referencia el sitemap.
+
+## Panel interno de revisión (/admin)
+- Acceso: `https://necesitovisa.com/admin?key=TU_ADMIN_KEY` (`TU_ADMIN_KEY` proviene de la variable de entorno `ADMIN_KEY`).
+- Protección: si la key no coincide se responde 404; no hay formularios de login ni mensajes de error.
+- Contenido: tabla con todos los pares origen/destino, links a la página pública, fecha de última revisión, cantidad de fuentes
+  y estado del semáforo.
+- Contadores y filtros: totales globales, filtros por estado o por pares sin fuentes y buscador por texto.
+- Indexación: `/admin` no aparece en el sitemap y está bloqueado en `robots.txt`.
 
 ## Estilos
 - TailwindCSS configurado en `tailwind.config.ts` y `app/globals.css`.
