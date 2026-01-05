@@ -228,24 +228,98 @@ const destinationOverrides: Record<string, Partial<Requirement>> = {
   },
 };
 
+const pairOverrides: Record<string, Partial<Requirement>> = {
+  "chile-japon": {
+    visaRequired: false,
+    maxStayDays: 90,
+    notes: [
+      "Personas con pasaporte chileno pueden ingresar sin visa para turismo o negocios por hasta 90 días.",
+      "Se puede solicitar pasaje de salida, prueba de fondos y reserva de alojamiento al arribo.",
+    ],
+    sources: [
+      {
+        label: "MOFA Japan - Exención de visa de corta estadía",
+        url: "https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html",
+      },
+      { label: "IATA/Timatic", url: "https://www.iatatravelcentre.com/" },
+    ],
+    embassy: {
+      name: "Embajada de Japón en Chile",
+      url: "https://www.cl.emb-japan.go.jp/itpr_es/visas.html",
+      email: null,
+      phone: null,
+      address: null,
+    },
+    lastReviewed: "2026-01-05",
+  },
+  "chile-china": {
+    visaRequired: false,
+    maxStayDays: 30,
+    notes: [
+      "Pasaporte chileno puede ingresar sin visa por hasta 30 días para turismo o negocios durante la vigencia del acuerdo bilateral.",
+      "Confirma fechas de vigencia y requisitos adicionales (reservas, fondos, retorno) antes de viajar.",
+    ],
+    sources: [
+      {
+        label: "Embajada de China en Chile - Exención de visa para chilenos",
+        url: "http://cl.china-embassy.gov.cn/esp/lsfw/qzyw/202311/t20231122_11194020.htm",
+      },
+      { label: "IATA/Timatic", url: "https://www.iatatravelcentre.com/" },
+    ],
+    embassy: {
+      name: "Embajada de China en Chile",
+      url: "http://cl.china-embassy.gov.cn/esp/",
+      email: null,
+      phone: null,
+      address: null,
+    },
+    lastReviewed: "2026-01-05",
+  },
+  "chile-turquia": {
+    notes: [
+      "Revisar: pasaporte chileno podría estar exento de visa por estadías cortas; confirmar vigencia en fuentes oficiales de Türkiye.",
+      "Si aplica visa, revisa si corresponde visa electrónica o trámite consular antes del viaje.",
+    ],
+    lastReviewed: "2026-01-05",
+  },
+};
+
 const buildRequirement = (
   originSlug: string,
   destSlug: string,
-  overrides: Partial<Requirement>
-): Requirement => ({
-  ...defaultRequirement,
-  originSlug,
-  destSlug,
-  visaRequired: overrides.visaRequired ?? false,
-  ...overrides,
-});
+  overrides: Partial<Requirement>,
+  pairOverride?: Partial<Requirement>
+): Requirement => {
+  const baseRequirement = {
+    ...defaultRequirement,
+    originSlug,
+    destSlug,
+    visaRequired: overrides.visaRequired ?? false,
+    ...overrides,
+  };
+
+  return {
+    ...baseRequirement,
+    ...pairOverride,
+    visaRequired: pairOverride?.visaRequired ?? baseRequirement.visaRequired,
+    maxStayDays: pairOverride?.maxStayDays ?? baseRequirement.maxStayDays,
+    altPermit: pairOverride?.altPermit ?? baseRequirement.altPermit,
+    notes: pairOverride?.notes ?? baseRequirement.notes,
+    sources: pairOverride?.sources ?? baseRequirement.sources,
+    embassy: pairOverride?.embassy ?? baseRequirement.embassy,
+    lastReviewed: pairOverride?.lastReviewed ?? baseRequirement.lastReviewed,
+  };
+};
 
 export const requirements: Requirement[] = [];
 
 originCountries.forEach((origin) => {
   destinationCountries.forEach((dest) => {
     const overrides = destinationOverrides[dest.slug] ?? {};
-    requirements.push(buildRequirement(origin.slug, dest.slug, overrides));
+    const originDestOverrides = pairOverrides[`${origin.slug}-${dest.slug}`];
+    requirements.push(
+      buildRequirement(origin.slug, dest.slug, overrides, originDestOverrides)
+    );
   });
 });
 
