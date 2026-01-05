@@ -201,9 +201,9 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
           <li>{requirement.onwardTicket}</li>
           <li>{requirement.fundsProof}</li>
           {requirement.altPermit && <li>Permiso alternativo sugerido: {requirement.altPermit}</li>}
-          {requirement.notes.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
+            {(requirement.notes ?? []).map((note) => (
+              <li key={note}>{note}</li>
+            ))}
         </ul>
       </section>
 

@@ -9,8 +9,9 @@ export type Requirement = {
   passportRule: string;
   onwardTicket: string;
   fundsProof: string;
-  notes: string[];
+  notes?: string[];
   sources: { label: string; url: string }[];
+  verificationStatus?: VerificationStatus;
   embassy: {
     name: string;
     url: string;
@@ -20,6 +21,8 @@ export type Requirement = {
   };
   lastReviewed: string; // YYYY-MM-DD
 };
+
+export type VerificationStatus = "verified" | "pending" | "outdated";
 
 const defaultRequirement = {
   maxStayDays: 90,
@@ -309,8 +312,43 @@ const buildRequirement = (
     notes: pairOverride?.notes ?? baseRequirement.notes,
     sources: pairOverride?.sources ?? baseRequirement.sources,
     embassy: pairOverride?.embassy ?? baseRequirement.embassy,
+    verificationStatus:
+      pairOverride?.verificationStatus ??
+      overrides.verificationStatus ??
+      baseRequirement.verificationStatus,
     lastReviewed: pairOverride?.lastReviewed ?? baseRequirement.lastReviewed,
   };
+};
+
+const isOutdated = (lastReviewed: string) => {
+  const reviewedDate = new Date(lastReviewed);
+  const today = new Date();
+  const diffTime = today.getTime() - reviewedDate.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays > 365;
+};
+
+export const hasCompleteSources = (sources: Requirement["sources"]) =>
+  Array.isArray(sources) &&
+  sources.length > 0 &&
+  sources.every((source) => Boolean(source.label) && Boolean(source.url));
+
+export const computeVerificationStatus = (
+  requirement: Requirement
+): VerificationStatus => {
+  if (requirement.verificationStatus) {
+    return requirement.verificationStatus;
+  }
+
+  if (isOutdated(requirement.lastReviewed)) {
+    return "outdated";
+  }
+
+  if (!hasCompleteSources(requirement.sources)) {
+    return "pending";
+  }
+
+  return "verified";
 };
 
 export const requirements: Requirement[] = [];
