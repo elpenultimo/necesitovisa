@@ -11,7 +11,9 @@ export function ResultCard({ requirement }: ResultCardProps) {
         <div>
           <p className="text-sm text-gray-500">Respuesta rápida</p>
           <p className="text-2xl font-bold text-gray-900">
-            {requirement.visaRequired ? "Sí, necesitas visa o autorización previa" : "No, no necesitas visa para una visita corta"}
+            {requirement.visaRequired
+              ? "Sí, necesitas visa o autorización previa"
+              : "No necesitas visa para una visita corta"}
           </p>
         </div>
         <span
