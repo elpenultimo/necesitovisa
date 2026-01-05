@@ -232,8 +232,9 @@ const pairOverrides: Record<string, Partial<Requirement>> = {
   "chile-japon": {
     visaRequired: false,
     maxStayDays: 90,
+    altPermit: null,
     notes: [
-      "Personas con pasaporte chileno pueden ingresar sin visa para turismo o negocios por hasta 90 días.",
+      "Pasaporte chileno sin visa para turismo o negocios por hasta 90 días (sello de entrada).",
       "Se puede solicitar pasaje de salida, prueba de fondos y reserva de alojamiento al arribo.",
     ],
     sources: [
@@ -255,8 +256,9 @@ const pairOverrides: Record<string, Partial<Requirement>> = {
   "chile-china": {
     visaRequired: false,
     maxStayDays: 30,
+    altPermit: null,
     notes: [
-      "Pasaporte chileno puede ingresar sin visa por hasta 30 días para turismo o negocios durante la vigencia del acuerdo bilateral.",
+      "Pasaporte chileno puede ingresar sin visa por hasta 30 días para turismo o negocios mientras esté vigente la exención.",
       "Confirma fechas de vigencia y requisitos adicionales (reservas, fondos, retorno) antes de viajar.",
     ],
     sources: [
@@ -277,7 +279,7 @@ const pairOverrides: Record<string, Partial<Requirement>> = {
   },
   "chile-turquia": {
     notes: [
-      "Revisar: pasaporte chileno podría estar exento de visa por estadías cortas; confirmar vigencia en fuentes oficiales de Türkiye.",
+      "Revisar: pasaporte chileno podría estar exento de visa por estadías cortas; confirmar vigencia en fuentes oficiales de Türkiye antes de ajustar esta respuesta.",
       "Si aplica visa, revisa si corresponde visa electrónica o trámite consular antes del viaje.",
     ],
     lastReviewed: "2026-01-05",
