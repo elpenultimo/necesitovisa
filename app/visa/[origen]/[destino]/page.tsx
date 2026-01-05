@@ -5,6 +5,8 @@ import { ResultCard } from "@/components/ResultCard";
 import { SourcesList } from "@/components/SourcesList";
 import { destinationCountries, originCountries } from "@/data/countries";
 import { findRequirement, requirements } from "@/data/requirements";
+import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
+import { getReviewMetadata } from "@/lib/reviewStatus";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -29,8 +31,9 @@ export function generateMetadata({ params }: { params: { origen: string; destino
 
   const originName = getCountryName(params.origen, "origin");
   const destName = getCountryName(params.destino, "dest");
+  const { lastReviewedText } = getReviewMetadata(requirement);
   const title = `¿Necesito visa para ${destName} si soy de ${originName}? Requisitos ${currentYear}`;
-  const description = `Descubre si los ciudadanos de ${originName} necesitan visa para viajar a ${destName}. Requisitos, duración, permisos y contacto de la embajada. Actualizado ${requirement.lastReviewed}.`;
+  const description = `Descubre si los ciudadanos de ${originName} necesitan visa para viajar a ${destName}. Requisitos, duración, permisos y contacto de la embajada. Actualizado ${lastReviewedText}.`;
 
   const url = `https://necesitovisa.com/visa/${params.origen}/${params.destino}`;
 
@@ -84,6 +87,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
 
   const originName = getCountryName(params.origen, "origin");
   const destName = getCountryName(params.destino, "dest");
+  const reviewMetadata = getReviewMetadata(requirement);
   const faqItems = buildFaq(requirement, originName, destName);
 
   const breadcrumbJsonLd = {
@@ -144,7 +148,10 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
       <section className="card p-6 space-y-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <p className="text-lg font-semibold text-gray-900">Resumen en 20 segundos</p>
-          <p className="text-sm text-gray-600">Última revisión: {requirement.lastReviewed}</p>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span>Última revisión: {reviewMetadata.lastReviewedText}</span>
+            <ReviewStatusBadge statusKey={reviewMetadata.status.key} withLabel={false} />
+          </div>
         </div>
         <div className="grid gap-4 md:grid-cols-3 text-sm text-gray-800">
           <div className="rounded-lg border border-gray-200 p-4 bg-gray-50">
