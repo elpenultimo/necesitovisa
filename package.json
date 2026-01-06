@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "node scripts/buildVisaData.js" 
+    "prebuild": "node scripts/buildVisaData.cjs" 
   },
   "dependencies": {
     "next": "14.2.4",
