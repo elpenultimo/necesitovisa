@@ -2,7 +2,9 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
 import { listAll, resolveOrigin } from "@/lib/countryIndex";
+import { normalizeRequirement } from "@/lib/visaRequirement";
 import { readVisaDataByKey } from "@/lib/visaData";
+import { VisaRequirementBadge } from "@/components/VisaRequirementBadge";
 
 export const runtime = "nodejs";
 
@@ -67,7 +69,20 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
                     {destination.name_es}
                   </Link>
                 </td>
-                <td className="px-4 py-2 text-gray-700">{destination.requirement}</td>
+                <td className="px-4 py-2 space-y-1 text-gray-700">
+                  {(() => {
+                    const normalized = normalizeRequirement(destination.requirement);
+                    const requirement_type = normalized.type;
+                    return (
+                      <>
+                        <VisaRequirementBadge requirement={normalized} />
+                        {requirement_type === "UNKNOWN" && (
+                          <p className="text-xs text-gray-500">Valor fuente: {destination.requirement || "N/D"}</p>
+                        )}
+                      </>
+                    );
+                  })()}
+                </td>
               </tr>
             ))}
           </tbody>
