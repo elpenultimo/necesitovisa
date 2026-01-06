@@ -15,6 +15,25 @@ function formatOriginSlug(slug: string) {
   return lower.charAt(0).toUpperCase() + lower.slice(1);
 }
 
+const COUNTRY_NAMES_ES: Record<string, string> = {
+  japan: "Japón",
+  chile: "Chile",
+  argentina: "Argentina",
+  united_states: "Estados Unidos",
+  south_korea: "Corea del Sur",
+};
+
+function getDisplayCountryName(slug: string) {
+  const normalizedSlug = slug.toLowerCase();
+
+  if (COUNTRY_NAMES_ES[normalizedSlug]) {
+    return COUNTRY_NAMES_ES[normalizedSlug];
+  }
+
+  const readableSlug = normalizedSlug.replace(/_/g, " ");
+  return readableSlug.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
 function readVisaData(originSlug: string): VisaData | null {
   const fileName = `${formatOriginSlug(originSlug)}.json`;
   const filePath = path.join(generatedDir, fileName);
@@ -46,11 +65,12 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
   }
 
   const destinationEntries = Object.entries(visaData.destinations);
+  const originName = getDisplayCountryName(params.origen);
 
   return (
     <div className="container-box py-10 space-y-6">
       <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {visaData.origin}</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {originName}</h1>
         <p className="text-gray-700 text-sm max-w-2xl">
           Revisa rápidamente si necesitas visa para viajar a otro país. Los datos se generan desde los
           archivos JSON exportados del CSV base.
