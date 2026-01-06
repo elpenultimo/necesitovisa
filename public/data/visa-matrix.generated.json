@@ -1,0 +1,64 @@
+{
+  "matrix": {
+    "CL": {
+      "US": "visa_required",
+      "CA": "visa_required",
+      "MX": "visa_free",
+      "BR": "visa_free",
+      "GB": "visa_required",
+      "JP": "visa_free",
+      "AU": "visa_required",
+      "CN": "visa_free",
+      "TR": "visa_required",
+      "EU": "visa_free"
+    },
+    "AR": {
+      "US": "visa_required",
+      "CA": "visa_required",
+      "MX": "visa_free",
+      "BR": "visa_free",
+      "GB": "visa_required",
+      "JP": "visa_required",
+      "AU": "visa_required",
+      "CN": "visa_required",
+      "TR": "visa_required",
+      "EU": "visa_free"
+    },
+    "MX": {
+      "US": "visa_required",
+      "CA": "visa_required",
+      "MX": "visa_free",
+      "BR": "visa_free",
+      "GB": "visa_required",
+      "JP": "visa_required",
+      "AU": "visa_required",
+      "CN": "visa_required",
+      "TR": "visa_required",
+      "EU": "visa_free"
+    },
+    "CO": {
+      "US": "visa_required",
+      "CA": "visa_required",
+      "MX": "visa_free",
+      "BR": "visa_free",
+      "GB": "visa_required",
+      "JP": "visa_required",
+      "AU": "visa_required",
+      "CN": "visa_required",
+      "TR": "visa_required",
+      "EU": "visa_free"
+    },
+    "ES": {
+      "US": "visa_required",
+      "CA": "visa_required",
+      "MX": "visa_free",
+      "BR": "visa_free",
+      "GB": "visa_required",
+      "JP": "visa_required",
+      "AU": "visa_required",
+      "CN": "visa_required",
+      "TR": "visa_required",
+      "EU": "visa_free"
+    }
+  }
+}
