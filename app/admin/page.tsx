@@ -2,6 +2,8 @@ import { destinationCountries, originCountries } from "@/data/countries";
 import { requirements } from "@/data/requirements";
 import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
 import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import { DatasetBadge } from "@/components/DatasetBadge";
+import { getDatasetFreshness, getVisaMatrix } from "@/lib/visaDataset";
 import { notFound } from "next/navigation";
 
 export const metadata = {
@@ -43,12 +45,16 @@ const RequirementRow = ({
   visaRequired,
   lastReviewedText,
   statusKey,
+  datasetStatusKey,
+  datasetGeneratedAtText,
 }: {
   originSlug: string;
   destSlug: string;
   visaRequired: boolean;
   lastReviewedText: string;
   statusKey: ReviewStatusKey;
+  datasetStatusKey: "green" | "yellow" | "red";
+  datasetGeneratedAtText: string;
 }) => (
   <tr className="border-b border-gray-100">
     <td className="px-3 py-2 text-sm font-medium text-gray-900">{originNameBySlug[originSlug]}</td>
@@ -66,6 +72,9 @@ const RequirementRow = ({
     <td className="px-3 py-2 text-sm">
       <ReviewStatusBadge statusKey={statusKey} />
     </td>
+    <td className="px-3 py-2 text-sm">
+      <DatasetBadge status={datasetStatusKey} generatedAt={datasetGeneratedAtText} />
+    </td>
   </tr>
 );
 
@@ -78,6 +87,9 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   if (!hasAccess) {
     notFound();
   }
+
+  const visaMatrix = getVisaMatrix();
+  const datasetFreshness = getDatasetFreshness(visaMatrix?.generatedAt);
 
   const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
 
@@ -127,6 +139,17 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <p className="text-xs font-semibold uppercase tracking-wide text-brand-primary">Administración</p>
         <h1 className="text-3xl font-bold text-gray-900">Dashboard de requisitos</h1>
         <p className="text-sm text-gray-600">Revisa combinaciones de origen/destino y su estado de visado.</p>
+      </div>
+
+      <div className="flex flex-col gap-2 rounded-lg border border-gray-200 bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-wide text-gray-500">Fuente de datos</p>
+          <p className="text-sm font-semibold text-gray-900">
+            {visaMatrix?.source ?? "Dataset de respaldo"}
+          </p>
+          <p className="text-xs text-gray-600">Generado: {datasetFreshness.generatedAtText}</p>
+        </div>
+        <DatasetBadge status={datasetFreshness.status} generatedAt={visaMatrix?.generatedAt} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -200,6 +223,7 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
                 <th className="px-3 py-2">Visa</th>
                 <th className="px-3 py-2">Última revisión</th>
                 <th className="px-3 py-2">Semáforo</th>
+                <th className="px-3 py-2">Estado dataset</th>
               </tr>
             </thead>
             <tbody>
@@ -211,6 +235,8 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
                   visaRequired={item.visaRequired}
                   lastReviewedText={item.reviewMetadata.lastReviewedText}
                   statusKey={item.reviewMetadata.status.key}
+                  datasetStatusKey={datasetFreshness.status}
+                  datasetGeneratedAtText={datasetFreshness.generatedAtText}
                 />
               ))}
             </tbody>

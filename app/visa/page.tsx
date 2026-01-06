@@ -56,8 +56,8 @@ export default function VisaIndexPage() {
           <li>Consulta las fuentes oficiales y completa los campos con la información más reciente.</li>
         </ol>
         <p className="text-sm text-gray-600">
-          Puedes ampliar los datos editando <code>data/requirements.ts</code>. El sitemap se actualiza
-          automáticamente al agregar nuevas combinaciones.
+          El dataset se genera automáticamente desde los PDFs de Henley & Partners Passport Index. Si hay un
+          problema de descarga, se recurre al dataset previo para mantener la web online.
         </p>
       </section>
     </div>

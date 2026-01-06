@@ -245,8 +245,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
           antes de comprar pasajes o iniciar tu viaje.
         </p>
         <p className="text-sm text-gray-700">
-          ¿Ves un dato desactualizado? Abre un ticket o edita el archivo <code>data/requirements.ts</code> con la
-          nueva información oficial.
+          ¿Ves un dato desactualizado? Avísanos para revisar el PDF de Henley en la siguiente generación del dataset.
         </p>
       </section>
 

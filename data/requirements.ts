@@ -1,4 +1,6 @@
 import { destinationCountries, originCountries } from "./countries";
+import { slugify } from "@/lib/slug";
+import { getVisaMatrix, VisaMatrix } from "@/lib/visaDataset";
 
 export type Requirement = {
   originSlug: string;
@@ -315,17 +317,69 @@ const buildRequirement = (
   };
 };
 
-export const requirements: Requirement[] = [];
+const legacyRequirements: Requirement[] = [];
 
 originCountries.forEach((origin) => {
   destinationCountries.forEach((dest) => {
     const overrides = destinationOverrides[dest.slug] ?? {};
     const originDestOverrides = pairOverrides[`${origin.slug}-${dest.slug}`];
-    requirements.push(
+    legacyRequirements.push(
       buildRequirement(origin.slug, dest.slug, overrides, originDestOverrides)
     );
   });
 });
+
+const formatGeneratedDate = (generatedAt?: string) => {
+  if (!generatedAt) return new Date().toISOString().slice(0, 10);
+  const parsed = new Date(generatedAt);
+  return Number.isNaN(parsed.valueOf())
+    ? new Date().toISOString().slice(0, 10)
+    : parsed.toISOString().slice(0, 10);
+};
+
+const buildGeneratedRequirements = (visaMatrix: VisaMatrix): Requirement[] => {
+  const lastReviewed = formatGeneratedDate(visaMatrix.generatedAt);
+  const defaultSource = visaMatrix.source || "Henley & Partners Passport Index (HPI PDFs)";
+  const results: Requirement[] = [];
+
+  Object.entries(visaMatrix.origins).forEach(([originName, originData]) => {
+    const originSlug = slugify(originName);
+
+    Object.entries(originData.destinations).forEach(([destName, destData]) => {
+      const destSlug = slugify(destName);
+      const sources = [
+        {
+          label: defaultSource,
+          url: originData.pdfUrl ?? "https://www.henleyglobal.com/passport-index",
+        },
+      ];
+
+      results.push({
+        ...defaultRequirement,
+        originSlug,
+        destSlug,
+        visaRequired: Boolean(destData.requiresVisa),
+        notes: [
+          ...defaultRequirement.notes,
+          "Datos derivados del índice de pasaportes de Henley & Partners.",
+        ],
+        sources,
+        lastReviewed,
+      });
+    });
+  });
+
+  return results;
+};
+
+const visaMatrix = getVisaMatrix();
+
+const generatedRequirements = visaMatrix ? buildGeneratedRequirements(visaMatrix) : null;
+
+export const requirements: Requirement[] =
+  generatedRequirements && generatedRequirements.length > 0
+    ? generatedRequirements
+    : legacyRequirements;
 
 export const requirementIndex = new Map<string, Requirement>(
   requirements.map((item) => [`${item.originSlug}-${item.destSlug}`, item])
@@ -333,3 +387,9 @@ export const requirementIndex = new Map<string, Requirement>(
 
 export const findRequirement = (originSlug: string, destSlug: string) =>
   requirementIndex.get(`${originSlug}-${destSlug}`);
+
+export const requirementsSource = generatedRequirements ? "henley" : "legacy";
+
+export const datasetMetadata = visaMatrix
+  ? { generatedAt: visaMatrix.generatedAt, source: visaMatrix.source }
+  : null;
