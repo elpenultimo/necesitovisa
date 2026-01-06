@@ -2,6 +2,7 @@ import { destinationCountries, originCountries } from "@/data/countries";
 import { requirements } from "@/data/requirements";
 import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
 import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import { readHenleyDataset } from "@/lib/henleyDataset";
 import { notFound } from "next/navigation";
 
 export const metadata = {
@@ -81,6 +82,22 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
 
   const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
 
+  const henleyDataset = readHenleyDataset();
+  const formatDate = (value?: string | null, withTime = false) => {
+    if (!value) return null;
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime())) return null;
+    return new Intl.DateTimeFormat("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      ...(withTime ? { hour: "2-digit", minute: "2-digit" } : {}),
+    }).format(parsed);
+  };
+
+  const henleySourceDate = formatDate(henleyDataset?.source_date);
+  const henleyGeneratedAt = formatDate(henleyDataset?.generated_at, true);
+
   const statusParamRaw = Array.isArray(searchParams?.status) ? searchParams?.status[0] : searchParams?.status;
   const rawStatusFilter = (statusParamRaw ?? "all").toLowerCase();
   const allowedStatuses: (ReviewStatusKey | "all")[] = ["all", "green", "yellow", "red"];
@@ -134,6 +151,38 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <StatCard label="Destinos" value={destinationCountries.length} />
         <StatCard label="Combinaciones" value={requirements.length} />
         <StatCard label="Requieren visa" value={`${requiresVisaCount} / ${requirements.length}`} />
+      </div>
+
+      <div className="card p-6 space-y-3">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900">Dataset Henley</h2>
+            <p className="text-sm text-gray-600">Actualización manual, sin dependencias del build.</p>
+          </div>
+          {henleyDataset?.source_url ? (
+            <a
+              href={henleyDataset.source_url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-semibold text-brand-primary hover:text-brand-dark"
+            >
+              Ver fuente
+            </a>
+          ) : null}
+        </div>
+        <div className="space-y-1 text-sm text-gray-800">
+          <p>
+            Datos Henley actualizados al: <span className="font-semibold">{henleySourceDate ?? "Sin datos"}</span>
+          </p>
+          <p>
+            Dataset generado el: <span className="font-semibold">{henleyGeneratedAt ?? "Sin datos"}</span>
+          </p>
+          {henleyDataset?.pdf_path ? (
+            <p className="text-xs text-gray-600">Archivo local: {henleyDataset.pdf_path}</p>
+          ) : (
+            <p className="text-xs text-gray-500">Aún no se ha cargado el archivo generado en public/data.</p>
+          )}
+        </div>
       </div>
 
       <div className="card p-6 space-y-4">

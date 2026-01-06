@@ -23,6 +23,16 @@ npm run build
 npm start
 ```
 
+## Actualización manual del dataset Henley
+El dataset de Henley se mantiene fuera del proceso de build para evitar fallos en despliegue. Si necesitas renovarlo:
+
+```bash
+# ISO por defecto: ESP. Puedes sobreescribir con --iso=USA o la variable HENLEY_SOURCE_ISO.
+npm run update:henley -- --iso=ESP
+```
+
+El comando descarga el PDF oficial desde Henley, lo guarda en `public/data` y genera `public/data/visa-matrix.generated.json` con los metadatos `source_date`, `generated_at` y `source_url`.
+
 ## Estructura de datos
 - `data/countries.ts`: lista de países de origen y destino (nombre, slug, ISO opcional).
 - `data/requirements.ts`: combinaciones origen/destino con los campos:
