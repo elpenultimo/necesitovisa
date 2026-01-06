@@ -1,84 +1,30 @@
 const fs = require("fs");
 const path = require("path");
+const { parse } = require("csv-parse/sync");
 
-function sniffDelimiter(sample) {
-  const comma = (sample.match(/,/g) || []).length;
-  const semi = (sample.match(/;/g) || []).length;
-  return semi > comma ? ";" : ",";
+function stripBOM(s) {
+  return s && s.charCodeAt(0) === 0xFEFF ? s.slice(1) : s;
 }
-
-// CSV parser simple pero correcto con comillas (RFC-ish)
-function parseCSV(text, delimiter) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    const next = text[i + 1];
-
-    if (inQuotes) {
-      if (c === '"' && next === '"') {
-        field += '"';
-        i++;
-      } else if (c === '"') {
-        inQuotes = false;
-      } else {
-        field += c;
-      }
-      continue;
-    }
-
-    if (c === '"') {
-      inQuotes = true;
-      continue;
-    }
-
-    if (c === delimiter) {
-      row.push(field);
-      field = "";
-      continue;
-    }
-
-    if (c === "\n") {
-      row.push(field);
-      field = "";
-      // evita filas vacías
-      if (row.some((x) => String(x).trim() !== "")) rows.push(row);
-      row = [];
-      continue;
-    }
-
-    if (c === "\r") continue;
-
-    field += c;
-  }
-
-  // último campo
-  row.push(field);
-  if (row.some((x) => String(x).trim() !== "")) rows.push(row);
-  return rows;
-}
-
 function cleanCode(v) {
-  return String(v || "").replace(/"/g, "").trim().toUpperCase();
+  return stripBOM(String(v || "")).replace(/"/g, "").trim().toUpperCase();
 }
 
 function classify(raw) {
-  const v = String(raw || "").trim().toLowerCase();
+  const v = String(raw ?? "").trim().toLowerCase();
   if (!v || v === "-1") return { skip: true };
+
   if (v === "visa free") return { needsVisa: false, days: null };
   if (/^\d+$/.test(v)) return { needsVisa: false, days: Number(v) };
   if (v.includes("visa required")) return { needsVisa: true, days: null };
-  // evisa / eta / visa on arrival => por ahora lo tratamos como “sí”
+
+  // evisa / eta / visa on arrival / etc.
   return { needsVisa: true, days: null, special: true };
 }
 
 function main() {
   const csvPath = path.join(process.cwd(), "data", "passport-index-matrix.csv");
   if (!fs.existsSync(csvPath)) {
-    console.error("❌ No encuentro el CSV:", csvPath);
+    console.error("❌ No encuentro el CSV en:", csvPath);
     process.exit(1);
   }
 
@@ -86,10 +32,18 @@ function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const csv = fs.readFileSync(csvPath, "utf8");
-  const sample = csv.slice(0, 2000);
-  const delimiter = sniffDelimiter(sample);
+  const firstLine = csv.split(/\r?\n/)[0] || "";
+  const comma = (firstLine.match(/,/g) || []).length;
+  const semi = (firstLine.match(/;/g) || []).length;
+  const delimiter = semi > comma ? ";" : ",";
 
-  const records = parseCSV(csv, delimiter);
+  const records = parse(csv, {
+    delimiter,
+    relax_quotes: true,
+    relax_column_count: true,
+    skip_empty_lines: true,
+  });
+
   if (!records || records.length < 2) {
     console.error("❌ CSV vacío o no parseable");
     process.exit(1);
@@ -98,28 +52,25 @@ function main() {
   const header = records[0];
   const destCodes = header.slice(1).map(cleanCode).filter(Boolean);
 
-  // validación: deberían ser muchas columnas
-  if (destCodes.length < 100) {
-    console.error("❌ Header raro. Destinos detectados:", destCodes.length);
-    console.error("Delimiter usado:", JSON.stringify(delimiter));
-    console.error("Header (primeras 10 cols):", header.slice(0, 10));
-    process.exit(1);
-  }
+  console.log("ℹ️ Delimiter:", JSON.stringify(delimiter), "| Destinos en header:", destCodes.length);
+  console.log("ℹ️ Header sample:", destCodes.slice(0, 10).join(", "));
 
   const origins = [];
+  let rowsWithValidOrigin = 0;
 
   for (let i = 1; i < records.length; i++) {
     const row = records[i];
     const origin = cleanCode(row[0]);
 
-    // el dataset usa ISO2
-    if (!origin || origin.length < 3) continue;
+    // Acepta ISO2 o ISO3
+    if (!origin || origin.length < 2 || origin.length > 3) continue;
+    rowsWithValidOrigin++;
 
     const destinations = [];
 
     for (let j = 1; j < row.length && j <= destCodes.length; j++) {
       const dest = destCodes[j - 1];
-      if (!dest || dest.length !== 2) continue;
+      if (!dest || dest.length < 2 || dest.length > 3) continue;
       if (dest === origin) continue;
 
       const c = classify(row[j]);
@@ -137,16 +88,18 @@ function main() {
 
     destinations.sort((a, b) => a.dest.localeCompare(b.dest));
 
-    const obj = {
-      origin,
-      generatedAt: new Date().toISOString().slice(0, 10),
-      source: { mode: "local", dataset: "passport-index-matrix", delimiter },
-      destinations,
-    };
-
     fs.writeFileSync(
       path.join(outDir, `${origin}.json`),
-      JSON.stringify(obj, null, 2),
+      JSON.stringify(
+        {
+          origin,
+          generatedAt: new Date().toISOString().slice(0, 10),
+          source: { dataset: "passport-index-matrix", delimiter },
+          destinations,
+        },
+        null,
+        2
+      ),
       "utf8"
     );
 
@@ -160,6 +113,7 @@ function main() {
     "utf8"
   );
 
+  console.log("ℹ️ Filas con origin válido:", rowsWithValidOrigin);
   console.log(`✅ Generados ${origins.length} países en ${outDir}`);
 }
 
