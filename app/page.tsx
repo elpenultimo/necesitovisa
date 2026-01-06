@@ -1,6 +1,13 @@
-import { destinationCountries, originCountries } from "@/data/countries";
+import { listAll } from "@/lib/countryIndex";
 import Link from "next/link";
 import { HomeForm } from "./partials/HomeForm";
+
+export const runtime = "nodejs";
+
+const countries = listAll();
+
+const originCountries = countries;
+const destinationCountries = countries;
 
 export default function HomePage() {
   const popularDestinations = ["estados-unidos", "canada", "reino-unido", "schengen", "australia"];
@@ -19,21 +26,24 @@ export default function HomePage() {
             Resuelve en segundos si necesitas visa según tu nacionalidad y país destino. Listo para
             SEO y pensado para mantenerse actualizado con fuentes oficiales.
           </p>
-          <HomeForm origins={originCountries} destinations={destinationCountries} />
+          <HomeForm
+            origins={originCountries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
+            destinations={destinationCountries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
+          />
         </div>
         <div className="card p-6 space-y-4 bg-gradient-to-br from-white via-white to-brand-primary/5">
           <h2 className="text-xl font-semibold text-gray-900">Destinos populares (Chile)</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {popularDestinations.map((slug) => {
-              const dest = destinationCountries.find((d) => d.slug === slug);
+              const dest = destinationCountries.find((d) => d.slug_es === slug || d.slug_en === slug);
               if (!dest) return null;
               return (
                 <Link
-                  key={dest.slug}
-                  href={`/visa/chile/${dest.slug}`}
+                  key={dest.slug_es}
+                  href={`/visa/chile/${dest.slug_es}`}
                   className="card p-4 hover:shadow-md transition shadow-sm"
                 >
-                  <p className="font-semibold">{dest.name}</p>
+                  <p className="font-semibold">{dest.name_es}</p>
                   <p className="text-sm text-gray-600">Ver requisitos para personas de Chile</p>
                 </Link>
               );

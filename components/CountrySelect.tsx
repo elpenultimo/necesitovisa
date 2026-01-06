@@ -1,13 +1,17 @@
 "use client";
 
-import { Country } from "@/data/countries";
 import { useMemo } from "react";
+
+export type CountryOption = {
+  name: string;
+  slug: string;
+};
 
 interface CountrySelectProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
-  options: Country[];
+  options: CountryOption[];
   placeholder: string;
 }
 

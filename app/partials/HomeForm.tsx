@@ -1,13 +1,12 @@
 "use client";
 
-import { Country } from "@/data/countries";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { CountrySelect } from "@/components/CountrySelect";
+import { CountrySelect, CountryOption } from "@/components/CountrySelect";
 
 interface HomeFormProps {
-  origins: Country[];
-  destinations: Country[];
+  origins: CountryOption[];
+  destinations: CountryOption[];
 }
 
 export function HomeForm({ origins, destinations }: HomeFormProps) {

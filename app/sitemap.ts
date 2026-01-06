@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { requirements } from "@/data/requirements";
+import { listAll } from "@/lib/countryIndex";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://necesitovisa.com";
@@ -9,10 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/visa`, lastModified: new Date() },
   ];
 
-  const dynamicRoutes: MetadataRoute.Sitemap = requirements.map((req) => ({
-    url: `${baseUrl}/visa/${req.originSlug}/${req.destSlug}`,
-    lastModified: new Date(req.lastReviewed),
+  const countries = listAll();
+
+  const originRoutes: MetadataRoute.Sitemap = countries.map((country) => ({
+    url: `${baseUrl}/visa/${country.slug_es}`,
+    lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...dynamicRoutes];
+  return [...staticRoutes, ...originRoutes];
 }

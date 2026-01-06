@@ -1,5 +1,12 @@
-import { destinationCountries, originCountries } from "@/data/countries";
+import { listAll } from "@/lib/countryIndex";
 import Link from "next/link";
+import { slugify } from "@/lib/slug";
+
+export const runtime = "nodejs";
+
+const countries = listAll();
+const originCountries = countries;
+const destinationCountries = countries;
 
 export const metadata = {
   title: "Visas por país | NecesitoVisa.com",
@@ -23,11 +30,11 @@ export default function VisaIndexPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
             {originCountries.map((country) => (
               <Link
-                key={country.slug}
-                href={`/visa/${country.slug}/${destinationCountries[0].slug}`}
+                key={country.slug_es}
+                href={`/visa/${country.slug_es}/${destinationCountries[0]?.slug_es ?? slugify(destinationCountries[0]?.name_en ?? "")}`}
                 className="rounded-lg border border-gray-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
               >
-                {country.name}
+                {country.name_es}
               </Link>
             ))}
           </div>
@@ -37,11 +44,11 @@ export default function VisaIndexPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
             {destinationCountries.map((country) => (
               <Link
-                key={country.slug}
-                href={`/visa/${originCountries[0].slug}/${country.slug}`}
+                key={country.slug_es}
+                href={`/visa/${originCountries[0]?.slug_es ?? slugify(originCountries[0]?.name_en ?? "")}/${country.slug_es}`}
                 className="rounded-lg border border-gray-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
               >
-                {country.name}
+                {country.name_es}
               </Link>
             ))}
           </div>
