@@ -16,31 +16,32 @@ export type ReviewStatusInfo = {
 
 export type ReviewMetadata = {
   status: ReviewStatusInfo;
-  lastReviewedText: string;
+  lastReviewedLabel: string;
+  relativeText: string;
   lastReviewedDate: Date | null;
   ageInMs: number;
-  monthsSinceReview: number | null;
+  ageInDays: number | null;
 };
 
-const MS_IN_MONTH = 1000 * 60 * 60 * 24 * 30;
+const MS_IN_DAY = 1000 * 60 * 60 * 24;
 
 const statusConfig: Record<ReviewStatusKey, ReviewStatusInfo> = {
   green: {
     key: "green",
     label: "Actualizado",
-    helperText: "Última revisión hace menos de 6 meses",
+    helperText: "Actualizado en los últimos 7 días",
     emoji: "🟢",
   },
   yellow: {
     key: "yellow",
     label: "Por revisar",
-    helperText: "Última revisión entre 6 y 12 meses",
+    helperText: "Actualizado hace menos de 30 días",
     emoji: "🟡",
   },
   red: {
     key: "red",
     label: "Desactualizado",
-    helperText: "Última revisión hace más de 12 meses",
+    helperText: "Última revisión hace más de 30 días",
     emoji: "🔴",
   },
 };
@@ -61,28 +62,52 @@ const safeDateFromString = (value: string | null) => {
   return Number.isNaN(parsed.valueOf()) ? null : parsed;
 };
 
-export const getReviewMetadata = (requirement: ExtendedRequirement): ReviewMetadata => {
-  const lastReviewedValue = getLastReviewedValue(requirement);
-  const lastReviewedDate = safeDateFromString(lastReviewedValue);
+const buildFreshnessMetadata = (rawValue: string | null) => {
+  const lastReviewedDate = safeDateFromString(rawValue);
   const now = new Date();
 
   const ageInMs = lastReviewedDate ? now.getTime() - lastReviewedDate.getTime() : Number.POSITIVE_INFINITY;
-  const monthsSinceReview = Number.isFinite(ageInMs) ? ageInMs / MS_IN_MONTH : null;
+  const ageInDays = Number.isFinite(ageInMs) ? Math.floor(ageInMs / MS_IN_DAY) : null;
 
   let statusKey: ReviewStatusKey = "red";
 
-  if (monthsSinceReview !== null && monthsSinceReview < 6) {
+  if (ageInDays !== null && ageInDays <= 7) {
     statusKey = "green";
-  } else if (monthsSinceReview !== null && monthsSinceReview < 12) {
+  } else if (ageInDays !== null && ageInDays <= 30) {
     statusKey = "yellow";
   }
 
+  const relativeText = (() => {
+    if (!lastReviewedDate) return "Sin fecha";
+    if (ageInDays === null || !Number.isFinite(ageInDays)) return "Sin fecha";
+    if (ageInDays <= 0) return "Actualizado hoy";
+    if (ageInDays === 1) return "Hace 1 día";
+    return `Hace ${ageInDays} días`;
+  })();
+
   return {
-    status: statusConfig[statusKey],
-    lastReviewedText: lastReviewedValue ?? "Sin fecha",
+    lastReviewedLabel: rawValue ?? "Sin fecha",
+    relativeText,
     lastReviewedDate,
     ageInMs,
-    monthsSinceReview,
+    ageInDays,
+    statusKey,
+  } as const;
+};
+
+export const getFreshnessFromDate = (rawValue: string | null): ReviewMetadata => {
+  const base = buildFreshnessMetadata(rawValue);
+  return {
+    ...base,
+    status: statusConfig[base.statusKey],
+  };
+};
+
+export const getReviewMetadata = (requirement: ExtendedRequirement): ReviewMetadata => {
+  const base = buildFreshnessMetadata(getLastReviewedValue(requirement));
+  return {
+    ...base,
+    status: statusConfig[base.statusKey],
   };
 };
 
