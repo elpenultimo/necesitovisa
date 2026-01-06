@@ -1,6 +1,6 @@
 # NecesitoVisa.com
 
-Sitio Next.js (App Router) en TypeScript que responde si necesitas visa para viajar de un país a otro. Se apoya en datos locales en JSON/TS y está listo para deploy en Vercel.
+Sitio Next.js (App Router) en TypeScript que responde si necesitas visa para viajar de un país a otro. Desde el build descarga los PDFs del Henley & Partners Passport Index y genera un JSON consolidado para el sitio.
 
 ## Requisitos
 - Node.js 18+
@@ -22,21 +22,14 @@ Luego abre `http://localhost:3000`.
 npm run build
 npm start
 ```
+El comando de build ejecuta previamente `scripts/generate-henley-dataset.js`, que intenta descargar los PDFs de Henley para Argentina, Chile, Colombia, España y México. Si falla, conserva el último JSON generado como respaldo.
 
 ## Estructura de datos
-- `data/countries.ts`: lista de países de origen y destino (nombre, slug, ISO opcional).
-- `data/requirements.ts`: combinaciones origen/destino con los campos:
-  - `originSlug`, `destSlug`
-  - `visaRequired` (boolean)
-  - `maxStayDays` (número o `null`)
-  - `altPermit` (ej. ESTA, eTA, ETA o `null`)
-  - `passportRule`, `onwardTicket`, `fundsProof`
-  - `notes`: string[]
-  - `sources`: `{ label, url }[]`
-  - `embassy`: `{ name, url, email?, phone?, address? }`
-  - `lastReviewed`: `YYYY-MM-DD`
+- `public/data/visa-matrix.generated.json`: dataset generado automáticamente desde los PDFs del Henley Passport Index, con metadatos de fecha y URL de origen.
+- `data/countries.ts`: lista de países de origen y destino. Si existe el JSON generado, las listas se derivan de él; de lo contrario se usan valores de respaldo.
+- `data/requirements.ts`: construye las combinaciones origen/destino a partir del JSON generado. Si no existe, recurre al dataset de respaldo y a los overrides definidos en el archivo.
 
-Para agregar un nuevo país u origen, añade la entrada en `data/countries.ts` y crea (o deja que el generador cree) el objeto correspondiente en `requirements.ts`. El archivo usa un mapa de overrides por destino para facilitar la edición de todos los pares.
+Para añadir soporte a otro origen cuando el JSON generado no esté disponible, añade la entrada en `data/countries.ts` y en los overrides del dataset de respaldo.
 
 ## Rutas principales
 - `/` selector de origen y destino + destinos populares.
