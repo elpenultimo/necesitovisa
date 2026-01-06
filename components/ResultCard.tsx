@@ -1,10 +1,13 @@
 import { Requirement } from "@/data/requirements";
+import { getReviewMetadata } from "@/lib/reviewStatus";
 
 interface ResultCardProps {
   requirement: Requirement;
 }
 
 export function ResultCard({ requirement }: ResultCardProps) {
+  const reviewMetadata = getReviewMetadata(requirement);
+
   return (
     <div className="card p-6 space-y-4">
       <div className="flex items-center justify-between">
@@ -25,7 +28,8 @@ export function ResultCard({ requirement }: ResultCardProps) {
         </span>
       </div>
       <p className="text-sm text-gray-600">
-        Última revisión: <strong>{requirement.lastReviewed}</strong>
+        Última revisión: <strong>{reviewMetadata.relativeText}</strong>
+        {reviewMetadata.lastReviewedLabel ? ` (${reviewMetadata.lastReviewedLabel})` : ""}
       </p>
     </div>
   );

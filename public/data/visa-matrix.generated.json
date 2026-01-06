@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-01-06T01:17:07.922Z",
+  "sources": [
+    "https://cdn.henleyglobal.com/storage/app/media/HPI/AR_visa_full.pdf",
+    "https://cdn.henleyglobal.com/storage/app/media/HPI/CL_visa_full.pdf",
+    "https://cdn.henleyglobal.com/storage/app/media/HPI/CO_visa_full.pdf",
+    "https://cdn.henleyglobal.com/storage/app/media/HPI/ES_visa_full.pdf",
+    "https://cdn.henleyglobal.com/storage/app/media/HPI/MX_visa_full.pdf"
+  ],
+  "matrix": {
+    "AR": {},
+    "CL": {},
+    "CO": {},
+    "ES": {},
+    "MX": {}
+  },
+  "destinations": []
+}

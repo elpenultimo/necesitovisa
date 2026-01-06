@@ -31,9 +31,9 @@ export function generateMetadata({ params }: { params: { origen: string; destino
 
   const originName = getCountryName(params.origen, "origin");
   const destName = getCountryName(params.destino, "dest");
-  const { lastReviewedText } = getReviewMetadata(requirement);
+  const { relativeText, lastReviewedLabel } = getReviewMetadata(requirement);
   const title = `¿Necesito visa para ${destName} si soy de ${originName}? Requisitos ${currentYear}`;
-  const description = `Descubre si los ciudadanos de ${originName} necesitan visa para viajar a ${destName}. Requisitos, duración, permisos y contacto de la embajada. Actualizado ${lastReviewedText}.`;
+  const description = `Descubre si los ciudadanos de ${originName} necesitan visa para viajar a ${destName}. Requisitos, duración, permisos y contacto de la embajada. Actualizado ${relativeText} (${lastReviewedLabel}).`;
 
   const url = `https://necesitovisa.com/visa/${params.origen}/${params.destino}`;
 
@@ -149,7 +149,10 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <p className="text-lg font-semibold text-gray-900">Resumen en 20 segundos</p>
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span>Última revisión: {reviewMetadata.lastReviewedText}</span>
+            <span>
+              Última revisión: {reviewMetadata.relativeText}
+              {reviewMetadata.lastReviewedLabel ? ` (${reviewMetadata.lastReviewedLabel})` : ""}
+            </span>
             <ReviewStatusBadge statusKey={reviewMetadata.status.key} withLabel={false} />
           </div>
         </div>

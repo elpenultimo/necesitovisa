@@ -1,7 +1,8 @@
 import { destinationCountries, originCountries } from "@/data/countries";
 import { requirements } from "@/data/requirements";
 import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
-import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import { REVIEW_STATUS_CONFIG, getFreshnessFromDate, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import henleyDataset from "@/public/data/visa-matrix.generated.json";
 import { notFound } from "next/navigation";
 
 export const metadata = {
@@ -19,6 +20,13 @@ type AdminPageProps = {
     status?: string | string[];
     sort?: string | string[];
   };
+};
+
+type HenleyVisaMatrix = {
+  generatedAt?: string;
+  sources?: string[];
+  matrix: Record<string, Record<string, boolean>>;
+  destinations?: string[];
 };
 
 const buildLookup = (items: { slug: string; name: string }[]) =>
@@ -41,13 +49,13 @@ const RequirementRow = ({
   originSlug,
   destSlug,
   visaRequired,
-  lastReviewedText,
+  lastReviewed,
   statusKey,
 }: {
   originSlug: string;
   destSlug: string;
   visaRequired: boolean;
-  lastReviewedText: string;
+  lastReviewed: { relativeText: string; absolute: string };
   statusKey: ReviewStatusKey;
 }) => (
   <tr className="border-b border-gray-100">
@@ -62,7 +70,12 @@ const RequirementRow = ({
         {visaRequired ? "Requiere visa" : "Sin visa"}
       </span>
     </td>
-    <td className="px-3 py-2 text-sm text-gray-700">{lastReviewedText}</td>
+    <td className="px-3 py-2 text-sm text-gray-700">
+      <div className="flex flex-col">
+        <span>{lastReviewed.relativeText}</span>
+        <span className="text-xs text-gray-500">{lastReviewed.absolute}</span>
+      </div>
+    </td>
     <td className="px-3 py-2 text-sm">
       <ReviewStatusBadge statusKey={statusKey} />
     </td>
@@ -78,6 +91,14 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   if (!hasAccess) {
     notFound();
   }
+
+  const henleyData = henleyDataset as HenleyVisaMatrix;
+  const datasetFreshness = getFreshnessFromDate(henleyData.generatedAt ?? null);
+  const henleyDestinationsCount = henleyData.destinations?.length ?? 0;
+  const henleyMatrixEntries = Object.values(henleyData.matrix ?? {}).reduce(
+    (acc, destinations) => acc + Object.keys(destinations ?? {}).length,
+    0
+  );
 
   const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
 
@@ -134,6 +155,17 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <StatCard label="Destinos" value={destinationCountries.length} />
         <StatCard label="Combinaciones" value={requirements.length} />
         <StatCard label="Requieren visa" value={`${requiresVisaCount} / ${requirements.length}`} />
+      </div>
+
+      <div className="card p-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-wide text-gray-500">Dataset Henley Passport Index</p>
+          <p className="text-sm text-gray-800">Actualizado {datasetFreshness.relativeText}</p>
+          <p className="text-xs text-gray-600">
+            Generado: {henleyData.generatedAt ?? "N/D"} • Destinos: {henleyDestinationsCount} • Registros: {henleyMatrixEntries}
+          </p>
+        </div>
+        <ReviewStatusBadge statusKey={datasetFreshness.status.key} />
       </div>
 
       <div className="card p-6 space-y-4">
@@ -209,7 +241,10 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
                   originSlug={item.originSlug}
                   destSlug={item.destSlug}
                   visaRequired={item.visaRequired}
-                  lastReviewedText={item.reviewMetadata.lastReviewedText}
+                  lastReviewed={{
+                    relativeText: item.reviewMetadata.relativeText,
+                    absolute: item.reviewMetadata.lastReviewedLabel,
+                  }}
                   statusKey={item.reviewMetadata.status.key}
                 />
               ))}

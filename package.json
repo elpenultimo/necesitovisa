@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "node scripts/generate-henley-dataset.mjs",
+    "generate:henley": "node scripts/generate-henley-dataset.mjs",
     "start": "next start",
     "lint": "next lint",
     "prebuild": "node scripts/buildVisaData.cjs"
@@ -14,6 +16,7 @@
   "dependencies": {
     "csv-parse": "^6.1.0",
     "next": "14.2.4",
+    "pdfjs-dist": "4.6.82",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
