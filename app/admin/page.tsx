@@ -2,6 +2,7 @@ import { destinationCountries, originCountries } from "@/data/countries";
 import { requirements } from "@/data/requirements";
 import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
 import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
+import { buildRequirementsFromHenley, loadHenleyDataset } from "@/lib/henleyDataset";
 import { notFound } from "next/navigation";
 
 export const metadata = {
@@ -79,7 +80,10 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
     notFound();
   }
 
-  const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
+  const henleyDataset = loadHenleyDataset();
+  const datasetRequirements = henleyDataset ? buildRequirementsFromHenley(henleyDataset) : requirements;
+
+  const requiresVisaCount = datasetRequirements.filter((item) => item.visaRequired).length;
 
   const statusParamRaw = Array.isArray(searchParams?.status) ? searchParams?.status[0] : searchParams?.status;
   const rawStatusFilter = (statusParamRaw ?? "all").toLowerCase();
@@ -92,7 +96,7 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   const rawSortOption = (sortParamRaw ?? "stale").toLowerCase();
   const sortOption = ["stale", "recent"].includes(rawSortOption) ? rawSortOption : "stale";
 
-  const requirementsWithMetadata = requirements.map((item) => {
+  const requirementsWithMetadata = datasetRequirements.map((item) => {
     const reviewMetadata = getReviewMetadata(item);
     return {
       ...item,
@@ -129,11 +133,29 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <p className="text-sm text-gray-600">Revisa combinaciones de origen/destino y su estado de visado.</p>
       </div>
 
+      {henleyDataset ? (
+        <div className="rounded-md border border-green-200 bg-green-50 p-4 text-sm text-green-900 space-y-1">
+          <p className="font-semibold">Dataset Henley activo.</p>
+          <p>
+            <span className="font-semibold">Fecha de la fuente:</span> {henleyDataset.meta.source_date ?? "N/D"}
+          </p>
+          <p>
+            <span className="font-semibold">Generado el:</span> {henleyDataset.meta.generated_at ?? "N/D"}
+          </p>
+          <p className="text-xs text-green-800">Mostrando datos desde el dataset generado. Si falta algún par, se recurre a los datos legacy.</p>
+        </div>
+      ) : (
+        <div className="rounded-md border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-900">
+          <p className="font-semibold">Dataset no generado aún. Ejecuta el workflow "Update Henley dataset" en GitHub.</p>
+          <p className="text-xs text-yellow-800">Mientras tanto, el dashboard usa los datos legacy de requirements.ts.</p>
+        </div>
+      )}
+
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Países de origen" value={originCountries.length} />
         <StatCard label="Destinos" value={destinationCountries.length} />
-        <StatCard label="Combinaciones" value={requirements.length} />
-        <StatCard label="Requieren visa" value={`${requiresVisaCount} / ${requirements.length}`} />
+        <StatCard label="Combinaciones" value={datasetRequirements.length} />
+        <StatCard label="Requieren visa" value={`${requiresVisaCount} / ${datasetRequirements.length}`} />
       </div>
 
       <div className="card p-6 space-y-4">

@@ -55,6 +55,11 @@ Para agregar un nuevo país u origen, añade la entrada en `data/countries.ts` y
 2. Usa el framework **Next.js** con App Router (detectado automáticamente).
 3. Variables de entorno no necesarias para el MVP.
 
+## Cómo actualizar el dataset Henley
+1. En GitHub Actions ejecuta el workflow **Update Henley dataset** (workflow_dispatch).
+2. El flujo corre `npm run update:henley`, genera `public/data/visa-matrix.generated.json` y `public/data/visa-matrix.generated.meta.json` y abre un PR `chore/update-henley-YYYYMMDD` contra `main`.
+3. Revisa y haz merge del PR. El siguiente deploy de Vercel incorporará el dataset generado (si falla, el sitio sigue usando los datos legacy).
+
 ## Notas
 - El proyecto incluye metadatos por página (title/description/Open Graph), JSON-LD para BreadcrumbList y FAQPage, y la fecha de última revisión visible.
 - No se utilizan APIs externas; todo el contenido está en archivos locales para facilitar su mantenimiento.
