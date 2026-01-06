@@ -87,7 +87,12 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </p>
       </div>
 
-      <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
+      <OfficialSources
+        originName={originNameEs}
+        destinationName={destination.name_es}
+        originSlug={data.origin_slug_es}
+        destinationSlug={destination.slug_es}
+      />
     </div>
   );
 }
