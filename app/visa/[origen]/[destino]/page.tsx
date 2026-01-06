@@ -5,6 +5,7 @@ import { resolveOrigin } from "@/lib/countryIndex";
 import { normalizeRequirement } from "@/lib/visaRequirement";
 import { readVisaDataByKey, resolveDestinationBySlug } from "@/lib/visaData";
 import { VisaRequirementBadge } from "@/components/VisaRequirementBadge";
+import { OfficialSources } from "@/components/OfficialSources";
 
 export const runtime = "nodejs";
 
@@ -57,7 +58,6 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
   const { destination } = destinationResolution;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
   const normalizedRequirement = normalizeRequirement(destination.requirement);
-  const requirement_type = normalizedRequirement.type;
 
   const breadcrumbCrumbs = [
     { label: "Inicio", href: "/" },
@@ -80,9 +80,6 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
           <p className="text-lg font-semibold text-gray-900">Respuesta rápida:</p>
           <div className="flex items-center gap-3">
             <VisaRequirementBadge requirement={normalizedRequirement} />
-            {requirement_type === "UNKNOWN" && (
-              <span className="text-xs text-gray-500">Valor fuente: {destination.requirement || "N/D"}</span>
-            )}
           </div>
         </div>
         <p className="text-sm text-gray-700 max-w-3xl">
@@ -90,21 +87,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </p>
       </div>
 
-      <div className="card p-6 space-y-3">
-        <h2 className="text-xl font-semibold text-gray-900">Detalle de requisitos</h2>
-        <p className="text-sm text-gray-700">
-          El valor anterior proviene de <strong>{origin.entry.name_en}.json</strong> usando la clave de destino
-          <strong> {destination.key}</strong>.
-        </p>
-        <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-          <li>Origen (en español): {originNameEs}</li>
-          <li>Destino (en español): {destination.name_es}</li>
-          <li>Slug canónico: /visa/{data.origin_slug_es}/{destination.slug_es}</li>
-          <li>
-            Valor fuente: <span className="font-mono text-gray-900">{destination.requirement || "No especificado"}</span>
-          </li>
-        </ul>
-      </div>
+      <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
     </div>
   );
 }
