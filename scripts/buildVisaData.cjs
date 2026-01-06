@@ -113,7 +113,7 @@ function main() {
     const origin = cleanCode(row[0]);
 
     // el dataset usa ISO2
-    if (!origin || origin.length !== 2) continue;
+    if (!origin || origin.length < 2 || origin.length > 3) continue;
 
     const destinations = [];
 
