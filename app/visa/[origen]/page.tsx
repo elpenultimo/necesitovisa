@@ -1,39 +1,10 @@
-import fs from "fs";
-import path from "path";
 import { notFound, redirect } from "next/navigation";
-import { getByEnglishName, getByEnglishSlug, getBySpanishSlug, listAll } from "@/lib/countryIndex";
-import { slugify } from "@/lib/slug";
 import Link from "next/link";
 import { Metadata } from "next";
+import { listAll, resolveOrigin } from "@/lib/countryIndex";
+import { readVisaDataByKey } from "@/lib/visaData";
 
 export const runtime = "nodejs";
-
-interface VisaData {
-  origin: string;
-  destinations: Record<string, string>;
-}
-
-function resolveOrigin(slug: string) {
-  const matchEs = getBySpanishSlug(slug);
-  if (matchEs) return { entry: matchEs, canonical: false };
-
-  const matchEn = getByEnglishSlug(slug);
-  if (matchEn) {
-    if (matchEn.slug_es !== slug) {
-      redirect(`/visa/${matchEn.slug_es}`);
-    }
-    return { entry: matchEn, canonical: true };
-  }
-
-  return null;
-}
-
-function readVisaData(originNameEn: string): VisaData | null {
-  const filePath = path.join(process.cwd(), "data", "generated", `${originNameEn}.json`);
-  if (!fs.existsSync(filePath)) return null;
-  const raw = fs.readFileSync(filePath, "utf8");
-  return JSON.parse(raw) as VisaData;
-}
 
 export function generateStaticParams() {
   const countries = listAll();
@@ -43,8 +14,9 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { origen: string } }): Metadata {
   const resolved = resolveOrigin(params.origen);
   if (!resolved) return { title: "País no encontrado" };
-  const entry = resolved.entry;
-  const canonical = `https://necesitovisa.com/visa/${entry.slug_es}`;
+
+  const { entry, canonicalSlug } = resolved;
+  const canonical = `https://necesitovisa.com/visa/${canonicalSlug}`;
 
   return {
     title: `Visa para ciudadanos de ${entry.name_es}`,
@@ -59,29 +31,20 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
   const resolved = resolveOrigin(params.origen);
   if (!resolved) return notFound();
 
-  const { entry } = resolved;
-  const visaData = readVisaData(entry.name_en);
-  if (!visaData) return notFound();
+  if (resolved.redirected) {
+    redirect(`/visa/${resolved.canonicalSlug}`);
+  }
 
-  const destinationEntries = Object.entries(visaData.destinations).map(([nameEn, requirement]) => {
-    const metaEntry =
-      getByEnglishSlug(slugify(nameEn)) || getByEnglishName(nameEn) || getBySpanishSlug(slugify(nameEn));
-    const fallbackSlug = slugify(nameEn);
-    return {
-      name_en: nameEn,
-      name_es: metaEntry?.name_es ?? nameEn,
-      slug: metaEntry?.slug_es ?? metaEntry?.slug_en ?? fallbackSlug,
-      requirement,
-    };
-  });
+  const { entry } = resolved;
+  const visaData = readVisaDataByKey(entry.key);
+  if (!visaData) return notFound();
 
   return (
     <div className="container-box py-10 space-y-6">
       <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {entry.name_es}</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {visaData.origin_name_es}</h1>
         <p className="text-gray-700 text-sm max-w-2xl">
-          Revisa rápidamente si necesitas visa para viajar a otro país. Los datos se generan desde los archivos JSON exportados del
-          CSV base.
+          Revisa rápidamente si necesitas visa para viajar a otro país. Los datos se generan desde los archivos JSON exportados del CSV base.
         </p>
       </div>
 
@@ -94,11 +57,11 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
             </tr>
           </thead>
           <tbody>
-            {destinationEntries.map((destination) => (
-              <tr key={destination.slug} className="border-b last:border-b-0">
+            {visaData.destinations.map((destination) => (
+              <tr key={destination.slug_es} className="border-b last:border-b-0">
                 <td className="px-4 py-2 text-gray-900">
                   <Link
-                    href={`/visa/${entry.slug_es}/${destination.slug}`}
+                    href={`/visa/${visaData.origin_slug_es}/${destination.slug_es}`}
                     className="text-brand-primary hover:underline"
                   >
                     {destination.name_es}

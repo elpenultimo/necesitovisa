@@ -1,6 +1,5 @@
 import { listAll } from "@/lib/countryIndex";
 import Link from "next/link";
-import { slugify } from "@/lib/slug";
 
 export const runtime = "nodejs";
 
@@ -31,7 +30,7 @@ export default function VisaIndexPage() {
             {originCountries.map((country) => (
               <Link
                 key={country.slug_es}
-                href={`/visa/${country.slug_es}/${destinationCountries[0]?.slug_es ?? slugify(destinationCountries[0]?.name_en ?? "")}`}
+                href={`/visa/${country.slug_es}/${destinationCountries[0]?.slug_es ?? ""}`}
                 className="rounded-lg border border-gray-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
               >
                 {country.name_es}
@@ -45,7 +44,7 @@ export default function VisaIndexPage() {
             {destinationCountries.map((country) => (
               <Link
                 key={country.slug_es}
-                href={`/visa/${originCountries[0]?.slug_es ?? slugify(originCountries[0]?.name_en ?? "")}/${country.slug_es}`}
+                href={`/visa/${originCountries[0]?.slug_es ?? ""}/${country.slug_es}`}
                 className="rounded-lg border border-gray-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
               >
                 {country.name_es}

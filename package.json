@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "node scripts/buildVisaData.cjs"
+    "prebuild": "node scripts/buildVisaData.mjs"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",
