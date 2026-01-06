@@ -1,4 +1,5 @@
 import { destinationCountries, originCountries } from "./countries";
+import { buildHenleyOverrideMap, loadHenleyMatrix, loadHenleyMeta } from "@/lib/henleyDataset";
 
 export type Requirement = {
   originSlug: string;
@@ -21,6 +22,8 @@ export type Requirement = {
   lastReviewed: string; // YYYY-MM-DD
   lastReviewedAt?: string; // optional alias
   ultimaRevision?: string; // optional alias
+  henleyPdfUpdatedAt?: string | null;
+  henleySource?: string | null;
 };
 
 const defaultRequirement = {
@@ -230,6 +233,10 @@ const destinationOverrides: Record<string, Partial<Requirement>> = {
   },
 };
 
+const henleyMatrix = loadHenleyMatrix();
+export const henleyMeta = loadHenleyMeta();
+const henleyOverrides = buildHenleyOverrideMap(henleyMatrix);
+
 const pairOverrides: Record<string, Partial<Requirement>> = {
   "chile-japon": {
     visaRequired: false,
@@ -315,6 +322,21 @@ const buildRequirement = (
   };
 };
 
+const applyHenleyOverride = (requirement: Requirement): Requirement => {
+  const override = henleyOverrides.get(`${requirement.originSlug}-${requirement.destSlug}`);
+  if (!override) return requirement;
+
+  const lastReviewed = override.pdfUpdatedAt ?? requirement.lastReviewed;
+
+  return {
+    ...requirement,
+    visaRequired: override.requiresVisa ?? requirement.visaRequired,
+    lastReviewed,
+    henleyPdfUpdatedAt: override.pdfUpdatedAt ?? null,
+    henleySource: "henley_pdf_local",
+  };
+};
+
 export const requirements: Requirement[] = [];
 
 originCountries.forEach((origin) => {
@@ -322,7 +344,9 @@ originCountries.forEach((origin) => {
     const overrides = destinationOverrides[dest.slug] ?? {};
     const originDestOverrides = pairOverrides[`${origin.slug}-${dest.slug}`];
     requirements.push(
-      buildRequirement(origin.slug, dest.slug, overrides, originDestOverrides)
+      applyHenleyOverride(
+        buildRequirement(origin.slug, dest.slug, overrides, originDestOverrides)
+      )
     );
   });
 });
