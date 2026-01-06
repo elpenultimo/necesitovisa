@@ -1,5 +1,5 @@
 import { destinationCountries, originCountries } from "@/data/countries";
-import { requirements } from "@/data/requirements";
+import { henleyMeta, requirements } from "@/data/requirements";
 import { ReviewStatusBadge } from "@/components/ReviewStatusBadge";
 import { REVIEW_STATUS_CONFIG, getReviewMetadata, ReviewStatusKey } from "@/lib/reviewStatus";
 import { notFound } from "next/navigation";
@@ -29,6 +29,10 @@ const buildLookup = (items: { slug: string; name: string }[]) =>
 
 const originNameBySlug = buildLookup(originCountries);
 const destinationNameBySlug = buildLookup(destinationCountries);
+const originNameByIso = originCountries.reduce<Record<string, string>>((acc, item) => {
+  if (item.iso2) acc[item.iso2] = item.name;
+  return acc;
+}, {});
 
 const StatCard = ({ label, value }: { label: string; value: string | number }) => (
   <div className="card p-4 space-y-2 bg-white shadow-sm">
@@ -78,6 +82,13 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   if (!hasAccess) {
     notFound();
   }
+
+  const henleySources = henleyMeta?.sources ?? [];
+  const henleyStatus = henleySources.some((source) =>
+    ["ok", "unknown_date"].includes(source.status)
+  )
+    ? "OK"
+    : "Sin datos";
 
   const requiresVisaCount = requirements.filter((item) => item.visaRequired).length;
 
@@ -134,6 +145,54 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <StatCard label="Destinos" value={destinationCountries.length} />
         <StatCard label="Combinaciones" value={requirements.length} />
         <StatCard label="Requieren visa" value={`${requiresVisaCount} / ${requirements.length}`} />
+      </div>
+
+      <div className="card p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900">Dataset Henley</h2>
+            <p className="text-sm text-gray-600">PDF locales en data/henley-pdfs</p>
+          </div>
+          <span
+            className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold ${
+              henleyStatus === "OK" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
+            }`}
+          >
+            {henleyStatus}
+          </span>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-600">Generado</p>
+            <p className="text-sm font-medium text-gray-900">
+              {henleyMeta?.generatedAt ?? "Sin datos"}
+            </p>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-600">PDFs</p>
+            <div className="space-y-3 text-sm text-gray-800">
+              {henleySources.length === 0 ? (
+                <p>Sin datos</p>
+              ) : (
+                henleySources.map((source) => (
+                  <div key={`${source.originISO}-${source.pdfPath}`} className="flex items-start justify-between gap-3">
+                    <div className="space-y-1">
+                      <p className="font-medium text-gray-900">
+                        {originNameByIso[source.originISO] ?? source.originISO}
+                      </p>
+                      <p className="text-xs text-gray-600">{source.pdfPath}</p>
+                    </div>
+                    <div className="text-right space-y-1">
+                      <p className="text-sm font-semibold text-gray-900">{source.pdfUpdatedAt ?? "Sin fecha"}</p>
+                      <p className="text-xs text-gray-600">Estado: {source.status}</p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="card p-6 space-y-4">

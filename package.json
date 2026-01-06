@@ -8,10 +8,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:henley": "node scripts/generate-henley-from-local-pdfs.js",
+    "prebuild": "npm run generate:henley || echo \"Saltando generación de Henley\""
   },
   "dependencies": {
     "next": "14.2.4",
+    "pdf-parse": "1.1.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
