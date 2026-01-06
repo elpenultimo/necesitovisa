@@ -1,0 +1,27 @@
+{
+  "source": "henley",
+  "generatedAt": "2026-01-06T01:34:00.000Z",
+  "countriesCovered": ["AR", "CL", "CO", "ES", "MX"],
+  "matrix": {
+    "AR": {
+      "visa_free": [],
+      "visa_required": []
+    },
+    "CL": {
+      "visa_free": [],
+      "visa_required": []
+    },
+    "CO": {
+      "visa_free": [],
+      "visa_required": []
+    },
+    "ES": {
+      "visa_free": [],
+      "visa_required": []
+    },
+    "MX": {
+      "visa_free": [],
+      "visa_required": []
+    }
+  }
+}
