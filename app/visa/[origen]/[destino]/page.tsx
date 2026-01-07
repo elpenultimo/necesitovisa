@@ -103,6 +103,9 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
   }
 
   const { destination } = destinationResolution;
+  const originSlug = origin.canonicalSlug;
+  const destinationSlug = destinationResolution.canonicalSlug;
+  const isDomesticTrip = originSlug === destinationSlug;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
   const normalizedRequirement = normalizeRequirement(destination.requirement);
   const { emoji, label } = normalizedRequirement
@@ -110,25 +113,34 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
     : { emoji: "", label: "" };
   void label;
   const requirementLabel = buildRequirementLabel(normalizedRequirement);
-  const seoSentence = buildSeoSentence({
-    origenEs: originNameEs,
-    destinoEs: destination.name_es,
-    requirementLabel,
-    requirementEmoji: emoji,
-  });
-  const explanation =
-    getRequirementExplanation({
-      type: normalizedRequirement.type,
-      days: normalizedRequirement.days,
-      originName: originNameEs,
-      destinationName: destination.name_es,
-    }) ||
-    "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
+  const seoSentence = isDomesticTrip
+    ? `Los ciudadanos de ${originNameEs} no requieren visa para ingresar a ${destination.name_es} (viaje dentro del mismo país).`
+    : buildSeoSentence({
+        origenEs: originNameEs,
+        destinoEs: destination.name_es,
+        requirementLabel,
+        requirementEmoji: emoji,
+      });
+  const explanation = isDomesticTrip
+    ? `Si eres ciudadano de ${originNameEs}, normalmente no necesitas visa para ingresar a ${destination.name_es}. Aun así, podrían pedirte un documento de identidad/pasaporte vigente y aplicar controles locales.`
+    : getRequirementExplanation({
+        type: normalizedRequirement.type,
+        days: normalizedRequirement.days,
+        originName: originNameEs,
+        destinationName: destination.name_es,
+      }) ||
+      "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
   const visaFaq = getVisaFaq(normalizedRequirement.type, destination.name_es);
+  const domesticFaqItem = {
+    question: "¿Puedo viajar dentro de mi propio país con mi cédula?",
+    answer:
+      "En la mayoría de los casos sí, pero depende del país y del medio de transporte. Para vuelos domésticos o zonas especiales, podrían exigir documento vigente y, a veces, pasaporte. Revisa la normativa local.",
+  };
+  const visaFaqItems = isDomesticTrip ? [...visaFaq, domesticFaqItem] : visaFaq;
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: visaFaq.map((item) => ({
+    mainEntity: visaFaqItems.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -158,7 +170,13 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         <div className="flex flex-col gap-2">
           <p className="text-lg font-semibold text-slate-900">Respuesta rápida:</p>
           <div className="flex items-center gap-3">
-            <VisaRequirementBadge requirement={normalizedRequirement} />
+            {isDomesticTrip ? (
+              <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+                ☑️ Viaje dentro del mismo país
+              </span>
+            ) : (
+              <VisaRequirementBadge requirement={normalizedRequirement} />
+            )}
           </div>
         </div>
         <div className="text-sm text-slate-600 max-w-3xl space-y-1">
@@ -167,7 +185,11 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </div>
       </div>
 
-      <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
+      <OfficialSources
+        originName={originNameEs}
+        destinationName={destination.name_es}
+        isDomesticTrip={isDomesticTrip}
+      />
 
       <div className="card p-6 space-y-4">
         <div className="space-y-2">
@@ -177,7 +199,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
           </p>
         </div>
         <div className="space-y-2">
-          {visaFaq.map((item) => (
+          {visaFaqItems.map((item) => (
             <details
               key={item.question}
               className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
