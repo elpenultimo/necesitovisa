@@ -46,7 +46,7 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
       <div className="space-y-3">
         <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {visaData.origin_name_es}</h1>
         <p className="text-gray-700 text-sm max-w-2xl">
-          Revisa rápidamente si necesitas visa para viajar a otro país. Los datos se generan desde los archivos JSON exportados del CSV base.
+          Consulta los requisitos de visa para viajar desde {visaData.origin_name_es} a cualquier destino.
         </p>
       </div>
 
