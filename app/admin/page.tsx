@@ -31,9 +31,9 @@ const originNameBySlug = buildLookup(originCountries);
 const destinationNameBySlug = buildLookup(destinationCountries);
 
 const StatCard = ({ label, value }: { label: string; value: string | number }) => (
-  <div className="card p-4 space-y-2 bg-white shadow-sm">
-    <p className="text-xs uppercase tracking-wide text-gray-500">{label}</p>
-    <p className="text-2xl font-semibold text-gray-900">{value}</p>
+  <div className="card p-4 space-y-2">
+    <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
+    <p className="text-2xl font-semibold text-slate-900">{value}</p>
   </div>
 );
 
@@ -50,19 +50,19 @@ const RequirementRow = ({
   lastReviewedText: string;
   statusKey: ReviewStatusKey;
 }) => (
-  <tr className="border-b border-gray-100">
-    <td className="px-3 py-2 text-sm font-medium text-gray-900">{originNameBySlug[originSlug]}</td>
-    <td className="px-3 py-2 text-sm text-gray-800">{destinationNameBySlug[destSlug]}</td>
+  <tr className="border-b border-slate-100">
+    <td className="px-3 py-2 text-sm font-medium text-slate-900">{originNameBySlug[originSlug]}</td>
+    <td className="px-3 py-2 text-sm text-slate-700">{destinationNameBySlug[destSlug]}</td>
     <td className="px-3 py-2 text-sm">
       <span
-        className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
-          visaRequired ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"
+        className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
+          visaRequired ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"
         }`}
       >
         {visaRequired ? "Requiere visa" : "Sin visa"}
       </span>
     </td>
-    <td className="px-3 py-2 text-sm text-gray-700">{lastReviewedText}</td>
+    <td className="px-3 py-2 text-sm text-slate-600">{lastReviewedText}</td>
     <td className="px-3 py-2 text-sm">
       <ReviewStatusBadge statusKey={statusKey} />
     </td>
@@ -124,9 +124,9 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
   return (
     <div className="container-box py-10 space-y-8">
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-primary">Administración</p>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard de requisitos</h1>
-        <p className="text-sm text-gray-600">Revisa combinaciones de origen/destino y su estado de visado.</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-brand-primary">Administración</p>
+        <h1 className="text-3xl font-bold text-slate-900">Dashboard de requisitos</h1>
+        <p className="text-sm text-slate-600">Revisa combinaciones de origen/destino y su estado de visado.</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -138,32 +138,32 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
 
       <div className="card p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-gray-900">Listado de combinaciones</h2>
-          <p className="text-sm text-gray-600">Última revisión y semáforo por fila.</p>
+          <h2 className="text-xl font-semibold text-slate-900">Listado de combinaciones</h2>
+          <p className="text-sm text-slate-600">Última revisión y semáforo por fila.</p>
         </div>
         <div className="grid gap-3 md:grid-cols-3">
           {(["green", "yellow", "red"] as ReviewStatusKey[]).map((statusKey) => (
             <div
               key={statusKey}
-              className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800"
+              className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700"
             >
               <div className="flex items-center gap-2">
                 <ReviewStatusBadge statusKey={statusKey} />
                 <span>{REVIEW_STATUS_CONFIG[statusKey].label}</span>
               </div>
-              <span className="font-semibold text-gray-900">{statusCounts[statusKey]}</span>
+              <span className="font-semibold text-slate-900">{statusCounts[statusKey]}</span>
             </div>
           ))}
         </div>
 
         <form className="grid gap-3 md:grid-cols-3" method="get">
           <input type="hidden" name="key" value={providedKey} />
-          <label className="flex flex-col gap-1 text-sm text-gray-800">
-            <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">Semáforo</span>
+          <label className="flex flex-col gap-1 text-sm text-slate-700">
+            <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Semáforo</span>
             <select
               name="status"
               defaultValue={statusFilter}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-brand-primary focus:outline-none"
+              className="rounded-lg border border-slate-200 px-3 py-2 text-sm shadow-soft focus:border-brand-primary focus:outline-none"
             >
               <option value="all">Todas</option>
               <option value="green">Actualizado (🟢)</option>
@@ -171,12 +171,12 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
               <option value="red">Desactualizado (🔴)</option>
             </select>
           </label>
-          <label className="flex flex-col gap-1 text-sm text-gray-800">
-            <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">Ordenar</span>
+          <label className="flex flex-col gap-1 text-sm text-slate-700">
+            <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Ordenar</span>
             <select
               name="sort"
               defaultValue={sortOption}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-brand-primary focus:outline-none"
+              className="rounded-lg border border-slate-200 px-3 py-2 text-sm shadow-soft focus:border-brand-primary focus:outline-none"
             >
               <option value="stale">Más desactualizado primero</option>
               <option value="recent">Más actualizado primero</option>
@@ -185,7 +185,7 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
           <div className="flex items-end">
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-brand-dark"
             >
               Aplicar filtros
             </button>
@@ -194,7 +194,7 @@ export default function AdminPage({ searchParams }: AdminPageProps) {
         <div className="overflow-x-auto">
           <table className="min-w-full text-left">
             <thead>
-              <tr className="text-xs uppercase tracking-wide text-gray-500 border-b border-gray-200">
+              <tr className="text-xs uppercase tracking-wide text-slate-500 border-b border-slate-200">
                 <th className="px-3 py-2">Origen</th>
                 <th className="px-3 py-2">Destino</th>
                 <th className="px-3 py-2">Visa</th>

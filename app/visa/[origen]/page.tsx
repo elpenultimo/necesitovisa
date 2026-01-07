@@ -44,24 +44,24 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
   return (
     <div className="container-box py-10 space-y-6">
       <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900">Visa para ciudadanos de {visaData.origin_name_es}</h1>
-        <p className="text-gray-700 text-sm max-w-2xl">
+        <h1 className="text-3xl font-bold text-slate-900">Visa para ciudadanos de {visaData.origin_name_es}</h1>
+        <p className="text-slate-600 text-sm max-w-2xl">
           Consulta los requisitos de visa para viajar desde {visaData.origin_name_es} a cualquier destino.
         </p>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-200 text-sm">
-          <thead className="bg-gray-50">
+        <table className="min-w-full border border-slate-200 text-sm">
+          <thead className="bg-slate-50">
             <tr>
-              <th className="px-4 py-2 text-left font-semibold text-gray-800 border-b">Destino</th>
-              <th className="px-4 py-2 text-left font-semibold text-gray-800 border-b">Requisito de visa</th>
+              <th className="px-4 py-2 text-left font-semibold text-slate-700 border-b border-slate-200">Destino</th>
+              <th className="px-4 py-2 text-left font-semibold text-slate-700 border-b border-slate-200">Requisito de visa</th>
             </tr>
           </thead>
           <tbody>
             {visaData.destinations.map((destination) => (
               <tr key={destination.slug_es} className="border-b last:border-b-0">
-                <td className="px-4 py-2 text-gray-900">
+                <td className="px-4 py-2 text-slate-900">
                   <Link
                     href={`/visa/${visaData.origin_slug_es}/${destination.slug_es}`}
                     className="text-brand-primary hover:underline"
@@ -69,7 +69,7 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
                     {destination.name_es}
                   </Link>
                 </td>
-                <td className="px-4 py-2 space-y-1 text-gray-700">
+                <td className="px-4 py-2 space-y-1 text-slate-600">
                   {(() => {
                     const normalized = normalizeRequirement(destination.requirement);
                     const requirement_type = normalized.type;
@@ -77,7 +77,7 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
                       <>
                         <VisaRequirementBadge requirement={normalized} />
                         {requirement_type === "UNKNOWN" && (
-                          <p className="text-xs text-gray-500">Valor fuente: {destination.requirement || "N/D"}</p>
+                          <p className="text-xs text-slate-500">Valor fuente: {destination.requirement || "N/D"}</p>
                         )}
                       </>
                     );

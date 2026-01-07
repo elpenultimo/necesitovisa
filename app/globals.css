@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-slate-50 text-slate-900;
 }
 
 a {
@@ -19,5 +19,5 @@ a {
 }
 
 .card {
-  @apply bg-white shadow-sm rounded-xl border border-gray-100;
+  @apply bg-white shadow-soft rounded-xl border border-slate-100;
 }

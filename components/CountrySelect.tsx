@@ -19,10 +19,10 @@ export function CountrySelect({ label, value, onChange, options, placeholder }: 
   const sortedOptions = useMemo(() => options.slice().sort((a, b) => a.name.localeCompare(b.name)), [options]);
 
   return (
-    <label className="block text-sm font-medium text-gray-700 space-y-2">
+    <label className="block text-sm font-medium text-slate-600 space-y-2">
       <span>{label}</span>
       <select
-        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+        className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 shadow-soft focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
