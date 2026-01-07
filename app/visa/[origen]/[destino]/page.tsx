@@ -9,6 +9,47 @@ import { OfficialSources } from "@/components/OfficialSources";
 
 export const runtime = "nodejs";
 
+const extractEmojiAndLabel = (display: string) => {
+  const [maybeEmoji, ...rest] = display.trim().split(" ");
+  if (maybeEmoji && /\p{Extended_Pictographic}/u.test(maybeEmoji)) {
+    return { emoji: maybeEmoji, label: rest.join(" ") };
+  }
+  return { emoji: "", label: display.trim() };
+};
+
+const buildRequirementLabel = (requirement: ReturnType<typeof normalizeRequirement>) => {
+  switch (requirement.type) {
+    case "NO_VISA_DAYS":
+      return requirement.days ? `no necesitan visa (${requirement.days} días)` : "no necesitan visa";
+    case "NO_VISA":
+      return "no necesitan visa";
+    case "REQUIRES_VISA":
+      return "sí requieren visa";
+    case "VOA":
+      return "pueden obtener visa a la llegada";
+    case "E_VISA":
+      return "requieren eVisa";
+    case "ETA":
+      return "requieren ETA";
+    case "UNKNOWN":
+    default:
+      return "tienen requisitos de visa por confirmar";
+  }
+};
+
+const buildSeoSentence = ({
+  origenEs,
+  destinoEs,
+  requirementLabel,
+  requirementEmoji,
+}: {
+  origenEs: string;
+  destinoEs: string;
+  requirementLabel: string;
+  requirementEmoji: string;
+}) =>
+  `Los ciudadanos de ${origenEs}${requirementEmoji ? ` ${requirementEmoji}` : ""} ${requirementLabel} para viajar a ${destinoEs}.`;
+
 export async function generateMetadata({
   params,
 }: {
@@ -58,6 +99,14 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
   const { destination } = destinationResolution;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
   const normalizedRequirement = normalizeRequirement(destination.requirement);
+  const { emoji } = extractEmojiAndLabel(normalizedRequirement.display);
+  const requirementLabel = buildRequirementLabel(normalizedRequirement);
+  const seoSentence = buildSeoSentence({
+    origenEs: originNameEs,
+    destinoEs: destination.name_es,
+    requirementLabel,
+    requirementEmoji: emoji,
+  });
 
   const breadcrumbCrumbs = [
     { label: "Inicio", href: "/" },
@@ -82,9 +131,12 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
             <VisaRequirementBadge requirement={normalizedRequirement} />
           </div>
         </div>
-        <p className="text-sm text-gray-700 max-w-3xl">
-          Mostramos la información en español con slugs optimizados para SEO, pero los datos se leen desde los archivos generados en inglés. Si llegaste con una URL en inglés, te redirigimos a la versión canónica en español.
-        </p>
+        <div className="text-sm text-gray-700 max-w-3xl space-y-1">
+          <p>{seoSentence}</p>
+          <p className="text-gray-500">
+            Revisa siempre fuentes oficiales antes de viajar, ya que los requisitos pueden cambiar.
+          </p>
+        </div>
       </div>
 
       <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
