@@ -6,6 +6,7 @@ import { normalizeRequirement } from "@/lib/visaRequirement";
 import { readVisaDataByKey, resolveDestinationBySlug } from "@/lib/visaData";
 import { VisaRequirementBadge } from "@/components/VisaRequirementBadge";
 import { OfficialSources } from "@/components/OfficialSources";
+import { getRequirementExplanation } from "@/lib/requirementExplain";
 
 export const runtime = "nodejs";
 
@@ -107,6 +108,14 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
     requirementLabel,
     requirementEmoji: emoji,
   });
+  const explanation =
+    getRequirementExplanation({
+      type: normalizedRequirement.type,
+      days: normalizedRequirement.days,
+      originName: originNameEs,
+      destinationName: destination.name_es,
+    }) ||
+    "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
 
   const breadcrumbCrumbs = [
     { label: "Inicio", href: "/" },
@@ -133,9 +142,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </div>
         <div className="text-sm text-slate-600 max-w-3xl space-y-1">
           <p>{seoSentence}</p>
-          <p className="text-slate-500">
-            Revisa siempre fuentes oficiales antes de viajar, ya que los requisitos pueden cambiar.
-          </p>
+          <p className="text-slate-500">{explanation}</p>
         </div>
       </div>
 
