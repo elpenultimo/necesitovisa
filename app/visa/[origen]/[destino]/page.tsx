@@ -7,6 +7,7 @@ import { readVisaDataByKey, resolveDestinationBySlug } from "@/lib/visaData";
 import { VisaRequirementBadge } from "@/components/VisaRequirementBadge";
 import { OfficialSources } from "@/components/OfficialSources";
 import { getRequirementExplanation } from "@/lib/requirementExplain";
+import { getVisaFaq } from "@/lib/visaFaq";
 
 export const runtime = "nodejs";
 
@@ -30,6 +31,8 @@ const buildRequirementLabel = (requirement: ReturnType<typeof normalizeRequireme
       return "pueden obtener visa a la llegada";
     case "E_VISA":
       return "requieren eVisa";
+    case "ESTA":
+      return "requieren ESTA";
     case "ETA":
       return "requieren ETA";
     case "UNKNOWN":
@@ -116,6 +119,19 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
       destinationName: destination.name_es,
     }) ||
     "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
+  const visaFaq = getVisaFaq(normalizedRequirement.type, destination.name_es);
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: visaFaq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   const breadcrumbCrumbs = [
     { label: "Inicio", href: "/" },
@@ -147,6 +163,32 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
       </div>
 
       <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
+
+      <div className="card p-6 space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold text-slate-900">❓ Micro-FAQ sobre el requisito de viaje</h2>
+          <p className="text-sm text-slate-600">
+            Respuestas rápidas sobre el tipo de autorización más común para visitas cortas.
+          </p>
+        </div>
+        <div className="space-y-2">
+          {visaFaq.map((item) => (
+            <details
+              key={item.question}
+              className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
+            >
+              <summary className="cursor-pointer font-semibold text-slate-900">{item.question}</summary>
+              <div className="pt-2 text-slate-600">{item.answer}</div>
+            </details>
+          ))}
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd),
+          }}
+        />
+      </div>
     </div>
   );
 }

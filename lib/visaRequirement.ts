@@ -2,6 +2,7 @@ export type RequirementType =
   | "NO_VISA"
   | "NO_VISA_DAYS"
   | "E_VISA"
+  | "ESTA"
   | "ETA"
   | "VOA"
   | "REQUIRES_VISA"
@@ -19,6 +20,7 @@ export const NORMALIZATION_RULES = [
   { match: "NUMBER_ONLY", type: "NO_VISA_DAYS", icon: "☑️", label: (d: number) => `No necesita visa (${d} días)` },
   { includes: ["visa free", "visa-free"], type: "NO_VISA", icon: "☑️", label: "No necesita visa" },
   { includes: ["e-visa", "evisa"], type: "E_VISA", icon: "🟨", label: "e-Visa (trámite online)" },
+  { includes: ["esta"], type: "ESTA", icon: "🟦", label: "ESTA (autorización electrónica)" },
   { includes: ["eta"], type: "ETA", icon: "🟦", label: "eTA / ETA (autorización electrónica)" },
   { includes: ["visa on arrival", "on arrival"], type: "VOA", icon: "🟧", label: "Visa a la llegada" },
   { includes: ["visa required", "required"], type: "REQUIRES_VISA", icon: "❌", label: "Sí requiere visa" },
@@ -54,6 +56,15 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
       type: "E_VISA",
       label: "e-Visa (trámite online)",
       display: "🟨 e-Visa (trámite online)",
+    };
+  }
+
+  if (sanitized.includes("esta")) {
+    return {
+      raw: raw ?? "",
+      type: "ESTA",
+      label: "ESTA (autorización electrónica)",
+      display: "🟦 ESTA (autorización electrónica)",
     };
   }
 
