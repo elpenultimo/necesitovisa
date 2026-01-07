@@ -5,6 +5,7 @@ countries.registerLocale({ locale: "es" });
 type OfficialSourcesProps = {
   originName: string;
   destinationName: string;
+  isDomesticTrip?: boolean;
 };
 
 function getFlagEmoji(countryName: string): string | null {
@@ -21,12 +22,13 @@ function buildGoogleSearchUrl(query: string): string {
   return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 }
 
-export function OfficialSources({ originName, destinationName }: OfficialSourcesProps) {
+export function OfficialSources({ originName, destinationName, isDomesticTrip = false }: OfficialSourcesProps) {
   const destinationFlag = getFlagEmoji(destinationName);
   const originFlag = getFlagEmoji(originName);
   const embassyQuery = `embajada de ${destinationName} en ${originName}`;
   const foreignAffairsQuery = `ministerio relaciones exteriores ${originName}`;
   const immigrationQuery = `sitio oficial inmigración ${destinationName}`;
+  const migrationBorderQuery = `sitio oficial migración frontera ${destinationName}`;
 
   return (
     <div className="card p-6 space-y-4">
@@ -40,27 +42,35 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
         </p>
       </div>
 
-      <a
-        className="inline-flex items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-dark"
-        href={buildGoogleSearchUrl(embassyQuery)}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Buscar embajada de {destinationName} en {originName}
-      </a>
+      {!isDomesticTrip && (
+        <a
+          className="inline-flex items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-dark"
+          href={buildGoogleSearchUrl(embassyQuery)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buscar embajada de {destinationName} en {originName}
+        </a>
+      )}
 
       <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
         <li>
           <a
             className="text-brand-primary underline underline-offset-2 hover:text-brand-dark"
-            href={buildGoogleSearchUrl(embassyQuery)}
+            href={buildGoogleSearchUrl(isDomesticTrip ? migrationBorderQuery : embassyQuery)}
             target="_blank"
             rel="noopener noreferrer"
           >
             <strong>
-              Embajada o consulado de {destinationFlag ? `${destinationFlag} ` : ""}
-              {destinationName} en {originFlag ? `${originFlag} ` : ""}
-              {originName}
+              {isDomesticTrip ? (
+                <>Sitio oficial de migración / frontera de {destinationName} (si aplica)</>
+              ) : (
+                <>
+                  Embajada o consulado de {destinationFlag ? `${destinationFlag} ` : ""}
+                  {destinationName} en {originFlag ? `${originFlag} ` : ""}
+                  {originName}
+                </>
+              )}
             </strong>
           </a>
         </li>
@@ -81,7 +91,11 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
             target="_blank"
             rel="noopener noreferrer"
           >
-            <strong>Sitio oficial de inmigración de {destinationName} (si aplica)</strong>
+            <strong>
+              {isDomesticTrip
+                ? `Autoridad de migración / control fronterizo de ${destinationName} (si aplica)`
+                : `Sitio oficial de inmigración de ${destinationName} (si aplica)`}
+            </strong>
           </a>
         </li>
       </ul>
