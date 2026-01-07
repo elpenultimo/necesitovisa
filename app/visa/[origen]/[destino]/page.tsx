@@ -11,7 +11,9 @@ import { getVisaFaq } from "@/lib/visaFaq";
 
 export const runtime = "nodejs";
 
-const extractEmojiAndLabel = (display: string) => {
+type EmojiLabel = { emoji: string; label: string };
+
+const extractEmojiAndLabel = (display: string): EmojiLabel => {
   const [maybeEmoji, ...rest] = display.trim().split(" ");
   if (maybeEmoji && /\p{Extended_Pictographic}/u.test(maybeEmoji)) {
     return { emoji: maybeEmoji, label: rest.join(" ") };
@@ -103,7 +105,10 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
   const { destination } = destinationResolution;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
   const normalizedRequirement = normalizeRequirement(destination.requirement);
-  const { emoji } = extractEmojiAndLabel(normalizedRequirement.display);
+  const { emoji, label } = normalizedRequirement
+    ? extractEmojiAndLabel(normalizedRequirement.display)
+    : { emoji: "", label: "" };
+  void label;
   const requirementLabel = buildRequirementLabel(normalizedRequirement);
   const seoSentence = buildSeoSentence({
     origenEs: originNameEs,
