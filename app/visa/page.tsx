@@ -55,15 +55,11 @@ export default function VisaIndexPage() {
       </section>
 
       <section className="card p-6 space-y-3">
-        <h2 className="text-xl font-semibold text-slate-900">¿Cómo funciona?</h2>
-        <ol className="list-decimal list-inside space-y-2 text-sm text-slate-600">
-          <li>Elige tu país de origen y el destino.</li>
-          <li>Revisa la respuesta rápida y el resumen de requisitos.</li>
-          <li>Consulta las fuentes oficiales y completa los campos con la información más reciente.</li>
-        </ol>
+        <h2 className="text-xl font-semibold text-slate-900">¿Cómo funciona NecesitoVisa.com?</h2>
         <p className="text-sm text-slate-600">
-          Puedes ampliar los datos editando <code>data/requirements.ts</code>. El sitemap se actualiza
-          automáticamente al agregar nuevas combinaciones.
+          Selecciona tu país de origen y el destino al que quieres viajar. En segundos verás si necesitas
+          visa, autorización electrónica (eVisa / ESTA), visa a la llegada o si no se requiere visa para
+          estancias cortas. Siempre podrás contrastar la información con fuentes oficiales antes de viajar.
         </p>
       </section>
     </div>
