@@ -1,12 +1,9 @@
 import { listAll } from "@/lib/countryIndex";
-import Link from "next/link";
+import { VisaSelector } from "./VisaSelector";
 
 export const runtime = "nodejs";
 
 const countries = listAll();
-const originCountries = countries;
-const destinationCountries = countries;
-
 export const metadata = {
   title: "Visas por país | NecesitoVisa.com",
   description: "Explora combinaciones de origen y destino para saber si necesitas visa.",
@@ -23,36 +20,7 @@ export default function VisaIndexPage() {
         </p>
       </section>
 
-      <section className="grid gap-8 md:grid-cols-2">
-        <div className="card p-6 space-y-3">
-          <h2 className="text-xl font-semibold text-slate-900">País de ciudadanía</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-            {originCountries.map((country) => (
-              <Link
-                key={country.slug_es}
-                href={`/visa/${country.slug_es}/${destinationCountries[0]?.slug_es ?? ""}`}
-                className="rounded-lg border border-slate-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
-              >
-                {country.name_es}
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className="card p-6 space-y-3">
-          <h2 className="text-xl font-semibold text-slate-900">Destinos disponibles</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-            {destinationCountries.map((country) => (
-              <Link
-                key={country.slug_es}
-                href={`/visa/${originCountries[0]?.slug_es ?? ""}/${country.slug_es}`}
-                className="rounded-lg border border-slate-200 px-3 py-2 hover:border-brand-primary hover:text-brand-primary"
-              >
-                {country.name_es}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <VisaSelector countries={countries} />
 
       <section className="card p-6 space-y-3">
         <h2 className="text-xl font-semibold text-slate-900">¿Cómo funciona NecesitoVisa.com?</h2>
