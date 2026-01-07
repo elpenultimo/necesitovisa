@@ -5,6 +5,7 @@ const TYPE_STYLES: Record<RequirementType, string> = {
   NO_VISA: "bg-emerald-100 text-emerald-800",
   NO_VISA_DAYS: "bg-emerald-100 text-emerald-800",
   E_VISA: "bg-amber-100 text-amber-800",
+  ESTA: "bg-amber-100 text-amber-800",
   ETA: "bg-amber-100 text-amber-800",
   VOA: "bg-amber-100 text-amber-800",
   UNKNOWN: "bg-slate-100 text-slate-700",

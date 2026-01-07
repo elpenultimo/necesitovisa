@@ -42,6 +42,7 @@ const buildExplanationByType = (type: RequirementType, days?: number) => {
         "Confirma condiciones en la fuente oficial."
       );
     case "ETA":
+    case "ESTA":
       return (
         "Una autorización electrónica (ETA/eTA/ESTA) no es una visa tradicional: es un permiso previo para abordar y entrar por turismo o tránsito. " +
         "Se solicita online, puede tener costo y toma desde minutos a días. Debe gestionarse antes del viaje. " +
