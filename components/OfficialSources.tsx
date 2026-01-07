@@ -23,6 +23,24 @@ function buildGoogleSearchUrl(query: string): string {
 }
 
 export function OfficialSources({ originName, destinationName, isDomesticTrip = false }: OfficialSourcesProps) {
+  if (isDomesticTrip) {
+    return (
+      <div className="card p-6 space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold text-slate-900">📌 Documentación para viajar dentro de tu país</h2>
+          <p className="text-sm text-slate-600">
+            Para viajar dentro de tu propio país normalmente no necesitas visa. Solo asegúrate de llevar tu documentación
+            oficial vigente (por ejemplo, cédula de identidad o pasaporte, según corresponda). En algunos casos (vuelos
+            domésticos o zonas especiales) podrían pedirte identificación al embarcar o en controles.
+          </p>
+        </div>
+        <div className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+          <p>Las normas internas pueden cambiar. Verifica requisitos de identificación según el medio de transporte y normativa local.</p>
+        </div>
+      </div>
+    );
+  }
+
   const destinationFlag = getFlagEmoji(destinationName);
   const originFlag = getFlagEmoji(originName);
   const embassyQuery = `embajada de ${destinationName} en ${originName}`;
