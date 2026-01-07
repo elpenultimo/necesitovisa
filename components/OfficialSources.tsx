@@ -1,9 +1,32 @@
+import countries from "i18n-iso-countries";
+
+countries.registerLocale({ locale: "es" });
+
 type OfficialSourcesProps = {
   originName: string;
   destinationName: string;
 };
 
+function getFlagEmoji(countryName: string): string | null {
+  const alpha2 = countries.getAlpha2Code(countryName, "es") ?? countries.getAlpha2Code(countryName, "en");
+  if (!alpha2 || alpha2.length !== 2) return null;
+  return alpha2
+    .toUpperCase()
+    .split("")
+    .map((char: string) => String.fromCodePoint(127397 + char.charCodeAt(0)))
+    .join("");
+}
+
+function buildGoogleSearchUrl(query: string): string {
+  return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+}
+
 export function OfficialSources({ originName, destinationName }: OfficialSourcesProps) {
+  const destinationFlag = getFlagEmoji(destinationName);
+  const embassyQuery = `embajada de ${destinationName} en ${originName}`;
+  const foreignAffairsQuery = `ministerio relaciones exteriores ${originName}`;
+  const immigrationQuery = `sitio oficial inmigración ${destinationName}`;
+
   return (
     <div className="card p-6 space-y-4">
       <div className="space-y-2">
@@ -14,15 +37,48 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
         </p>
       </div>
 
+      <a
+        className="inline-flex items-center justify-center rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark"
+        href={buildGoogleSearchUrl(embassyQuery)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Buscar embajada de {destinationName} en {originName}
+      </a>
+
       <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
         <li>
-          <strong>Embajada o consulado de {destinationName} en {originName}</strong>
+          <a
+            className="text-brand-primary underline underline-offset-2 hover:text-brand-dark"
+            href={buildGoogleSearchUrl(embassyQuery)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>
+              Embajada o consulado de {destinationName}
+              {destinationFlag ? ` ${destinationFlag}` : ""} en {originName}
+            </strong>
+          </a>
         </li>
         <li>
-          <strong>Ministerio de Relaciones Exteriores de {originName}</strong>
+          <a
+            className="text-brand-primary underline underline-offset-2 hover:text-brand-dark"
+            href={buildGoogleSearchUrl(foreignAffairsQuery)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>Ministerio de Relaciones Exteriores de {originName}</strong>
+          </a>
         </li>
         <li>
-          <strong>Sitio oficial de inmigración de {destinationName} (si aplica)</strong>
+          <a
+            className="text-brand-primary underline underline-offset-2 hover:text-brand-dark"
+            href={buildGoogleSearchUrl(immigrationQuery)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>Sitio oficial de inmigración de {destinationName} (si aplica)</strong>
+          </a>
         </li>
       </ul>
 
