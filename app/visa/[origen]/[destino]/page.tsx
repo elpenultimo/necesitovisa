@@ -121,26 +121,19 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         requirementLabel,
         requirementEmoji: emoji,
       });
-  const explanation = isDomesticTrip
-    ? `Si eres ciudadano de ${originNameEs}, normalmente no necesitas visa para ingresar a ${destination.name_es}. Aun así, podrían pedirte un documento de identidad/pasaporte vigente y aplicar controles locales.`
-    : getRequirementExplanation({
-        type: normalizedRequirement.type,
-        days: normalizedRequirement.days,
-        originName: originNameEs,
-        destinationName: destination.name_es,
-      }) ||
-      "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
+  const explanation =
+    getRequirementExplanation({
+      type: normalizedRequirement.type,
+      days: normalizedRequirement.days,
+      originName: originNameEs,
+      destinationName: destination.name_es,
+    }) ||
+    "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
   const visaFaq = getVisaFaq(normalizedRequirement.type, destination.name_es);
-  const domesticFaqItem = {
-    question: "¿Puedo viajar dentro de mi propio país con mi cédula?",
-    answer:
-      "En la mayoría de los casos sí, pero depende del país y del medio de transporte. Para vuelos domésticos o zonas especiales, podrían exigir documento vigente y, a veces, pasaporte. Revisa la normativa local.",
-  };
-  const visaFaqItems = isDomesticTrip ? [...visaFaq, domesticFaqItem] : visaFaq;
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: visaFaqItems.map((item) => ({
+    mainEntity: visaFaq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -181,7 +174,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </div>
         <div className="text-sm text-slate-600 max-w-3xl space-y-1">
           <p>{seoSentence}</p>
-          <p className="text-slate-500">{explanation}</p>
+          {!isDomesticTrip && <p className="text-slate-500">{explanation}</p>}
         </div>
       </div>
 
@@ -191,31 +184,33 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         isDomesticTrip={isDomesticTrip}
       />
 
-      <div className="card p-6 space-y-4">
-        <div className="space-y-2">
-          <h2 className="text-xl font-semibold text-slate-900">❓ Micro-FAQ sobre el requisito de viaje</h2>
-          <p className="text-sm text-slate-600">
-            Respuestas rápidas sobre el tipo de autorización más común para visitas cortas.
-          </p>
+      {!isDomesticTrip && (
+        <div className="card p-6 space-y-4">
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-slate-900">❓ Micro-FAQ sobre el requisito de viaje</h2>
+            <p className="text-sm text-slate-600">
+              Respuestas rápidas sobre el tipo de autorización más común para visitas cortas.
+            </p>
+          </div>
+          <div className="space-y-2">
+            {visaFaq.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
+              >
+                <summary className="cursor-pointer font-semibold text-slate-900">{item.question}</summary>
+                <div className="pt-2 text-slate-600">{item.answer}</div>
+              </details>
+            ))}
+          </div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqJsonLd),
+            }}
+          />
         </div>
-        <div className="space-y-2">
-          {visaFaqItems.map((item) => (
-            <details
-              key={item.question}
-              className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
-            >
-              <summary className="cursor-pointer font-semibold text-slate-900">{item.question}</summary>
-              <div className="pt-2 text-slate-600">{item.answer}</div>
-            </details>
-          ))}
-        </div>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqJsonLd),
-          }}
-        />
-      </div>
+      )}
     </div>
   );
 }
