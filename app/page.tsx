@@ -23,8 +23,7 @@ export default function HomePage() {
             ¿Necesito visa para viajar a cualquier destino?
           </h1>
           <p className="text-lg text-gray-700">
-            Resuelve en segundos si necesitas visa según tu nacionalidad y país destino. Listo para
-            SEO y pensado para mantenerse actualizado con fuentes oficiales.
+            Información clara sobre requisitos de visa, basada en fuentes oficiales y pensada para viajeros reales.
           </p>
           <HomeForm
             origins={originCountries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
@@ -54,16 +53,24 @@ export default function HomePage() {
 
       <section className="grid gap-6 md:grid-cols-3">
         <div className="card p-5 space-y-2">
-          <h3 className="font-semibold text-gray-900">Actualizado y transparente</h3>
-          <p className="text-sm text-gray-700">Cada combinación muestra la última fecha de revisión.</p>
+          <h3 className="font-semibold text-gray-900">🛂 ¿Qué es una visa?</h3>
+          <p className="text-sm text-gray-700">
+            Una visa es una autorización que otorga un país para permitir la entrada, permanencia o tránsito de
+            ciudadanos extranjeros por un tiempo determinado y bajo ciertas condiciones.
+          </p>
         </div>
         <div className="card p-5 space-y-2">
-          <h3 className="font-semibold text-gray-900">Basado en datos locales</h3>
-          <p className="text-sm text-gray-700">Toda la información vive en JSON, fácil de editar y versionar.</p>
+          <h3 className="font-semibold text-gray-900">🏛️ ¿Quién otorga las visas?</h3>
+          <p className="text-sm text-gray-700">
+            Las visas son otorgadas por el país de destino, normalmente a través de sus embajadas, consulados o
+            sistemas oficiales de inmigración.
+          </p>
         </div>
         <div className="card p-5 space-y-2">
-          <h3 className="font-semibold text-gray-900">SEO listo</h3>
-          <p className="text-sm text-gray-700">URLs limpias, sitemap y metadatos optimizados.</p>
+          <h3 className="font-semibold text-gray-900">🌍 Cobertura global</h3>
+          <p className="text-sm text-gray-700">
+            Consulta requisitos de visa para cientos de combinaciones de nacionalidad y destino en un solo lugar.
+          </p>
         </div>
       </section>
 
