@@ -21,8 +21,8 @@ export function HomeForm({ origins, destinations }: HomeFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card p-6 space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="card p-7 space-y-5">
+      <div className="grid gap-5 md:grid-cols-2">
         <CountrySelect
           label="Soy ciudadano de"
           value={origin}
@@ -41,7 +41,7 @@ export function HomeForm({ origins, destinations }: HomeFormProps) {
       <button
         type="submit"
         disabled={!origin || !destination}
-        className="w-full md:w-auto rounded-lg bg-brand-primary px-5 py-3 text-white font-semibold shadow hover:bg-brand-dark disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="w-full md:w-auto rounded-lg bg-brand-primary px-6 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark disabled:bg-slate-300 disabled:cursor-not-allowed"
       >
         Ver requisitos
       </button>

@@ -122,18 +122,18 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
       <Breadcrumbs crumbs={breadcrumbCrumbs} />
 
       <div className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-3xl font-bold text-slate-900">
           ¿Necesito visa para viajar a {destination.name_es} si soy de {originNameEs}?
         </h1>
         <div className="flex flex-col gap-2">
-          <p className="text-lg font-semibold text-gray-900">Respuesta rápida:</p>
+          <p className="text-lg font-semibold text-slate-900">Respuesta rápida:</p>
           <div className="flex items-center gap-3">
             <VisaRequirementBadge requirement={normalizedRequirement} />
           </div>
         </div>
-        <div className="text-sm text-gray-700 max-w-3xl space-y-1">
+        <div className="text-sm text-slate-600 max-w-3xl space-y-1">
           <p>{seoSentence}</p>
-          <p className="text-gray-500">
+          <p className="text-slate-500">
             Revisa siempre fuentes oficiales antes de viajar, ya que los requisitos pueden cambiar.
           </p>
         </div>

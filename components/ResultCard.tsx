@@ -9,8 +9,8 @@ export function ResultCard({ requirement }: ResultCardProps) {
     <div className="card p-6 space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm text-gray-500">Respuesta rápida</p>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-sm text-slate-500">Respuesta rápida</p>
+          <p className="text-2xl font-bold text-slate-900">
             {requirement.visaRequired
               ? "Sí, necesitas visa o autorización previa"
               : "No necesitas visa para una visita corta"}
@@ -24,7 +24,7 @@ export function ResultCard({ requirement }: ResultCardProps) {
           {requirement.visaRequired ? "VISA" : "SIN VISA"}
         </span>
       </div>
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-slate-600">
         Última revisión: <strong>{requirement.lastReviewed}</strong>
       </p>
     </div>

@@ -1,13 +1,13 @@
 import { NormalizedRequirement, RequirementType } from "@/lib/visaRequirement";
 
 const TYPE_STYLES: Record<RequirementType, string> = {
-  REQUIRES_VISA: "bg-red-100 text-red-800",
-  NO_VISA: "bg-green-100 text-green-800",
-  NO_VISA_DAYS: "bg-green-100 text-green-800",
+  REQUIRES_VISA: "bg-rose-100 text-rose-800",
+  NO_VISA: "bg-emerald-100 text-emerald-800",
+  NO_VISA_DAYS: "bg-emerald-100 text-emerald-800",
   E_VISA: "bg-amber-100 text-amber-800",
-  ETA: "bg-blue-100 text-blue-800",
-  VOA: "bg-orange-100 text-orange-800",
-  UNKNOWN: "bg-gray-100 text-gray-800",
+  ETA: "bg-amber-100 text-amber-800",
+  VOA: "bg-amber-100 text-amber-800",
+  UNKNOWN: "bg-slate-100 text-slate-700",
 };
 
 type VisaRequirementBadgeProps = {

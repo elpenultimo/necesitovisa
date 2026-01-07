@@ -31,17 +31,17 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
   return (
     <div className="card p-6 space-y-4">
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-slate-900">
           📌 Verificación y fuentes oficiales{destinationFlag ? ` ${destinationFlag}` : ""}
         </h2>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-slate-600">
           La información mostrada en esta página es referencial y puede cambiar en cualquier momento. Para confirmar requisitos
           actualizados, siempre recomendamos verificar directamente con fuentes oficiales.
         </p>
       </div>
 
       <a
-        className="inline-flex items-center justify-center rounded-md bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark"
+        className="inline-flex items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-dark"
         href={buildGoogleSearchUrl(embassyQuery)}
         target="_blank"
         rel="noopener noreferrer"
@@ -49,7 +49,7 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
         Buscar embajada de {destinationName} en {originName}
       </a>
 
-      <ul className="list-disc list-inside space-y-2 text-sm text-gray-800">
+      <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
         <li>
           <a
             className="text-brand-primary underline underline-offset-2 hover:text-brand-dark"
@@ -86,7 +86,7 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
         </li>
       </ul>
 
-      <div className="rounded-md bg-amber-50 p-3 text-sm text-amber-900">
+      <div className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
         <p>
           Las políticas migratorias pueden cambiar sin previo aviso. NecesitoVisa.com no se hace responsable por modificaciones
           posteriores a la fecha de consulta.
