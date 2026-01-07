@@ -1,0 +1,20 @@
+{
+  "espana": {
+    "japon": {
+      "title": "Embajada de Japón en España",
+      "url": "https://www.es.emb-japan.go.jp/itprtop_es/index.html"
+    }
+  },
+  "mexico": {
+    "japon": {
+      "title": "Embajada de Japón en México",
+      "url": "https://www.mx.emb-japan.go.jp/itprtop_es/index.html"
+    }
+  },
+  "chile": {
+    "japon": {
+      "title": "Embajada de Japón en Chile",
+      "url": "https://www.cl.emb-japan.go.jp/itprtop_es/index.html"
+    }
+  }
+}
