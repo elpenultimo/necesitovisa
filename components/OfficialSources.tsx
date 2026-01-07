@@ -29,7 +29,7 @@ export function OfficialSources({ originName, destinationName, isDomesticTrip = 
         <div className="space-y-2">
           <h2 className="text-xl font-semibold text-slate-900">📌 Documentación para viajar dentro de tu país</h2>
           <p className="text-sm text-slate-600">
-            Para viajar dentro de tu propio país normalmente no necesitas visa. Solo asegúrate de llevar tu documentación
+            Para viajar dentro de tu propio país no necesitas visa. Solo asegúrate de llevar tu documentación
             oficial vigente (por ejemplo, cédula de identidad o pasaporte, según corresponda). En algunos casos (vuelos
             domésticos o zonas especiales) podrían pedirte identificación al embarcar o en controles.
           </p>
