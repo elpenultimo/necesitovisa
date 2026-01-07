@@ -102,36 +102,42 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
 
   const { destination } = destinationResolution;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
-  const normalizedRequirement = normalizeRequirement(destination.requirement);
-  const { emoji } = extractEmojiAndLabel(normalizedRequirement.display);
-  const requirementLabel = buildRequirementLabel(normalizedRequirement);
-  const seoSentence = buildSeoSentence({
-    origenEs: originNameEs,
-    destinoEs: destination.name_es,
-    requirementLabel,
-    requirementEmoji: emoji,
-  });
-  const explanation =
-    getRequirementExplanation({
-      type: normalizedRequirement.type,
-      days: normalizedRequirement.days,
-      originName: originNameEs,
-      destinationName: destination.name_es,
-    }) ||
-    "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales.";
-  const visaFaq = getVisaFaq(normalizedRequirement.type, destination.name_es);
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: visaFaq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
+  const isDomesticTrip = destination.key === data.origin_key;
+  const normalizedRequirement = isDomesticTrip ? null : normalizeRequirement(destination.requirement);
+  const { emoji } = normalizedRequirement ? extractEmojiAndLabel(normalizedRequirement.display) : { emoji: "", label: "" };
+  const requirementLabel = normalizedRequirement ? buildRequirementLabel(normalizedRequirement) : "";
+  const seoSentence = normalizedRequirement
+    ? buildSeoSentence({
+        origenEs: originNameEs,
+        destinoEs: destination.name_es,
+        requirementLabel,
+        requirementEmoji: emoji,
+      })
+    : "";
+  const explanation = normalizedRequirement
+    ? getRequirementExplanation({
+        type: normalizedRequirement.type,
+        days: normalizedRequirement.days,
+        originName: originNameEs,
+        destinationName: destination.name_es,
+      }) ||
+      "Los requisitos pueden cambiar y dependen del tipo de viaje (turismo, trabajo, estudio). Para confirmar el trámite exacto y documentos, revisa siempre fuentes oficiales."
+    : "";
+  const visaFaq = normalizedRequirement ? getVisaFaq(normalizedRequirement.type, destination.name_es) : [];
+  const faqJsonLd = normalizedRequirement
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: visaFaq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
 
   const breadcrumbCrumbs = [
     { label: "Inicio", href: "/" },
@@ -150,45 +156,68 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         <h1 className="text-3xl font-bold text-slate-900">
           ¿Necesito visa para viajar a {destination.name_es} si soy de {originNameEs}?
         </h1>
-        <div className="flex flex-col gap-2">
-          <p className="text-lg font-semibold text-slate-900">Respuesta rápida:</p>
-          <div className="flex items-center gap-3">
-            <VisaRequirementBadge requirement={normalizedRequirement} />
+        {isDomesticTrip ? (
+          <div className="card border border-emerald-200 bg-emerald-50 p-6 text-emerald-900">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl" aria-hidden="true">
+                🏠
+              </span>
+              <h2 className="text-xl font-semibold">¿Necesito visa para viajar dentro de mi propio país?</h2>
+            </div>
+            <div className="mt-3 space-y-2 text-sm text-emerald-800">
+              <p>
+                Si eres ciudadano de {originNameEs} y viajas dentro de {originNameEs}, no necesitas visa ni
+                autorización migratoria. El ingreso a tu propio país está permitido para sus ciudadanos, siempre
+                que cuentes con documentos nacionales válidos.
+              </p>
+              <p className="font-medium">Estás viajando dentro de tu propio país 🏠</p>
+            </div>
           </div>
-        </div>
-        <div className="text-sm text-slate-600 max-w-3xl space-y-1">
-          <p>{seoSentence}</p>
-          <p className="text-slate-500">{explanation}</p>
-        </div>
+        ) : (
+          <>
+            <div className="flex flex-col gap-2">
+              <p className="text-lg font-semibold text-slate-900">Respuesta rápida:</p>
+              <div className="flex items-center gap-3">
+                {normalizedRequirement && <VisaRequirementBadge requirement={normalizedRequirement} />}
+              </div>
+            </div>
+            <div className="text-sm text-slate-600 max-w-3xl space-y-1">
+              <p>{seoSentence}</p>
+              <p className="text-slate-500">{explanation}</p>
+            </div>
+          </>
+        )}
       </div>
 
-      <OfficialSources originName={originNameEs} destinationName={destination.name_es} />
+      {!isDomesticTrip && <OfficialSources originName={originNameEs} destinationName={destination.name_es} />}
 
-      <div className="card p-6 space-y-4">
-        <div className="space-y-2">
-          <h2 className="text-xl font-semibold text-slate-900">❓ Micro-FAQ sobre el requisito de viaje</h2>
-          <p className="text-sm text-slate-600">
-            Respuestas rápidas sobre el tipo de autorización más común para visitas cortas.
-          </p>
+      {!isDomesticTrip && faqJsonLd && (
+        <div className="card p-6 space-y-4">
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-slate-900">❓ Micro-FAQ sobre el requisito de viaje</h2>
+            <p className="text-sm text-slate-600">
+              Respuestas rápidas sobre el tipo de autorización más común para visitas cortas.
+            </p>
+          </div>
+          <div className="space-y-2">
+            {visaFaq.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
+              >
+                <summary className="cursor-pointer font-semibold text-slate-900">{item.question}</summary>
+                <div className="pt-2 text-slate-600">{item.answer}</div>
+              </details>
+            ))}
+          </div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqJsonLd),
+            }}
+          />
         </div>
-        <div className="space-y-2">
-          {visaFaq.map((item) => (
-            <details
-              key={item.question}
-              className="group rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
-            >
-              <summary className="cursor-pointer font-semibold text-slate-900">{item.question}</summary>
-              <div className="pt-2 text-slate-600">{item.answer}</div>
-            </details>
-          ))}
-        </div>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqJsonLd),
-          }}
-        />
-      </div>
+      )}
     </div>
   );
 }
