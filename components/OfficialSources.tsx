@@ -23,6 +23,7 @@ function buildGoogleSearchUrl(query: string): string {
 
 export function OfficialSources({ originName, destinationName }: OfficialSourcesProps) {
   const destinationFlag = getFlagEmoji(destinationName);
+  const originFlag = getFlagEmoji(originName);
   const embassyQuery = `embajada de ${destinationName} en ${originName}`;
   const foreignAffairsQuery = `ministerio relaciones exteriores ${originName}`;
   const immigrationQuery = `sitio oficial inmigración ${destinationName}`;
@@ -30,7 +31,9 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
   return (
     <div className="card p-6 space-y-4">
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-gray-900">📌 Verificación y fuentes oficiales</h2>
+        <h2 className="text-xl font-semibold text-gray-900">
+          📌 Verificación y fuentes oficiales{destinationFlag ? ` ${destinationFlag}` : ""}
+        </h2>
         <p className="text-sm text-gray-700">
           La información mostrada en esta página es referencial y puede cambiar en cualquier momento. Para confirmar requisitos
           actualizados, siempre recomendamos verificar directamente con fuentes oficiales.
@@ -55,8 +58,9 @@ export function OfficialSources({ originName, destinationName }: OfficialSources
             rel="noopener noreferrer"
           >
             <strong>
-              Embajada o consulado de {destinationName}
-              {destinationFlag ? ` ${destinationFlag}` : ""} en {originName}
+              Embajada o consulado de {destinationFlag ? `${destinationFlag} ` : ""}
+              {destinationName} en {originFlag ? `${originFlag} ` : ""}
+              {originName}
             </strong>
           </a>
         </li>
