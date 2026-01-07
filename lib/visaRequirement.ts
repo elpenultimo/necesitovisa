@@ -11,6 +11,7 @@ type NormalizedRequirement = {
   raw: string;
   type: RequirementType;
   days?: number;
+  label: string;
   display: string;
 };
 
@@ -33,6 +34,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
       raw: raw ?? "",
       type: "NO_VISA_DAYS",
       days,
+      label: `No necesita visa (${days} días)`,
       display: `☑️ No necesita visa (${days} días)`,
     };
   }
@@ -41,6 +43,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
     return {
       raw: raw ?? "",
       type: "NO_VISA",
+      label: "No necesita visa",
       display: "☑️ No necesita visa",
     };
   }
@@ -49,6 +52,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
     return {
       raw: raw ?? "",
       type: "E_VISA",
+      label: "e-Visa (trámite online)",
       display: "🟨 e-Visa (trámite online)",
     };
   }
@@ -57,6 +61,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
     return {
       raw: raw ?? "",
       type: "ETA",
+      label: "eTA / ETA (autorización electrónica)",
       display: "🟦 eTA / ETA (autorización electrónica)",
     };
   }
@@ -65,6 +70,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
     return {
       raw: raw ?? "",
       type: "VOA",
+      label: "Visa a la llegada",
       display: "🟧 Visa a la llegada",
     };
   }
@@ -73,6 +79,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
     return {
       raw: raw ?? "",
       type: "REQUIRES_VISA",
+      label: "Sí requiere visa",
       display: "❌ Sí requiere visa",
     };
   }
@@ -80,6 +87,7 @@ export function normalizeRequirement(raw: string | null | undefined): Normalized
   return {
     raw: raw ?? "",
     type: "UNKNOWN",
+    label: "Requisito no especificado",
     display: "⚠️ Requisito no especificado",
   };
 }
