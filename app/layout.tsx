@@ -30,6 +30,7 @@ export default function RootLayout({
             <nav className="flex items-center space-x-4 text-sm text-slate-600">
               <Link href="/">Inicio</Link>
               <Link href="/visa">Visas</Link>
+              <Link href="/faq">FAQ</Link>
             </nav>
           </div>
         </header>
