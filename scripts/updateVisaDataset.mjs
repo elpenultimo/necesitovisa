@@ -58,7 +58,7 @@ if (!changes.length) {
 
 fs.copyFileSync(incomingPath, currentPath);
 fs.mkdirSync("data/generated", { recursive: true });
-fs.writeFileSync("data/generated/dataset-changes.json", JSON.stringify({ updatedAt: new Date().toISOString(), source: "https://github.com/imorte/passport-index-data", changes }, null, 2));
+fs.writeFileSync("data/generated/dataset-changes.json", JSON.stringify({ updatedAt: new Date().toISOString(), source: "https://github.com/visualpharm/visa-free-dataset", changes }, null, 2));
 console.log(`Dataset válido. ${changes.length} combinaciones cambiaron.`);
 for (const c of changes.slice(0, 50)) console.log(`${c.origin} -> ${c.destination}: ${c.before} => ${c.after}`);
 if (changes.length > 50) console.log(`... y ${changes.length - 50} cambios más.`);
