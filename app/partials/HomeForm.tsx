@@ -21,7 +21,11 @@ export function HomeForm({ origins, destinations }: HomeFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card p-7 space-y-5">
+    <form onSubmit={handleSubmit} className="hero-shell rounded-2xl bg-white p-5 sm:p-7 space-y-5">
+      <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-100 text-lg">✈️</span>
+        Consulta tu ruta
+      </div>
       <div className="grid gap-5 md:grid-cols-2">
         <CountrySelect
           label="Soy ciudadano de"
@@ -41,9 +45,9 @@ export function HomeForm({ origins, destinations }: HomeFormProps) {
       <button
         type="submit"
         disabled={!origin || !destination}
-        className="w-full md:w-auto rounded-lg bg-brand-primary px-6 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark disabled:bg-slate-300 disabled:cursor-not-allowed"
+        className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3.5 text-white font-bold shadow-lg shadow-orange-500/20 transition hover:from-orange-600 hover:to-amber-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:bg-none disabled:shadow-none md:w-auto"
       >
-        Ver requisitos
+        Ver requisitos →
       </button>
     </form>
   );
