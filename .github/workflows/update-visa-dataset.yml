@@ -19,8 +19,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - name: Download maintained dataset
-        run: curl --fail --location --retry 3 -o /tmp/passport-index-matrix.csv https://raw.githubusercontent.com/imorte/passport-index-data/main/passport-index-matrix.csv
+      - name: Download reconciled 2026 dataset
+        run: |
+          curl --fail --location --retry 3 -o /tmp/passport-index-matrix.csv \
+            https://raw.githubusercontent.com/visualpharm/visa-free-dataset/master/passport-index-matrix.csv
       - name: Validate, compare and update
         run: node scripts/updateVisaDataset.mjs /tmp/passport-index-matrix.csv
       - name: Regenerate site data
@@ -35,7 +37,6 @@ jobs:
           delete-branch: true
           title: 'data: actualizar requisitos de visa'
           body: |
-            Actualización automática desde `imorte/passport-index-data`.
-
+            Actualización automática desde `visualpharm/visa-free-dataset`, un fork de 199 países con correcciones 2026 documentadas.
             El workflow valida la estructura del CSV, bloquea cambios silenciosos en la lista/nombres de países, genera `data/generated/dataset-changes.json`, regenera los datos del sitio y exige que el build termine correctamente antes de crear este PR.
           labels: data-update
