@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "overrides": [
+    {
+      "origin": "Chile",
+      "destination": "China",
+      "requirement": "30",
+      "effectiveFrom": "2025-11-10",
+      "expiresAt": "2026-12-31",
+      "verifiedAt": "2026-09-08",
+      "source": "https://cl.china-embassy.gov.cn/esp/lsfw/qzfw/",
+      "note": "Exención unilateral para titulares de pasaporte ordinario: turismo, negocios, visita familiar, intercambio y tránsito; máximo 30 días."
+    }
+  ]
+}
