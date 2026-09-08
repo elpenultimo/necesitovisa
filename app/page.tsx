@@ -6,88 +6,80 @@ export const runtime = "nodejs";
 
 const countries = listAll();
 
-const originCountries = countries;
-const destinationCountries = countries;
-
 export default function HomePage() {
   const popularDestinations = ["estados-unidos", "canada", "reino-unido", "schengen", "australia"];
+  const destinationCountries = countries;
 
   return (
-    <div className="container-box py-12 space-y-16">
-      <section className="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div className="space-y-6">
-          <p className="inline-flex rounded-full bg-brand-primary/10 px-3 py-1 text-sm font-medium text-brand-primary">
-            NecesitoVisa.com
-          </p>
-          <h1 className="text-4xl font-bold text-slate-900 leading-tight">
-            ¿Necesito visa para viajar a cualquier destino?
-          </h1>
-          <p className="text-lg text-slate-600">
-            Información clara sobre requisitos de visa, basada en fuentes oficiales y pensada para viajeros reales.
-          </p>
+    <div>
+      <section className="travel-hero relative overflow-hidden text-white">
+        <div className="container-box relative z-10 grid gap-10 py-14 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:py-20">
+          <div className="space-y-6">
+            <p className="section-label text-cyan-200">Tu próximo viaje empieza aquí</p>
+            <h1 className="max-w-2xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+              ¿Necesito visa para viajar a cualquier destino?
+            </h1>
+            <p className="max-w-xl text-lg leading-relaxed text-sky-100">
+              Consulta los requisitos de entrada según tu nacionalidad y descubre qué necesitas antes de despegar.
+            </p>
+            <div className="flex flex-wrap gap-3 text-sm text-sky-100">
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur">🌍 Cobertura global</span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur">✓ Información clara</span>
+            </div>
+          </div>
           <HomeForm
-            origins={originCountries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
-            destinations={destinationCountries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
+            origins={countries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
+            destinations={countries.map((c) => ({ name: c.name_es, slug: c.slug_es }))}
           />
         </div>
-        <div className="card p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-slate-900">Destinos populares (Chile)</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {popularDestinations.map((slug) => {
-              const dest = destinationCountries.find((d) => d.slug_es === slug || d.slug_en === slug);
-              if (!dest) return null;
-              return (
-                <Link
-                  key={dest.slug_es}
-                  href={`/visa/chile/${dest.slug_es}`}
-                  className="card p-4 transition hover:shadow-soft"
-                >
-                  <p className="font-semibold text-slate-900">{dest.name_es}</p>
-                  <p className="text-sm text-slate-600">Ver requisitos para personas de Chile</p>
-                </Link>
-              );
-            })}
+      </section>
+
+      <div className="container-box space-y-14 py-12">
+        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {popularDestinations.map((slug, index) => {
+            const dest = destinationCountries.find((d) => d.slug_es === slug || d.slug_en === slug);
+            if (!dest) return null;
+            const accents = ["border-blue-200 bg-blue-50", "border-red-200 bg-red-50", "border-violet-200 bg-violet-50", "border-amber-200 bg-amber-50", "border-emerald-200 bg-emerald-50"];
+            return (
+              <Link key={dest.slug_es} href={`/visa/chile/${dest.slug_es}`} className={`rounded-2xl border p-5 transition hover:-translate-y-1 hover:shadow-lg ${accents[index]}`}>
+                <p className="mb-2 text-2xl">{["🇺🇸", "🇨🇦", "🇬🇧", "🇪🇺", "🇦🇺"][index]}</p>
+                <p className="font-bold text-slate-900">{dest.name_es}</p>
+                <p className="mt-1 text-sm leading-snug text-slate-600">Requisitos para personas de Chile</p>
+              </Link>
+            );
+          })}
+        </section>
+
+        <section>
+          <div className="mb-5">
+            <p className="section-label text-cyan-700">Antes de viajar</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">Lo esencial sobre visas</h2>
           </div>
-        </div>
-      </section>
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="card border-t-4 border-cyan-400 p-6 space-y-2">
+              <h3 className="font-bold text-slate-900">🛂 ¿Qué es una visa?</h3>
+              <p className="text-sm leading-relaxed text-slate-600">Una autorización que permite la entrada, permanencia o tránsito de ciudadanos extranjeros por un tiempo determinado.</p>
+            </div>
+            <div className="card border-t-4 border-orange-400 p-6 space-y-2">
+              <h3 className="font-bold text-slate-900">🏛️ ¿Quién la otorga?</h3>
+              <p className="text-sm leading-relaxed text-slate-600">El país de destino, normalmente a través de sus embajadas, consulados o sistemas oficiales de inmigración.</p>
+            </div>
+            <div className="card border-t-4 border-violet-400 p-6 space-y-2">
+              <h3 className="font-bold text-slate-900">🌍 Cobertura global</h3>
+              <p className="text-sm leading-relaxed text-slate-600">Consulta cientos de combinaciones de nacionalidad y destino en un solo lugar.</p>
+            </div>
+          </div>
+        </section>
 
-      <section className="grid gap-8 md:grid-cols-3">
-        <div className="card p-6 space-y-2">
-          <h3 className="font-semibold text-slate-900">🛂 ¿Qué es una visa?</h3>
-          <p className="text-sm text-slate-600">
-            Una visa es una autorización que otorga un país para permitir la entrada, permanencia o tránsito de
-            ciudadanos extranjeros por un tiempo determinado y bajo ciertas condiciones.
+        <section className="rounded-2xl bg-slate-900 p-7 text-white shadow-xl">
+          <p className="section-label text-cyan-300">Fuentes y responsabilidad</p>
+          <h2 className="mt-2 text-xl font-bold">Viaja con la información correcta</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300">
+            Verifica siempre en IATA/Timatic, páginas de gobiernos, ministerios de relaciones exteriores, embajadas y consulados.
+            Esta web es referencial y no constituye asesoría legal ni migratoria.
           </p>
-        </div>
-        <div className="card p-6 space-y-2">
-          <h3 className="font-semibold text-slate-900">🏛️ ¿Quién otorga las visas?</h3>
-          <p className="text-sm text-slate-600">
-            Las visas son otorgadas por el país de destino, normalmente a través de sus embajadas, consulados o
-            sistemas oficiales de inmigración.
-          </p>
-        </div>
-        <div className="card p-6 space-y-2">
-          <h3 className="font-semibold text-slate-900">🌍 Cobertura global</h3>
-          <p className="text-sm text-slate-600">
-            Consulta requisitos de visa para cientos de combinaciones de nacionalidad y destino en un solo lugar.
-          </p>
-        </div>
-      </section>
-
-      <section className="card p-6 space-y-4">
-        <h2 className="text-xl font-semibold text-slate-900">Fuentes oficiales</h2>
-        <p className="text-sm text-slate-600">
-          Siempre verifica en sitios oficiales antes de viajar. Recomendamos:
-        </p>
-        <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-          <li>IATA/Timatic para condiciones de ingreso.</li>
-          <li>Páginas de gobiernos y ministerios de relaciones exteriores.</li>
-          <li>Embajadas y consulados del país destino.</li>
-        </ul>
-        <p className="text-xs text-slate-500">
-          Esta web es referencial. No constituye asesoría legal ni migratoria.
-        </p>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
