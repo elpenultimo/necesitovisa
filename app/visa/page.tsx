@@ -1,5 +1,6 @@
 import { listAll } from "@/lib/countryIndex";
 import { VisaSelector } from "./VisaSelector";
+import Link from "next/link";
 
 export const runtime = "nodejs";
 
@@ -21,6 +22,16 @@ export default function VisaIndexPage() {
       </section>
 
       <VisaSelector countries={countries} />
+
+      <section className="card space-y-3 p-6">
+        <h2 className="text-xl font-semibold text-slate-900">Guías de destinos con mayor demanda</h2>
+        <p className="text-sm text-slate-600">Explora requisitos agrupados por destino y accede a combinaciones específicas de nacionalidad y país.</p>
+        <div className="flex flex-wrap gap-3 text-sm">
+          {[['Cabo Verde','cabo-verde'],['Cuba','cuba'],['Perú','peru'],['México','mexico'],['República Dominicana','republica-dominicana']].map(([name, slug]) => (
+            <Link key={slug} href={`/visa/destino/${slug}`} className="font-semibold text-brand-primary hover:underline">{name} →</Link>
+          ))}
+        </div>
+      </section>
 
       <section className="card p-6 space-y-3">
         <h2 className="text-xl font-semibold text-slate-900">¿Cómo funciona NecesitoVisa.com?</h2>
