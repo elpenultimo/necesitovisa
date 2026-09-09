@@ -798,3 +798,9 @@
       "destination": "Cape Verde",
       "requirement": "visa required",
       "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    }
+  ]
+}
