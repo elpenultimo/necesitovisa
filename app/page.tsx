@@ -91,6 +91,22 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="space-y-5">
+          <div>
+            <p className="section-label text-cyan-700">Guías por destino</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">Requisitos de visa según el destino</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+              Consulta las nacionalidades que necesitan visa para viajar a destinos con mayor demanda en nuestro buscador.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {["Cabo Verde", "Cuba", "Perú", "México", "República Dominicana"].map((name, index) => {
+              const slugs = ["cabo-verde", "cuba", "peru", "mexico", "republica-dominicana"];
+              return <Link key={slugs[index]} href={`/visa/destino/${slugs[index]}`} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700">Visa para {name} →</Link>;
+            })}
+          </div>
+        </section>
+
         <section>
           <div className="mb-5">
             <p className="section-label text-cyan-700">Antes de viajar</p>
