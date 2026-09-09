@@ -76,8 +76,8 @@ export async function generateMetadata({
   const canonical = `https://necesitovisa.com/visa/${originSlug}/${canonicalSlug}`;
 
   return {
-    title: `¿Necesito visa para ${destination.destination.name_es} si soy de ${originNameEs}?`,
-    description: `Revisa el requisito de visa para viajar de ${originNameEs} a ${destination.destination.name_es}.`,
+    title: `Visa de ${originNameEs} a ${destination.destination.name_es}: requisitos para viajar`,
+    description: `Consulta si los ciudadanos de ${originNameEs} necesitan visa para viajar a ${destination.destination.name_es}, además de los requisitos de entrada y fuentes oficiales.`,
     alternates: {
       canonical,
     },
@@ -174,6 +174,9 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         </div>
         <div className="text-sm text-slate-600 max-w-3xl space-y-1">
           <p>{seoSentence}</p>
+          <p className="text-slate-500">
+            Consulta los requisitos para viajar a {destination.name_es} desde {originNameEs}: visa, eVisa, visa a la llegada o entrada sin visa, según corresponda.
+          </p>
           {!isDomesticTrip && <p className="text-slate-500">{explanation}</p>}
         </div>
       </div>
