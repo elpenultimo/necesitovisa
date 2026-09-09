@@ -2,14 +2,799 @@
   "schemaVersion": 1,
   "overrides": [
     {
+      "origin": "Afghanistan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Algeria",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Armenia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Azerbaijan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Bahrain",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Bangladesh",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Belarus",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Bolivia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Botswana",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Brunei",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Burundi",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Bhutan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Cambodia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Kazakhstan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Chad",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
       "origin": "Chile",
-      "destination": "China",
-      "requirement": "30",
-      "effectiveFrom": "2025-11-10",
-      "expiresAt": "2026-12-31",
-      "verifiedAt": "2026-09-08",
-      "source": "https://cl.china-embassy.gov.cn/esp/lsfw/qzfw/",
-      "note": "Exención unilateral para titulares de pasaporte ordinario: turismo, negocios, visita familiar, intercambio y tránsito; máximo 30 días."
-    }
-  ]
-}
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Colombia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Comoros",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Congo",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "North Korea",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Costa Rica",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Djibouti",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Dominica",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Egypt",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "El Salvador",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Ecuador",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Eritrea",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Swaziland",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Ethiopia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Philippines",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Gabon",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Guatemala",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Guyana",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Haiti",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Honduras",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Yemen",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Indonesia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Iran",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Iraq",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Jamaica",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Jordan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Kiribati",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Laos",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Lesotho",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Lebanon",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Libya",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Madagascar",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Malawi",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Mauritania",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Mexico",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Mongolia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Myanmar",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Namibia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Nauru",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Nepal",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Nicaragua",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Oman",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Palestine",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Palau",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Panama",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Papua New Guinea",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Pakistan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Paraguay",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Peru",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Kyrgyzstan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Central African Republic",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "DR Congo",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Dominican Republic",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Samoa",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Syria",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Somalia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Sri Lanka",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Sudan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "South Sudan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Suriname",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Tajikistan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Tanzania",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Tonga",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Trinidad and Tobago",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Tunisia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Turkmenistan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Tuvalu",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Uganda",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Uzbekistan",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Vanuatu",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Venezuela",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Vietnam",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Zambia",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
+      "verifiedAt": "2026-09-09",
+      "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
+      "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Zimbabwe",
+      "destination": "Cape Verde",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-01-01",
