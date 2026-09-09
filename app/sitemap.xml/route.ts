@@ -1,7 +1,7 @@
 import { listAll } from "@/lib/countryIndex";
 import { readVisaDataByKey } from "@/lib/visaData";
 
-const BASE_URL = "https://www.necesitovisa.com";
+const BASE_URL = "https://necesitovisa.com";
 
 type SitemapEntry = {
   loc: string;
@@ -38,6 +38,11 @@ export function GET(): Response {
     { loc: buildUrl("/"), changefreq: "monthly", priority: "1.0" },
     { loc: buildUrl("/visa"), changefreq: "monthly", priority: "0.6" },
     { loc: buildUrl("/faq"), changefreq: "monthly", priority: "0.6" },
+    ...["cabo-verde", "cuba", "peru", "mexico", "republica-dominicana"].map((slug) => ({
+      loc: buildUrl(`/visa/destino/${slug}`),
+      changefreq: "weekly" as const,
+      priority: "0.8" as const,
+    })),
   ];
 
   const origins = listAll();
