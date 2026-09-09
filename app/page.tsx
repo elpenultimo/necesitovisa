@@ -9,14 +9,18 @@ const countries = listAll();
 export default function HomePage() {
   const popularDestinations = ["estados-unidos", "canada", "reino-unido", "schengen", "australia"];
   const seoPairs = [
-    { slug: "estados-unidos", flag: "🇺🇸", label: "¿Necesito visa para viajar a Estados Unidos si soy de Chile?" },
-    { slug: "canada", flag: "🇨🇦", label: "¿Necesito visa para viajar a Canadá si soy de Chile?" },
-    { slug: "espana", flag: "🇪🇸", label: "¿Necesito visa para viajar a España si soy de Chile?" },
-    { slug: "mexico", flag: "🇲🇽", label: "¿Necesito visa para viajar a México si soy de Chile?" },
-    { slug: "brasil", flag: "🇧🇷", label: "¿Necesito visa para viajar a Brasil si soy de Chile?" },
-    { slug: "australia", flag: "🇦🇺", label: "¿Necesito visa para viajar a Australia si soy de Chile?" },
-    { slug: "reino-unido", flag: "🇬🇧", label: "¿Necesito visa para viajar al Reino Unido si soy de Chile?" },
-    { slug: "china", flag: "🇨🇳", label: "¿Necesito visa para viajar a China si soy de Chile?" },
+    { origin: "peru", destination: "cabo-verde", flag: "🇵🇪 → 🇨🇻", label: "¿Necesita visa un peruano para viajar a Cabo Verde?" },
+    { origin: "mexico", destination: "cabo-verde", flag: "🇲🇽 → 🇨🇻", label: "¿Necesita visa un mexicano para viajar a Cabo Verde?" },
+    { origin: "guatemala", destination: "cabo-verde", flag: "🇬🇹 → 🇨🇻", label: "¿Necesita visa un guatemalteco para viajar a Cabo Verde?" },
+    { origin: "honduras", destination: "cabo-verde", flag: "🇭🇳 → 🇨🇻", label: "¿Necesita visa un hondureño para viajar a Cabo Verde?" },
+    { origin: "venezuela", destination: "cabo-verde", flag: "🇻🇪 → 🇨🇻", label: "¿Necesita visa un venezolano para viajar a Cabo Verde?" },
+    { origin: "republica-dominicana", destination: "cabo-verde", flag: "🇩🇴 → 🇨🇻", label: "¿Necesita visa un dominicano para viajar a Cabo Verde?" },
+    { origin: "mexico", destination: "nicaragua", flag: "🇲🇽 → 🇳🇮", label: "¿Necesita visa un mexicano para viajar a Nicaragua?" },
+    { origin: "guatemala", destination: "japon", flag: "🇬🇹 → 🇯🇵", label: "¿Necesita visa un guatemalteco para viajar a Japón?" },
+    { origin: "ecuador", destination: "bahamas", flag: "🇪🇨 → 🇧🇸", label: "¿Necesita visa un ecuatoriano para viajar a Bahamas?" },
+    { origin: "peru", destination: "bahamas", flag: "🇵🇪 → 🇧🇸", label: "¿Necesita visa un peruano para viajar a Bahamas?" },
+    { origin: "cuba", destination: "guyana", flag: "🇨🇺 → 🇬🇾", label: "¿Necesita visa un cubano para viajar a Guyana?" },
+    { origin: "republica-dominicana", destination: "venezuela", flag: "🇩🇴 → 🇻🇪", label: "¿Necesita visa un dominicano para viajar a Venezuela?" },
   ];
 
   return (
@@ -69,12 +73,13 @@ export default function HomePage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {seoPairs.map((pair) => {
-              const destination = countries.find((country) => country.slug_es === pair.slug);
-              if (!destination) return null;
+              const origin = countries.find((country) => country.slug_es === pair.origin);
+              const destination = countries.find((country) => country.slug_es === pair.destination);
+              if (!origin || !destination) return null;
               return (
                 <Link
-                  key={pair.slug}
-                  href={`/visa/chile/${destination.slug_es}`}
+                  key={`${pair.origin}-${pair.destination}`}
+                  href={`/visa/${origin.slug_es}/${destination.slug_es}`}
                   className="group rounded-xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md"
                 >
                   <span className="text-xl" aria-hidden>{pair.flag}</span>
