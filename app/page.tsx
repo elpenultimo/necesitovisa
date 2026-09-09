@@ -8,7 +8,16 @@ const countries = listAll();
 
 export default function HomePage() {
   const popularDestinations = ["estados-unidos", "canada", "reino-unido", "schengen", "australia"];
-  const destinationCountries = countries;
+  const seoPairs = [
+    { slug: "estados-unidos", flag: "🇺🇸", label: "¿Necesito visa para viajar a Estados Unidos si soy de Chile?" },
+    { slug: "canada", flag: "🇨🇦", label: "¿Necesito visa para viajar a Canadá si soy de Chile?" },
+    { slug: "espana", flag: "🇪🇸", label: "¿Necesito visa para viajar a España si soy de Chile?" },
+    { slug: "mexico", flag: "🇲🇽", label: "¿Necesito visa para viajar a México si soy de Chile?" },
+    { slug: "brasil", flag: "🇧🇷", label: "¿Necesito visa para viajar a Brasil si soy de Chile?" },
+    { slug: "australia", flag: "🇦🇺", label: "¿Necesito visa para viajar a Australia si soy de Chile?" },
+    { slug: "reino-unido", flag: "🇬🇧", label: "¿Necesito visa para viajar al Reino Unido si soy de Chile?" },
+    { slug: "china", flag: "🇨🇳", label: "¿Necesito visa para viajar a China si soy de Chile?" },
+  ];
 
   return (
     <div>
@@ -37,7 +46,7 @@ export default function HomePage() {
       <div className="container-box space-y-14 py-12">
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {popularDestinations.map((slug, index) => {
-            const dest = destinationCountries.find((d) => d.slug_es === slug || d.slug_en === slug);
+            const dest = countries.find((d) => d.slug_es === slug || d.slug_en === slug);
             if (!dest) return null;
             const accents = ["border-blue-200 bg-blue-50", "border-red-200 bg-red-50", "border-violet-200 bg-violet-50", "border-amber-200 bg-amber-50", "border-emerald-200 bg-emerald-50"];
             return (
@@ -48,6 +57,33 @@ export default function HomePage() {
               </Link>
             );
           })}
+        </section>
+
+        <section>
+          <div className="mb-5">
+            <p className="section-label text-cyan-700">Búsquedas populares</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">Consultas frecuentes de viajeros chilenos</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+              Accede directamente a las preguntas más habituales sobre viajar desde Chile a distintos destinos.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {seoPairs.map((pair) => {
+              const destination = countries.find((country) => country.slug_es === pair.slug);
+              if (!destination) return null;
+              return (
+                <Link
+                  key={pair.slug}
+                  href={`/visa/chile/${destination.slug_es}`}
+                  className="group rounded-xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md"
+                >
+                  <span className="text-xl" aria-hidden>{pair.flag}</span>
+                  <p className="mt-2 text-sm font-semibold leading-snug text-slate-800 group-hover:text-cyan-700">{pair.label}</p>
+                  <span className="mt-3 inline-block text-xs font-bold text-cyan-700">Ver requisitos →</span>
+                </Link>
+              );
+            })}
+          </div>
         </section>
 
         <section>
