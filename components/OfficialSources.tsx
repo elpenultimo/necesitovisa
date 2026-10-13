@@ -2,6 +2,16 @@ import countries from "i18n-iso-countries";
 
 countries.registerLocale({ locale: "es" });
 
+const directSources: Record<string, { label: string; url: string }[]> = {
+  "Estados Unidos": [{label:"CBP: programa ESTA",url:"https://www.help.cbp.gov/s/article/Article-1437?language=en_US"},{label:"Solicitud oficial ESTA",url:"https://esta.cbp.dhs.gov/"}],
+  "Reino Unido": [{label:"GOV.UK: comprobar visa o ETA",url:"https://www.gov.uk/check-uk-visa"},{label:"Solicitud oficial ETA",url:"https://www.gov.uk/eta/apply"}],
+  "Tailandia": [{label:"Inmigración: tarjeta TDAC y excepciones",url:"https://tdac.immigration.go.th/manual/en/faq.html"}],
+  "Malasia": [{label:"Inmigración: MDAC",url:"https://www.imi.gov.my/index.php/en/pengumuman/malaysia-digital-arrival-card-mdac/"}],
+  "Cabo Verde": [{label:"Gobierno: nacionalidades con visa obligatoria",url:"https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde"}],
+  "Arabia Saudí": [{label:"Portal oficial de eVisa turística",url:"https://visa.visitsaudi.com/"}],
+  "Surinam": [{label:"Portal oficial de eVisa",url:"https://suriname.vfsevisa.com/"}],
+};
+
 type OfficialSourcesProps = {
   originName: string;
   destinationName: string;
@@ -52,13 +62,16 @@ export function OfficialSources({ originName, destinationName, isDomesticTrip = 
     <div className="card p-6 space-y-4">
       <div className="space-y-2">
         <h2 className="text-xl font-semibold text-slate-900">
-          📌 Verificación y fuentes oficiales{destinationFlag ? ` ${destinationFlag}` : ""}
+          📌 Fuentes y verificación{destinationFlag ? ` ${destinationFlag}` : ""}
         </h2>
         <p className="text-sm text-slate-600">
           La información mostrada en esta página es referencial y puede cambiar en cualquier momento. Para confirmar requisitos
           actualizados, siempre recomendamos verificar directamente con fuentes oficiales.
         </p>
       </div>
+
+      {(directSources[destinationName] || []).map(source => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="block text-sm font-semibold text-cyan-700 underline">{source.label} ↗</a>)}
+      <p className="text-xs text-slate-500">Los siguientes enlaces abren búsquedas para localizar representaciones y autoridades. Comprueba que el resultado pertenezca al organismo oficial.</p>
 
       {!isDomesticTrip && (
         <a
@@ -84,7 +97,7 @@ export function OfficialSources({ originName, destinationName, isDomesticTrip = 
                 <>Sitio oficial de migración / frontera de {destinationName} (si aplica)</>
               ) : (
                 <>
-                  Embajada o consulado de {destinationFlag ? `${destinationFlag} ` : ""}
+                  Buscar embajada o consulado de {destinationFlag ? `${destinationFlag} ` : ""}
                   {destinationName} en {originFlag ? `${originFlag} ` : ""}
                   {originName}
                 </>
@@ -99,7 +112,7 @@ export function OfficialSources({ originName, destinationName, isDomesticTrip = 
             target="_blank"
             rel="noopener noreferrer"
           >
-            <strong>Ministerio de Relaciones Exteriores de {originName}</strong>
+            <strong>Buscar Ministerio de Relaciones Exteriores de {originName}</strong>
           </a>
         </li>
         <li>
@@ -112,7 +125,7 @@ export function OfficialSources({ originName, destinationName, isDomesticTrip = 
             <strong>
               {isDomesticTrip
                 ? `Autoridad de migración / control fronterizo de ${destinationName} (si aplica)`
-                : `Sitio oficial de inmigración de ${destinationName} (si aplica)`}
+                : `Buscar autoridad de inmigración de ${destinationName}`}
             </strong>
           </a>
         </li>
