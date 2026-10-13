@@ -1,0 +1,36 @@
+{
+  "license": "https://unsplash.com/license",
+  "downloaded": "2026-10-13",
+  "images": [
+    {
+      "file": "destinations/estados-unidos.webp",
+      "source": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29",
+      "description": "Puente Golden Gate en San Francisco"
+    },
+    {
+      "file": "destinations/canada.webp",
+      "source": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce",
+      "description": "Lago Moraine en las Montañas Rocosas de Canadá"
+    },
+    {
+      "file": "destinations/reino-unido.webp",
+      "source": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad",
+      "description": "Londres y el río Támesis"
+    },
+    {
+      "file": "destinations/japon.webp",
+      "source": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e",
+      "description": "Calle tradicional y pagoda en Kioto"
+    },
+    {
+      "file": "destinations/australia.webp",
+      "source": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9",
+      "description": "Bahía de Sídney y su Ópera"
+    },
+    {
+      "file": "travel-hero.webp",
+      "source": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce",
+      "description": "Lago Moraine, Canadá"
+    }
+  ]
+}

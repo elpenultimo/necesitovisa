@@ -1,5 +1,7 @@
 import { listAll } from "@/lib/countryIndex";
 import Link from "next/link";
+import Image from "next/image";
+import { DestinationCard } from "@/components/DestinationCard";
 import { NationalityForm } from "@/components/NationalityForm";
 import { documentGuides } from "@/lib/documentGuides";
 import { HomeForm } from "./partials/HomeForm";
@@ -28,6 +30,8 @@ export default function HomePage() {
   return (
     <div>
       <section className="travel-hero relative overflow-hidden text-white">
+        <Image src="/images/travel-hero.webp" alt="" fill priority sizes="100vw" className="object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/75 to-slate-900/40" aria-hidden="true" />
         <div className="container-box relative z-10 grid gap-10 py-14 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:py-20">
           <div className="space-y-6">
             <p className="section-label text-cyan-200">Tu próximo viaje empieza aquí</p>
@@ -50,19 +54,17 @@ export default function HomePage() {
       </section>
 
       <div className="container-box space-y-14 py-12">
-        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {popularDestinations.map((slug, index) => {
-            const dest = countries.find((d) => d.slug_es === slug || d.slug_en === slug);
-            if (!dest) return null;
-            const accents = ["border-blue-200 bg-blue-50", "border-red-200 bg-red-50", "border-violet-200 bg-violet-50", "border-amber-200 bg-amber-50", "border-emerald-200 bg-emerald-50"];
-            return (
-              <Link key={dest.slug_es} href={`/visa/destino/${dest.slug_es}`} className={`rounded-2xl border p-5 transition hover:-translate-y-1 hover:shadow-lg ${accents[index]}`}>
-                <p className="mb-2 text-2xl">{["🇺🇸", "🇨🇦", "🇬🇧", "🇯🇵", "🇦🇺"][index]}</p>
-                <p className="font-bold text-slate-900">{dest.name_es}</p>
-                <p className="mt-1 text-sm leading-snug text-slate-600">Elige tu nacionalidad</p>
-              </Link>
-            );
-          })}
+        <section className="space-y-5" aria-labelledby="featured-destinations">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div><p className="section-label text-cyan-700">Inspira tu próximo viaje</p><h2 id="featured-destinations" className="mt-2 text-2xl font-bold">Explora destinos del mundo</h2><p className="mt-2 text-sm text-slate-600">Cada viaje empieza con tu pasaporte. Consulta qué necesitas para entrar.</p></div>
+            <Link href="/destinos" className="text-sm font-semibold text-cyan-700">Ver todos los destinos →</Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {popularDestinations.map(slug => {
+              const dest = countries.find(d => d.slug_es === slug);
+              return dest ? <DestinationCard key={slug} slug={slug} name={dest.name_es} /> : null;
+            })}
+          </div>
         </section>
 
         <section className="card space-y-5 p-6 sm:p-8">
