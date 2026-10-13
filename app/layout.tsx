@@ -51,6 +51,7 @@ export default function RootLayout({
               Esta información es referencial. Verifica siempre con la embajada o fuentes oficiales antes de viajar.
               No nos hacemos responsables por cambios en políticas migratorias.
             </p>
+            <p className="text-xs text-sky-300">Fotografías de destinos: <a href="https://unsplash.com" className="underline underline-offset-2">Unsplash</a>.</p>
             <p className="pt-2 text-sky-300">© {new Date().getFullYear()} NecesitoVisa.com</p>
           </div>
         </footer>
