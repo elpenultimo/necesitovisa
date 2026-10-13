@@ -1,0 +1,70 @@
+[
+  {
+    "id": "australia-student-2026",
+    "destination": "Australia",
+    "title": "Visas de estudiante: solicitudes desde Australia y familiares",
+    "effectiveFrom": "2026-10-02",
+    "verifiedAt": "2026-10-12",
+    "text": "La mayoría de titulares de visas temporales ya no puede solicitar una visa de estudiante desde Australia. También se restringen nuevas solicitudes de titulares de visas estudiantiles e inclusión de familiares, con excepciones por estudios, becas, nacionalidad y situaciones transitorias. Si corresponde solicitar desde el extranjero, también debes estar fuera de Australia al concederse la visa. Las visas estudiantiles actuales siguen válidas. Este cambio no modifica por sí solo el requisito para turismo.",
+    "source": "https://www.studyaustralia.gov.au/en/tools-and-resources/news/student-visa-changes-october-2026"
+  },
+  {
+    "id": "uk-visitor-2026",
+    "destination": "United Kingdom",
+    "title": "Actividades permitidas a visitantes",
+    "effectiveFrom": "2026-10-08",
+    "verifiedAt": "2026-10-12",
+    "text": "Los visitantes ya no deben demostrar que la formación que realizarán no está disponible en su país. Artistas, músicos y animadores pueden asistir a ensayos dentro de las actividades autorizadas. Se amplían también actividades bajo Erasmus+, sujetas a requisitos específicos. Revisa el motivo concreto del viaje antes de usar una autorización de visitante.",
+    "source": "https://www.gov.uk/government/publications/statement-of-changes-to-the-immigration-rules-hc-584-3-september-2026/explanatory-memorandum-to-the-statement-of-changes-in-immigration-rules-hc-584-3-september-2026-accessible"
+  },
+  {
+    "id": "uk-euss-2026",
+    "destination": "United Kingdom",
+    "title": "Residentes EUSS que renuevan su pasaporte",
+    "effectiveFrom": "2026-10-08",
+    "verifiedAt": "2026-10-12",
+    "text": "Se elimina la ruta EUSS travel permit. Quienes tienen estatus EUSS y un pasaporte nuevo deben usar Update My Details para vincularlo a su estatus digital, incluso desde fuera del Reino Unido. Esta condición corresponde a residentes EUSS; no es un nuevo requisito de visa para todos los turistas.",
+    "source": "https://www.gov.uk/government/publications/statement-of-changes-to-the-immigration-rules-hc-584-3-september-2026/explanatory-memorandum-to-the-statement-of-changes-in-immigration-rules-hc-584-3-september-2026-accessible"
+  },
+  {
+    "id": "us-esta-fee-2026",
+    "destination": "United States",
+    "requirementTypes": [
+      "ESTA",
+      "ETA"
+    ],
+    "title": "Tarifa de ESTA desde el 16 de octubre de 2026",
+    "effectiveFrom": "2026-10-16",
+    "verifiedAt": "2026-10-12",
+    "text": "La tarifa gubernamental de una autorización ESTA pasa de US$40,27 a US$40,62 para solicitudes desde el 16 de octubre de 2026. Este ajuste no cambia la elegibilidad para el programa. Usa el portal oficial esta.cbp.dhs.gov y comprueba el importe al solicitar.",
+    "source": "https://www.federalregister.gov/documents/2026/10/01/2026-20185/certain-dhs-immigration-related-fees-required-by-hr-1-fiscal-year-2027-adjustments-for-inflation"
+  },
+  {
+    "id": "us-evus-fee-2026",
+    "destination": "United States",
+    "origins": [
+      "China"
+    ],
+    "title": "Tarifa de EVUS para viajeros sujetos a este registro",
+    "effectiveFrom": "2026-10-16",
+    "verifiedAt": "2026-10-12",
+    "text": "La tarifa de inscripción EVUS pasa de US$30,75 a US$31,75 desde el 16 de octubre de 2026. Corresponde a titulares de pasaporte chino sujetos a EVUS con visas B1, B2 o B1/B2 de diez años; no sustituye la visa ni se aplica a todos los viajeros.",
+    "source": "https://www.federalregister.gov/documents/2026/10/01/2026-20185/certain-dhs-immigration-related-fees-required-by-hr-1-fiscal-year-2027-adjustments-for-inflation"
+  },
+  {
+    "id": "montenegro-2026",
+    "destination": "Montenegro",
+    "origins": [
+      "Russia",
+      "Belarus",
+      "Turkey",
+      "China",
+      "Saudi Arabia"
+    ],
+    "title": "Cambio anunciado para viajes desde el 1 de noviembre",
+    "effectiveFrom": "2026-11-01",
+    "verifiedAt": "2026-10-12",
+    "text": "Montenegro anuncia exigencia de visa para entrada desde el 1 de noviembre de 2026 para nacionales de Bielorrusia, China, Rusia, Arabia Saudita y Turquía. Si tu viaje es desde esa fecha, no te bases únicamente en la respuesta rápida: confirma con el consulado la visa y cualquier excepción por pasaporte, residencia o visas de otros países. El comunicado no detalla todas esas excepciones.",
+    "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa"
+  }
+]
