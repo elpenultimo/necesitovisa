@@ -9,7 +9,7 @@ export function BrandLogo({ footer = false }: { footer?: boolean }) {
       className="inline-flex shrink-0 items-center gap-2 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
     >
       <Image
-        src="/brand/globe-route.webp"
+        src="/brand/passport-check.webp"
         alt=""
         aria-hidden="true"
         width={256}
@@ -18,7 +18,7 @@ export function BrandLogo({ footer = false }: { footer?: boolean }) {
         className={footer ? "h-14 w-14 object-contain sm:h-16 sm:w-16" : "h-11 w-11 object-contain sm:h-12 sm:w-12"}
       />
       <span className={`${footer ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"} whitespace-nowrap font-extrabold tracking-tight text-white`}>
-        Necesito<span className="text-cyan-300">Visa</span><span className="font-semibold">.com</span>
+        NecesitoVisa<span className="font-semibold text-cyan-300">.com</span>
       </span>
     </Link>
   );
