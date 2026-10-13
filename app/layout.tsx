@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "NecesitoVisa.com",
   description: "Descubre en segundos si necesitas visa para tu próximo viaje.",
   metadataBase: new URL("https://necesitovisa.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64 96x96", type: "image/x-icon" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 const inter = Inter({ subsets: ["latin"] });
