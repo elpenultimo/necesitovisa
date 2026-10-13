@@ -6,6 +6,13 @@ export type DestinationEntry = {
   name_es: string;
   slug_es: string;
   requirement: string;
+  override?: {
+    source: string;
+    verifiedAt: string;
+    effectiveFrom: string | null;
+    expiresAt: string | null;
+    note: string | null;
+  };
 };
 
 export type OriginVisaData = {
