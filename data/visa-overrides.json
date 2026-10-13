@@ -801,6 +801,40 @@
       "verifiedAt": "2026-09-09",
       "source": "https://www.gov.cv/en/paises-com-visto-obrigatorio-para-cabo-verde",
       "note": "La autoridad de Cabo Verde incluye esta nacionalidad entre las que deben obtener visa antes de viajar; después deben completar el preregistro EASE y, cuando corresponda, pagar la TSA."
+    },
+    {
+      "origin": "Guyana",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-10-12",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "El portal oficial incluye esta nacionalidad entre las elegibles para la eVisa turística. Visa de entradas múltiples, válida por un año, con estancia de hasta 90 días. No cubre estudios ni Hajj. La fuente no precisa la fecha inicial de la nueva elegibilidad."
+    },
+    {
+      "origin": "Kosovo",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-10-12",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "El portal oficial incluye esta nacionalidad entre las elegibles para la eVisa turística. Visa de entradas múltiples, válida por un año, con estancia de hasta 90 días. No cubre estudios ni Hajj. La fuente no precisa la fecha inicial de la nueva elegibilidad."
+    },
+    {
+      "origin": "Mexico",
+      "destination": "Suriname",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-10-01",
+      "verifiedAt": "2026-10-12",
+      "source": "https://gov.sr/wp-content/uploads/2026/09/Herinvoering-Visum-voor-Mexico-en-Boliva.pdf",
+      "note": "Se restablece temporalmente la visa previa para pasaportes ordinarios. Debe solicitarse y obtenerse antes de iniciar el viaje, mediante representación consular o el portal oficial https://suriname.vfsevisa.com/. Pasaportes diplomáticos y de servicio válidos quedan exentos. La medida se revisará periódicamente y no tiene fecha final anunciada."
+    },
+    {
+      "origin": "Bolivia",
+      "destination": "Suriname",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-10-01",
+      "verifiedAt": "2026-10-12",
+      "source": "https://gov.sr/wp-content/uploads/2026/09/Herinvoering-Visum-voor-Mexico-en-Boliva.pdf",
+      "note": "Se restablece temporalmente la visa previa para pasaportes ordinarios. Debe solicitarse y obtenerse antes de iniciar el viaje, mediante representación consular o el portal oficial https://suriname.vfsevisa.com/. Pasaportes diplomáticos y de servicio válidos quedan exentos. La medida se revisará periódicamente y no tiene fecha final anunciada."
     }
   ]
 }
