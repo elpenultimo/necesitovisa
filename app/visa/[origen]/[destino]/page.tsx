@@ -8,6 +8,7 @@ import { VisaRequirementBadge } from "@/components/VisaRequirementBadge";
 import { OfficialSources } from "@/components/OfficialSources";
 import { getRequirementExplanation } from "@/lib/requirementExplain";
 import { getVisaFaq } from "@/lib/visaFaq";
+import { EntryNotices } from "@/components/EntryNotices";
 
 export const runtime = "nodejs";
 
@@ -180,6 +181,10 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
           {!isDomesticTrip && <p className="text-slate-500">{explanation}</p>}
         </div>
       </div>
+
+      {!isDomesticTrip && (
+        <EntryNotices origin={data.origin_key} destination={destination} requirementType={normalizedRequirement.type} />
+      )}
 
       <OfficialSources
         originName={originNameEs}
