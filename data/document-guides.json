@@ -1,0 +1,234 @@
+[
+  {
+    "slug": "esta-estados-unidos",
+    "title": "ESTA para Estados Unidos",
+    "destination": "United States",
+    "destinationSlug": "estados-unidos",
+    "kind": "Autorización electrónica",
+    "summary": "Autorización previa para viajeros elegibles del Programa de Exención de Visas. Tu nacionalidad y circunstancias personales determinan si puedes utilizarla.",
+    "eligibility": "El ESTA corresponde a viajeros elegibles del Visa Waiver Program por visitas cortas. No es una visa ni permite trabajar. La nacionalidad por sí sola no basta: revisa también las preguntas de elegibilidad del formulario oficial.",
+    "facts": [
+      [
+        "Costo oficial",
+        "US$40,27; US$40,62 para solicitudes desde el 16/10/2026."
+      ],
+      [
+        "Estancia",
+        "Hasta 90 días por visita bajo el programa."
+      ],
+      [
+        "Vigencia",
+        "Generalmente dos años o hasta que venza el pasaporte; existen excepciones por nacionalidad."
+      ],
+      [
+        "Anticipación",
+        "Solicita al reservar el viaje y comprueba la aprobación antes de viajar. CBP recomienda al menos 72 horas para entrada por tierra."
+      ]
+    ],
+    "steps": [
+      "Consulta tu ruta y comprueba la elegibilidad en el portal oficial.",
+      "Completa los datos del pasaporte y las preguntas del formulario; revisa cada respuesta antes de pagar.",
+      "Consulta el estado de tu solicitud en el portal y conserva la confirmación."
+    ],
+    "faq": [
+      [
+        "¿La vigencia permite quedarme dos años?",
+        "No. La vigencia de la autorización y la estancia permitida son conceptos distintos."
+      ],
+      [
+        "¿Qué pasa si renuevo el pasaporte?",
+        "Debes solicitar un ESTA nuevo. También puede ser necesario si cambian tus datos o respuestas de elegibilidad."
+      ]
+    ],
+    "applyUrl": "https://esta.cbp.dhs.gov/",
+    "sources": [
+      [
+        "CBP: definición y uso del ESTA",
+        "https://www.help.cbp.gov/s/article/Article-1437?language=en_US"
+      ],
+      [
+        "CBP: vigencia y pasaporte",
+        "https://www.help.cbp.gov/s/article/Article-1883?language=en_US"
+      ],
+      [
+        "CBP: entrada por tierra",
+        "https://www.help.cbp.gov/s/article/Article-1291?language=en_US"
+      ],
+      [
+        "CBP: nueva solicitud",
+        "https://www.help.cbp.gov/s/article/Article-1811?language=en_US"
+      ],
+      [
+        "DHS: tarifas desde el 16/10/2026",
+        "https://www.federalregister.gov/documents/2026/10/01/2026-20185/certain-dhs-immigration-related-fees-required-by-hr-1-fiscal-year-2027-adjustments-for-inflation"
+      ]
+    ],
+    "verifiedAt": "2026-10-12"
+  },
+  {
+    "slug": "eta-reino-unido",
+    "title": "ETA para el Reino Unido",
+    "destination": "United Kingdom",
+    "destinationSlug": "reino-unido",
+    "kind": "Autorización electrónica",
+    "summary": "Comprueba si tu pasaporte necesita ETA o visa y aprende a solicitar directamente la autorización británica.",
+    "eligibility": "Depende de tu nacionalidad y motivo. Entre las excepciones están ciudadanos británicos o irlandeses, titulares de visa o permiso británico y pasajeros en tránsito sin control fronterizo. Cada viajero sujeto al requisito necesita una ETA, incluidos bebés y niños.",
+    "facts": [
+      [
+        "Costo oficial",
+        "£20."
+      ],
+      [
+        "Vigencia",
+        "Dos años o hasta el vencimiento del pasaporte, lo que ocurra primero."
+      ],
+      [
+        "Estancia",
+        "Hasta seis meses para las actividades permitidas."
+      ],
+      [
+        "Respuesta",
+        "Habitualmente dentro de un día, pero puede tardar hasta tres días laborables. Espera la aprobación antes de viajar."
+      ]
+    ],
+    "steps": [
+      "Comprueba si necesitas ETA o visa en GOV.UK.",
+      "Prepara el pasaporte, correo, fotos y medio de pago. Solicita online o en la app oficial UK ETA.",
+      "Revisa el correo de aprobación y viaja con el mismo pasaporte."
+    ],
+    "faq": [
+      [
+        "¿Un intermediario acelera la decisión?",
+        "GOV.UK indica que solicitar por otra web o app no consigue una decisión más rápida."
+      ],
+      [
+        "¿Necesito ETA para una escala?",
+        "No si permaneces en tránsito sin pasar control fronterizo. Si entras al país, comprueba la autorización o visa aplicable a tu nacionalidad."
+      ]
+    ],
+    "applyUrl": "https://www.gov.uk/eta/apply",
+    "sources": [
+      [
+        "GOV.UK: resumen y elegibilidad",
+        "https://www.gov.uk/eta"
+      ],
+      [
+        "GOV.UK: solicitud, tarifa y vigencia",
+        "https://www.gov.uk/eta/apply"
+      ],
+      [
+        "GOV.UK: exenciones",
+        "https://www.gov.uk/eta/when-not-need-eta"
+      ]
+    ],
+    "verifiedAt": "2026-10-12"
+  },
+  {
+    "slug": "tdac-tailandia",
+    "title": "TDAC: tarjeta de llegada de Tailandia",
+    "destination": "Thailand",
+    "destinationSlug": "tailandia",
+    "kind": "Formulario de llegada",
+    "summary": "La tarjeta digital de llegada es un registro adicional. Puede corresponder aunque tu pasaporte no necesite visa.",
+    "eligibility": "Se exige a viajeros extranjeros que ingresan en Tailandia por aire, tierra o mar, incluidos menores. No corresponde al tránsito sin pasar inmigración ni a tripulaciones, según las FAQ oficiales.",
+    "facts": [
+      [
+        "Costo oficial",
+        "Gratuito en el portal oficial."
+      ],
+      [
+        "Cuándo completar",
+        "Dentro de los tres días previos a la llegada, incluyendo el día de llegada."
+      ],
+      [
+        "Uso",
+        "Una tarjeta para cada nueva entrada."
+      ],
+      [
+        "Relación con la visa",
+        "No sustituye una visa ni fija la estancia permitida."
+      ]
+    ],
+    "steps": [
+      "Prepara pasaporte, información del viaje, alojamiento y datos sanitarios solicitados.",
+      "Abre el portal oficial, completa los datos en inglés y revísalos.",
+      "Envía el formulario y conserva la tarjeta recibida por correo."
+    ],
+    "faq": [
+      [
+        "¿Debo completarla si entro sin visa?",
+        "Sí, si estás sujeto al registro. La exención de visa y la tarjeta de llegada son requisitos diferentes."
+      ],
+      [
+        "¿Puedo corregir datos?",
+        "Hay una opción de actualización, pero nombre, nacionalidad y fecha de nacimiento no se pueden cambiar en esa opción. Revisa las instrucciones oficiales."
+      ]
+    ],
+    "applyUrl": "https://tdac.immigration.go.th/",
+    "sources": [
+      [
+        "Inmigración de Tailandia: guía oficial",
+        "https://tdac.immigration.go.th/manual/en/"
+      ],
+      [
+        "Inmigración de Tailandia: preguntas y excepciones",
+        "https://tdac.immigration.go.th/manual/en/faq.html"
+      ]
+    ],
+    "verifiedAt": "2026-10-12"
+  },
+  {
+    "slug": "mdac-malasia",
+    "title": "MDAC: tarjeta de llegada de Malasia",
+    "destination": "Malaysia",
+    "destinationSlug": "malasia",
+    "kind": "Formulario de llegada",
+    "summary": "Consulta el registro digital de llegada de Malasia y accede al formulario gubernamental gratuito.",
+    "eligibility": "La MDAC se solicita a los viajeros extranjeros sujetos al registro. Comprueba en el portal de Inmigración si tu nacionalidad, documento o estatus está exento. El resultado de visa de tu ruta no decide por sí solo si necesitas esta tarjeta.",
+    "facts": [
+      [
+        "Costo oficial",
+        "Gratuito."
+      ],
+      [
+        "Cuándo completar",
+        "Dentro de los tres días anteriores a la entrada."
+      ],
+      [
+        "Dónde",
+        "Portal del Departamento de Inmigración de Malasia."
+      ],
+      [
+        "Relación con la visa",
+        "Es un formulario de llegada; confirma aparte la visa y duración de estancia según tu pasaporte."
+      ]
+    ],
+    "steps": [
+      "Consulta tu ruta y comprueba las condiciones del registro en el portal oficial.",
+      "Accede al formulario gubernamental dentro de la ventana de tres días.",
+      "Revisa tus datos antes de enviarlos y conserva la confirmación que proporcione el sistema."
+    ],
+    "faq": [
+      [
+        "¿Hay que pagar por el registro?",
+        "La autoridad consular indica que la MDAC es gratuita. Un cobro de un intermediario no es la tarifa del formulario oficial."
+      ],
+      [
+        "¿Completar la tarjeta garantiza la entrada?",
+        "No. Debes cumplir también las condiciones migratorias correspondientes a tu viaje."
+      ]
+    ],
+    "applyUrl": "https://imigresen-online.imi.gov.my/mdac/main",
+    "sources": [
+      [
+        "Departamento de Inmigración: MDAC",
+        "https://www.imi.gov.my/index.php/en/pengumuman/malaysia-digital-arrival-card-mdac/"
+      ],
+      [
+        "Ministerio de Exteriores: plazo y gratuidad",
+        "https://www.kln.gov.my/web/fji_suva/requirement_foreigner"
+      ]
+    ],
+    "verifiedAt": "2026-10-12"
+  }
+]

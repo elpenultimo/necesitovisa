@@ -1,5 +1,7 @@
 import { listAll } from "@/lib/countryIndex";
 import Link from "next/link";
+import { NationalityForm } from "@/components/NationalityForm";
+import { documentGuides } from "@/lib/documentGuides";
 import { HomeForm } from "./partials/HomeForm";
 
 export const runtime = "nodejs";
@@ -7,7 +9,7 @@ export const runtime = "nodejs";
 const countries = listAll();
 
 export default function HomePage() {
-  const popularDestinations = ["estados-unidos", "canada", "reino-unido", "schengen", "australia"];
+  const popularDestinations = ["estados-unidos", "canada", "reino-unido", "japon", "australia"];
   const seoPairs = [
     { origin: "peru", destination: "cabo-verde", flag: "🇵🇪 → 🇨🇻", label: "¿Necesita visa un peruano para viajar a Cabo Verde?" },
     { origin: "mexico", destination: "cabo-verde", flag: "🇲🇽 → 🇨🇻", label: "¿Necesita visa un mexicano para viajar a Cabo Verde?" },
@@ -54,21 +56,32 @@ export default function HomePage() {
             if (!dest) return null;
             const accents = ["border-blue-200 bg-blue-50", "border-red-200 bg-red-50", "border-violet-200 bg-violet-50", "border-amber-200 bg-amber-50", "border-emerald-200 bg-emerald-50"];
             return (
-              <Link key={dest.slug_es} href={`/visa/chile/${dest.slug_es}`} className={`rounded-2xl border p-5 transition hover:-translate-y-1 hover:shadow-lg ${accents[index]}`}>
-                <p className="mb-2 text-2xl">{["🇺🇸", "🇨🇦", "🇬🇧", "🇪🇺", "🇦🇺"][index]}</p>
+              <Link key={dest.slug_es} href={`/visa/destino/${dest.slug_es}`} className={`rounded-2xl border p-5 transition hover:-translate-y-1 hover:shadow-lg ${accents[index]}`}>
+                <p className="mb-2 text-2xl">{["🇺🇸", "🇨🇦", "🇬🇧", "🇯🇵", "🇦🇺"][index]}</p>
                 <p className="font-bold text-slate-900">{dest.name_es}</p>
-                <p className="mt-1 text-sm leading-snug text-slate-600">Requisitos para personas de Chile</p>
+                <p className="mt-1 text-sm leading-snug text-slate-600">Elige tu nacionalidad</p>
               </Link>
             );
           })}
         </section>
 
+        <section className="card space-y-5 p-6 sm:p-8">
+          <p className="section-label text-cyan-700">Viaja con tu pasaporte</p>
+          <h2 className="text-2xl font-bold">¿A qué países puedes viajar sin visa?</h2>
+          <p className="text-sm text-slate-600">Elige tu nacionalidad para comparar destinos sin visa, con autorización electrónica, visa a la llegada y eVisa.</p>
+          <NationalityForm countries={countries.map(c=>({name:c.name_es,slug:c.slug_es}))} action="/paises-sin-visa" />
+        </section>
+        <section className="space-y-5">
+          <div><p className="section-label text-cyan-700">Autorizaciones y formularios</p><h2 className="mt-2 text-2xl font-bold">Prepara los documentos de tu viaje</h2><p className="mt-2 text-sm text-slate-600">Guías internacionales para entender el requisito y gestionarlo directamente en el sitio oficial.</p></div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{documentGuides.map(g=><Link key={g.slug} href={`/documentos/${g.slug}`} className="card space-y-3 p-5 hover:border-cyan-300"><span className="text-xs font-semibold text-cyan-700">{g.kind}</span><h3 className="font-bold">{g.title}</h3><span className="text-sm text-cyan-700">Consultar guía →</span></Link>)}</div>
+        </section>
+
         <section>
           <div className="mb-5">
-            <p className="section-label text-cyan-700">Búsquedas populares</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-900">Consultas frecuentes de viajeros chilenos</h2>
+            <p className="section-label text-cyan-700">Consultas por ruta</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">Consultas frecuentes por nacionalidad y destino</h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-              Accede directamente a las preguntas más habituales sobre viajar desde Chile a distintos destinos.
+              Explora rutas de distintas nacionalidades. Para consultar la tuya, selecciona tu pasaporte y destino.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -96,7 +109,7 @@ export default function HomePage() {
             <p className="section-label text-cyan-700">Guías por destino</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-900">Requisitos de visa según el destino</h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-              Consulta las nacionalidades que necesitan visa para viajar a destinos con mayor demanda en nuestro buscador.
+              Explora destinos y consulta las condiciones de entrada según el pasaporte con el que viajarás.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

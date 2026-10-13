@@ -27,16 +27,18 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
         <header className="sticky top-0 z-20 border-b border-white/10 bg-[#06283d]/95 text-white shadow-lg backdrop-blur">
-          <div className="container-box flex items-center justify-between py-3.5">
+          <div className="container-box flex flex-wrap items-center justify-between gap-3 py-3.5">
             <Link href="/" className="flex items-center gap-3 font-semibold text-lg text-white">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 text-[#06283d] font-black shadow-lg">
                 NV
               </span>
               <span>NecesitoVisa<span className="text-cyan-300">.com</span></span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm font-medium text-sky-100">
-              <Link href="/" className="hover:text-white">Inicio</Link>
-              <Link href="/visa" className="hover:text-white">Visas</Link>
+            <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-sky-100">
+              <Link href="/visa" className="hover:text-white">Consultar requisitos</Link>
+              <Link href="/destinos" className="hover:text-white">Destinos</Link>
+              <Link href="/documentos" className="hover:text-white">Documentos</Link>
+              <Link href="/paises-sin-visa" className="hover:text-white">Países sin visa</Link>
               <Link href="/faq" className="hover:text-white">FAQ</Link>
             </nav>
           </div>

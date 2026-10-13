@@ -9,6 +9,8 @@ import { OfficialSources } from "@/components/OfficialSources";
 import { getRequirementExplanation } from "@/lib/requirementExplain";
 import { getVisaFaq } from "@/lib/visaFaq";
 import { EntryNotices } from "@/components/EntryNotices";
+import { guidesForDestination } from "@/lib/documentGuides";
+import Link from "next/link";
 
 export const runtime = "nodejs";
 
@@ -184,6 +186,14 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
 
       {!isDomesticTrip && (
         <EntryNotices origin={data.origin_key} destination={destination} requirementType={normalizedRequirement.type} />
+      )}
+
+      {!isDomesticTrip && guidesForDestination(destination.key).length > 0 && (
+        <section className="card space-y-4 p-6">
+          <h2 className="text-xl font-semibold">Documentos y formularios de este destino</h2>
+          <p className="text-sm text-slate-600">Consulta quién necesita cada documento y sus excepciones. La guía no sustituye la verificación de tu caso concreto.</p>
+          {guidesForDestination(destination.key).map(guide => <Link key={guide.slug} href={`/documentos/${guide.slug}`} className="block font-semibold text-cyan-700 underline">{guide.title} →</Link>)}
+        </section>
       )}
 
       <OfficialSources
