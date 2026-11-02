@@ -835,6 +835,33 @@
       "verifiedAt": "2026-10-12",
       "source": "https://gov.sr/wp-content/uploads/2026/09/Herinvoering-Visum-voor-Mexico-en-Boliva.pdf",
       "note": "Se restablece temporalmente la visa previa para pasaportes ordinarios. Debe solicitarse y obtenerse antes de iniciar el viaje, mediante representación consular o el portal oficial https://suriname.vfsevisa.com/. Pasaportes diplomáticos y de servicio válidos quedan exentos. La medida se revisará periódicamente y no tiene fecha final anunciada."
+    },
+    {
+      "origin": "Russia",
+      "destination": "Montenegro",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-11-01",
+      "verifiedAt": "2026-11-02",
+      "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa",
+      "note": "Desde el 1 de noviembre de 2026, los nacionales de Rusia deben obtener visa antes de viajar a Montenegro. Confirma con el consulado si alguna excepción por tipo de pasaporte, residencia o visa de un tercer país corresponde a tu caso."
+    },
+    {
+      "origin": "Belarus",
+      "destination": "Montenegro",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-11-01",
+      "verifiedAt": "2026-11-02",
+      "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa",
+      "note": "Desde el 1 de noviembre de 2026, los nacionales de Bielorrusia deben obtener visa antes de viajar a Montenegro. Confirma con el consulado si alguna excepción por tipo de pasaporte, residencia o visa de un tercer país corresponde a tu caso."
+    },
+    {
+      "origin": "Turkey",
+      "destination": "Montenegro",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-11-01",
+      "verifiedAt": "2026-11-02",
+      "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa",
+      "note": "Desde el 1 de noviembre de 2026, los nacionales de Turquía deben obtener visa antes de viajar a Montenegro. Confirma con el consulado si alguna excepción por tipo de pasaporte, residencia o visa de un tercer país corresponde a tu caso."
     }
   ]
 }
