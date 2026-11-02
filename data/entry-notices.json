@@ -61,10 +61,35 @@
       "China",
       "Saudi Arabia"
     ],
-    "title": "Cambio anunciado para viajes desde el 1 de noviembre",
+    "title": "Visa obligatoria desde el 1 de noviembre de 2026",
     "effectiveFrom": "2026-11-01",
-    "verifiedAt": "2026-10-12",
-    "text": "Montenegro anuncia exigencia de visa para entrada desde el 1 de noviembre de 2026 para nacionales de Bielorrusia, China, Rusia, Arabia Saudita y Turquía. Si tu viaje es desde esa fecha, no te bases únicamente en la respuesta rápida: confirma con el consulado la visa y cualquier excepción por pasaporte, residencia o visas de otros países. El comunicado no detalla todas esas excepciones.",
+    "verifiedAt": "2026-11-02",
+    "text": "Montenegro exige visa previa a nacionales de Bielorrusia, China, Rusia, Arabia Saudita y Turquía desde el 1 de noviembre de 2026. Confirma con el consulado si existe alguna excepción aplicable por tipo de pasaporte, residencia o visa válida de un tercer país.",
     "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa"
+  },
+  {
+    "id": "kazakhstan-qazeta-2026",
+    "destination": "Kazakhstan",
+    "requirementTypes": [
+      "NO_VISA",
+      "NO_VISA_DAYS"
+    ],
+    "title": "QazETA: implantación gradual para entradas sin visa",
+    "effectiveFrom": "2026-11-01",
+    "verifiedAt": "2026-11-02",
+    "text": "Kazajistán inició la implantación gradual de QazETA para viajeros que utilizan el régimen sin visa. Durante la transición, hasta el 30 de junio de 2027, se recomienda solicitarla y no se puede rechazar la entrada únicamente por no tenerla. Desde el 1 de julio de 2027 será obligatoria en los casos previstos. La solicitud es gratuita, se presenta en la aplicación oficial al menos 72 horas antes y queda vinculada al pasaporte durante 180 días. No cambia la duración permitida de la estancia. Existen excepciones, entre ellas menores de 16 años, mayores de 65, tránsito internacional sin pasar el control fronterizo y titulares de visa o residencia de Kazajistán.",
+    "source": "https://www.gov.kz/memleket/entities/mfa-delhi/press/news/details/1090086?lang=en"
+  },
+  {
+    "id": "us-cnmi-evs-tap-suspension-2026",
+    "destination": "United States",
+    "origins": [
+      "China"
+    ],
+    "title": "Islas Marianas del Norte: EVS-TAP suspendido",
+    "effectiveFrom": "2026-10-30",
+    "verifiedAt": "2026-11-02",
+    "text": "Estados Unidos suspendió EVS-TAP, que permitía a ciertos ciudadanos de China viajar sin visa exclusivamente a las Islas Marianas del Norte por hasta 14 días. La suspensión alcanza nuevas solicitudes y autorizaciones EVS-TAP ya aprobadas. Para futuros viajes se requiere la visa estadounidense correspondiente, salvo que el pasajero cumpla otra excepción legal. La medida no acorta la estancia ya autorizada de quienes ingresaron antes de la suspensión.",
+    "source": "https://www.govinfo.gov/content/pkg/FR-2026-10-27/html/2026-21880.htm"
   }
 ]
