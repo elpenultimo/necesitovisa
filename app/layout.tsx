@@ -35,6 +35,7 @@ export default function RootLayout({
               <Link href="/destinos" className="hover:text-white">Destinos</Link>
               <Link href="/documentos" className="hover:text-white">Documentos</Link>
               <Link href="/paises-sin-visa" className="hover:text-white">Países sin visa</Link>
+              <Link href="/novedades" prefetch={false} className="hover:text-white">Novedades</Link>
               <Link href="/faq" className="hover:text-white">FAQ</Link>
             </nav>
           </div>
@@ -44,6 +45,7 @@ export default function RootLayout({
           <div className="container-box space-y-3 py-10 text-sm">
             <div className="pb-3"><BrandLogo footer /></div>
             <p className="font-semibold text-white">Información para viajar mejor informado</p>
+            <Link href="/novedades" prefetch={false} className="underline underline-offset-2">Novedades de visas</Link>
             <p className="max-w-3xl text-sky-200">
               Esta información es referencial. Verifica siempre con la embajada o fuentes oficiales antes de viajar.
               No nos hacemos responsables por cambios en políticas migratorias.
