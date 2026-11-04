@@ -1,6 +1,7 @@
 import { listAll } from "@/lib/countryIndex";
 import { readVisaDataByKey } from "@/lib/visaData";
 import { documentGuides } from "@/lib/documentGuides";
+import { newsEditions } from "@/lib/newsEditions";
 
 const BASE_URL = "https://necesitovisa.com";
 
@@ -39,7 +40,8 @@ export function GET(): Response {
     { loc: buildUrl("/"), changefreq: "monthly", priority: "1.0" },
     { loc: buildUrl("/visa"), changefreq: "monthly", priority: "0.6" },
     { loc: buildUrl("/faq"), changefreq: "monthly", priority: "0.6" },
-    ...["/destinos", "/documentos", "/paises-sin-visa"].map(path => ({ loc: buildUrl(path), changefreq: "weekly" as const, priority: "0.8" as const })),
+    ...["/destinos", "/documentos", "/paises-sin-visa", "/novedades"].map(path => ({ loc: buildUrl(path), changefreq: "weekly" as const, priority: "0.8" as const })),
+    ...newsEditions.map(edition => ({ loc: buildUrl(`/novedades/${edition.slug}`), changefreq: "monthly" as const, priority: "0.6" as const })),
     ...documentGuides.map(guide => ({ loc: buildUrl(`/documentos/${guide.slug}`), changefreq: "weekly" as const, priority: "0.8" as const })),
     ...listAll().map((country) => ({
       loc: buildUrl(`/visa/destino/${country.slug_es}`),
