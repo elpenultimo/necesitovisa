@@ -862,6 +862,39 @@
       "verifiedAt": "2026-11-02",
       "source": "https://www.gov.me/en/article/montenegro-fully-aligns-its-visa-policy-with-the-european-union-citizens-of-numerous-countries-can-now-apply-for-a-montenegrin-visa",
       "note": "Desde el 1 de noviembre de 2026, los nacionales de Turquía deben obtener visa antes de viajar a Montenegro. Confirma con el consulado si alguna excepción por tipo de pasaporte, residencia o visa de un tercer país corresponde a tu caso."
+    },
+    {
+      "origin": "Mexico",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-11-09",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "Pasaportes de esta nacionalidad: elegibles para eVisa turística de un año y múltiples entradas, con hasta 90 días en el país. Permite turismo, eventos, visitas y Umrah; no Hajj ni estudios. El pasaporte debe tener al menos seis meses de vigencia desde la entrada. Confirma condiciones y tarifa en el portal oficial. La elegibilidad está vigente; el portal saudí no publica la fecha exacta de incorporación de cada nacionalidad. La SRE mexicana indica aplicación desde el 5 de noviembre de 2026.",
+      "effectiveFrom": "2026-11-05"
+    },
+    {
+      "origin": "Serbia",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-11-09",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "Pasaportes de esta nacionalidad: elegibles para eVisa turística de un año y múltiples entradas, con hasta 90 días en el país. Permite turismo, eventos, visitas y Umrah; no Hajj ni estudios. El pasaporte debe tener al menos seis meses de vigencia desde la entrada. Confirma condiciones y tarifa en el portal oficial. La elegibilidad está vigente; el portal saudí no publica la fecha exacta de incorporación de cada nacionalidad."
+    },
+    {
+      "origin": "Bosnia and Herzegovina",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-11-09",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "Pasaportes de esta nacionalidad: elegibles para eVisa turística de un año y múltiples entradas, con hasta 90 días en el país. Permite turismo, eventos, visitas y Umrah; no Hajj ni estudios. El pasaporte debe tener al menos seis meses de vigencia desde la entrada. Confirma condiciones y tarifa en el portal oficial. La elegibilidad está vigente; el portal saudí no publica la fecha exacta de incorporación de cada nacionalidad."
+    },
+    {
+      "origin": "North Macedonia",
+      "destination": "Saudi Arabia",
+      "requirement": "e-visa",
+      "verifiedAt": "2026-11-09",
+      "source": "https://visa.visitsaudi.com/",
+      "note": "Pasaportes de esta nacionalidad: elegibles para eVisa turística de un año y múltiples entradas, con hasta 90 días en el país. Permite turismo, eventos, visitas y Umrah; no Hajj ni estudios. El pasaporte debe tener al menos seis meses de vigencia desde la entrada. Confirma condiciones y tarifa en el portal oficial. La elegibilidad está vigente; el portal saudí no publica la fecha exacta de incorporación de cada nacionalidad."
     }
   ]
 }

@@ -91,5 +91,22 @@
     "verifiedAt": "2026-11-02",
     "text": "Estados Unidos suspendió EVS-TAP, que permitía a ciertos ciudadanos de China viajar sin visa exclusivamente a las Islas Marianas del Norte por hasta 14 días. La suspensión alcanza nuevas solicitudes y autorizaciones EVS-TAP ya aprobadas. Para futuros viajes se requiere la visa estadounidense correspondiente, salvo que el pasajero cumpla otra excepción legal. La medida no acorta la estancia ya autorizada de quienes ingresaron antes de la suspensión.",
     "source": "https://www.govinfo.gov/content/pkg/FR-2026-10-27/html/2026-21880.htm"
+  },
+  {
+    "id": "us-ebola-attestation-2026",
+    "destination": "United States",
+    "title": "Vuelos a Estados Unidos: declaración sanitaria obligatoria",
+    "effectiveFrom": "2026-11-03",
+    "verifiedAt": "2026-11-09",
+    "source": "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html",
+    "text": "Para vuelos desde el extranjero que salen hacia Estados Unidos desde el 3 de noviembre de 2026 a las 23:59 EST, cada persona debe declarar antes de embarcar que no estuvo en la República Democrática del Congo durante los 21 días anteriores. Incluye escalas en ese país, aunque no se baje del avión. Aplica a todas las nacionalidades, ciudadanos estadounidenses, residentes permanentes y conexiones por Estados Unidos. La aerolínea recoge la declaración; sin ella o una exención gubernamental se deniega el embarque. No corresponde a entrada terrestre o marítima. Orden del 22 de octubre, modificada el 28 de octubre; es adicional a visa o ESTA."
+  },
+  {
+    "id": "ghana-health-declaration-2026",
+    "destination": "Ghana",
+    "title": "Declaración sanitaria y controles por ébola",
+    "verifiedAt": "2026-11-09",
+    "source": "https://ehds.ghs.gov.gh/",
+    "text": "El Gobierno anunció el 3 de noviembre de 2026 controles reforzados ya implantados en aeropuertos internacionales. Todos los pasajeros deben completar la declaración sanitaria antes del viaje, informar viajes o tránsitos de los últimos 21 días y posibles exposiciones, y mostrar el QR al personal sanitario. A la llegada se revisan temperatura y antecedentes. Según síntomas, exposición o procedencia puede haber evaluación adicional y seguimiento hasta 21 días. La comunicación no fija una fecha efectiva distinta de su anuncio. Este formulario es adicional al requisito de visa."
   }
 ]

@@ -230,5 +230,175 @@
       ]
     ],
     "verifiedAt": "2026-10-12"
+  },
+  {
+    "slug": "declaracion-sanitaria-estados-unidos",
+    "title": "Declaración sanitaria para vuelos a Estados Unidos",
+    "destination": "United States",
+    "destinationSlug": "estados-unidos",
+    "kind": "Formulario sanitario",
+    "summary": "Declaración previa al embarque sobre presencia en RD del Congo durante los últimos 21 días. También corresponde a conexiones por Estados Unidos.",
+    "eligibility": "Cada persona que embarca desde el extranjero hacia Estados Unidos, incluidos ciudadanos, residentes permanentes y pasajeros en conexión, salvo exención del Gobierno estadounidense. La aerolínea puede recogerla en papel o digitalmente; un representante autorizado puede completarla por otra persona.",
+    "facts": [
+      [
+        "Vigencia",
+        "Para vuelos que salen desde el 3/11/2026 a las 23:59 EST. Orden inicial del 22/10 y modificación del 28/10."
+      ],
+      [
+        "Historial de viajes",
+        "Incluye presencia y tránsito aeroportuario por RD del Congo durante los 21 días anteriores."
+      ],
+      [
+        "Visa y tránsito",
+        "Es adicional a visa o ESTA; también se aplica si solo haces conexión por EE. UU."
+      ],
+      [
+        "Excepciones",
+        "Consulta las exenciones gubernamentales en CDC. No se aplica a cruces terrestres ni puertos marítimos."
+      ]
+    ],
+    "steps": [
+      "Consulta las instrucciones de CDC y el procedimiento de recogida de tu aerolínea.",
+      "Revisa todo tu itinerario de los últimos 21 días, incluidas escalas. Si estuviste en RD del Congo, consulta las restricciones y posibles exenciones antes de viajar.",
+      "Entrega la declaración por el medio indicado por la aerolínea antes del embarque."
+    ],
+    "faq": [
+      [
+        "¿Puedo embarcar sin declararlo?",
+        "No, salvo exención gubernamental aplicable. No presentes una declaración falsa."
+      ],
+      [
+        "¿Basta tener ESTA o visa?",
+        "No. La autorización migratoria y la declaración sanitaria son requisitos distintos."
+      ]
+    ],
+    "applyUrl": "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html",
+    "sources": [
+      [
+        "CDC: orden, formulario e instrucciones",
+        "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html"
+      ]
+    ],
+    "verifiedAt": "2026-11-09"
+  },
+  {
+    "slug": "declaracion-sanitaria-ghana",
+    "title": "Declaración sanitaria de Ghana",
+    "destination": "Ghana",
+    "destinationSlug": "ghana",
+    "kind": "Formulario sanitario",
+    "summary": "Registro previo al viaje y controles sanitarios por ébola para pasajeros que llegan a Ghana.",
+    "eligibility": "Todos los pasajeros que llegan a aeropuertos internacionales, sin distinción de nacionalidad. La evaluación adicional depende del historial de viajes, síntomas y exposición.",
+    "facts": [
+      [
+        "Estado",
+        "Medidas anunciadas el 3/11/2026 como ya implantadas; no se indica otra fecha efectiva."
+      ],
+      [
+        "Antes del viaje",
+        "Completa la declaración oficial y comunica viajes o tránsitos de los últimos 21 días y posibles exposiciones."
+      ],
+      [
+        "Comprobante",
+        "El portal genera un QR para mostrar a Port Health a la llegada."
+      ],
+      [
+        "Control sanitario",
+        "Revisión de temperatura e historial; puede haber evaluación adicional y seguimiento de hasta 21 días."
+      ]
+    ],
+    "steps": [
+      "Abre el formulario del Ghana Health Service antes de viajar.",
+      "Completa información del pasajero, vuelo, viajes de los últimos 21 días, síntomas y exposición.",
+      "Conserva el QR y muéstralo al personal sanitario; sigue sus instrucciones."
+    ],
+    "faq": [
+      [
+        "¿Sustituye la visa?",
+        "No. Comprueba por separado la visa correspondiente a tu pasaporte."
+      ],
+      [
+        "¿Todos deben hacer cuarentena?",
+        "El aviso revisado prevé evaluación según riesgo y seguimiento. No establece cuarentena universal."
+      ]
+    ],
+    "applyUrl": "https://ehds.ghs.gov.gh/",
+    "sources": [
+      [
+        "Ghana Health Service: formulario e instrucciones",
+        "https://ehds.ghs.gov.gh/"
+      ],
+      [
+        "Gobierno de Ghana: anuncio del 3/11/2026",
+        "https://www.isd.gov.gh/ghana-introduces-ebola-screening-at-all-international-airports/"
+      ]
+    ],
+    "verifiedAt": "2026-11-09"
+  },
+  {
+    "slug": "evisa-arabia-saudi",
+    "title": "eVisa turística de Arabia Saudita",
+    "destination": "Saudi Arabia",
+    "destinationSlug": "arabia-saudi",
+    "kind": "Visa electrónica",
+    "summary": "Solicita la visa turística en el portal oficial. México, Serbia, Bosnia y Herzegovina y Macedonia del Norte figuran entre las nacionalidades elegibles.",
+    "eligibility": "Titulares de pasaportes incluidos en la lista oficial de nacionalidades elegibles. Esta ampliación confirma la vía electrónica para México, Serbia, Bosnia y Herzegovina y Macedonia del Norte; no convierte el viaje en una entrada sin visa.",
+    "facts": [
+      [
+        "Validez y entradas",
+        "Un año, con múltiples entradas."
+      ],
+      [
+        "Estancia",
+        "Hasta 90 días en el país, conforme a las condiciones del visado."
+      ],
+      [
+        "Propósito",
+        "Turismo, eventos, visitas a familiares y amistades y Umrah. No permite Hajj ni estudios."
+      ],
+      [
+        "Pasaporte",
+        "Al menos seis meses de vigencia desde la fecha de entrada."
+      ],
+      [
+        "Costo",
+        "Comprueba la tarifa vigente durante la solicitud en el portal oficial."
+      ],
+      [
+        "Fecha de ampliación",
+        "México: desde el 5/11/2026 según su SRE. Para las otras tres nacionalidades se confirma elegibilidad vigente, sin fecha exacta publicada en el portal saudí."
+      ]
+    ],
+    "steps": [
+      "Comprueba la lista de pasaportes elegibles y que tu propósito admita una visa turística.",
+      "Solicita en el portal oficial y revisa pasaporte, condiciones y tarifa antes de pagar.",
+      "Espera la aprobación y comprueba la validez y estancia que figuren en tu eVisa."
+    ],
+    "faq": [
+      [
+        "¿Es una exención de visa?",
+        "No. La eVisa es una visa que se solicita online."
+      ],
+      [
+        "¿También puedo pedir visa a la llegada?",
+        "Esta guía confirma la eVisa. Comprueba las condiciones de la visa a la llegada con las autoridades saudíes y la aerolínea antes de depender de esa alternativa."
+      ]
+    ],
+    "applyUrl": "https://visa.visitsaudi.com/",
+    "sources": [
+      [
+        "Ministerio de Turismo: portal de eVisa",
+        "https://visa.visitsaudi.com/"
+      ],
+      [
+        "Condiciones: nacionalidades y pasaporte",
+        "https://visa.visitsaudi.com/Home/TermsConditions"
+      ],
+      [
+        "SRE de México: aplicación desde el 5/11/2026",
+        "https://portales.sre.gob.mx/guiadeviaje/103-ficha-de-paises/277-arabia-saudita"
+      ]
+    ],
+    "verifiedAt": "2026-11-09"
   }
 ]
