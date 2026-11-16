@@ -108,5 +108,36 @@
     "verifiedAt": "2026-11-09",
     "source": "https://ehds.ghs.gov.gh/",
     "text": "El Gobierno anunció el 3 de noviembre de 2026 controles reforzados ya implantados en aeropuertos internacionales. Todos los pasajeros deben completar la declaración sanitaria antes del viaje, informar viajes o tránsitos de los últimos 21 días y posibles exposiciones, y mostrar el QR al personal sanitario. A la llegada se revisan temperatura y antecedentes. Según síntomas, exposición o procedencia puede haber evaluación adicional y seguimiento hasta 21 días. La comunicación no fija una fecha efectiva distinta de su anuncio. Este formulario es adicional al requisito de visa."
+  },
+  {
+    "id": "us-ebola-entry-suspension-2026",
+    "destination": "United States",
+    "title": "Suspensión de entrada por historial de viaje",
+    "verifiedAt": "2026-11-16",
+    "source": "https://www.cdc.gov/port-health/legal-authorities/evdorder.html",
+    "text": "Los CDC prorrogaron el 10 de noviembre de 2026, por 30 días, la suspensión de entrada de ciertos extranjeros con presencia física en República Democrática del Congo, Uganda o Sudán del Sur durante los 21 días previos. El alcance depende del historial de viaje y de las excepciones de la orden. Consulta la orden vigente antes de viajar. La declaración sanitaria de embarque sobre RD del Congo es un trámite distinto.",
+    "effectiveFrom": "2026-11-10"
+  },
+  {
+    "id": "cape-verde-tsa-2026",
+    "destination": "Cape Verde",
+    "title": "Tasa aeroportuaria internacional de 4.400 CVE",
+    "verifiedAt": "2026-11-16",
+    "source": "https://boe.incv.cv/Bulletins/View/114435",
+    "text": "Desde el 4 de noviembre de 2026, la Tasa de Seguridad Aeroportuaria (TSA) de vuelos internacionales es de 4.400 CVE cuando corresponde pagarla. Se elimina el límite de edad para la exención de hijos de personas nacidas en Cabo Verde. Verifica tu exención y el prerregistro EASE antes de viajar. La tasa también puede corresponder a viajeros exentos de visa.",
+    "effectiveFrom": "2026-11-04"
+  },
+  {
+    "id": "syria-prior-approval-2026",
+    "destination": "Syria",
+    "title": "Retiro de la aprobación previa temporal",
+    "verifiedAt": "2026-11-16",
+    "source": "https://sana.sy/en/politics/2358517/",
+    "text": "Desde el 13 de noviembre de 2026 se retiró la aprobación previa temporal para ciudadanos de Estados Unidos y Reino Unido y se restablecieron los procedimientos anteriores. Confirma con el consulado qué visa y modalidad corresponden a tu pasaporte y punto de entrada antes de viajar.",
+    "effectiveFrom": "2026-11-13",
+    "origins": [
+      "United States",
+      "United Kingdom"
+    ]
   }
 ]

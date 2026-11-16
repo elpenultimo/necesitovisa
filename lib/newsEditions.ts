@@ -1,5 +1,63 @@
 export const newsEditions = [
 {
+  "slug": "cambios-visas-9-16-noviembre-2026",
+  "title": "Cambios de visas y entrada del 9 al 16 de noviembre de 2026",
+  "period": "9 al 16 de noviembre de 2026",
+  "summary": "Nueva Zelanda suspende la exención para Kuwait, Estados Unidos prorroga restricciones por historial de viaje y Cabo Verde actualiza su tasa aeroportuaria. Fuentes verificadas el 16 de noviembre de 2026 (America/Santiago).",
+  "changes": [
+    {
+      "title": "Nueva Zelanda · Visa previa temporal para Kuwait",
+      "explanation": "La exención para visitas aéreas con pasaporte kuwaití queda suspendida desde las 23:59 del 12 de noviembre hasta las 23:59 del 11 de febrero de 2027, hora de Nueva Zelanda, salvo prórroga.",
+      "action": "Obtén la visa correspondiente antes de volar, incluso si tienes una NZeTA para visitas. Si solo haces escala, consulta las reglas de tránsito.",
+      "source": "https://www.immigration.govt.nz/about-us/news-centre/visa-waiver-travel-changes-for-kuwait-nationals/",
+      "sourceLabel": "Immigration New Zealand",
+      "route": "/visa/kuwait/nueva-zelanda",
+      "routeLabel": "Kuwait → Nueva Zelanda"
+    },
+    {
+      "title": "Estados Unidos · Suspensión por historial de viaje",
+      "explanation": "Los CDC prorrogaron el 10 de noviembre de 2026, por 30 días, la suspensión de entrada de ciertos extranjeros con presencia física en República Democrática del Congo, Uganda o Sudán del Sur durante los 21 días previos. El alcance depende del historial de viaje y de las excepciones de la orden. Consulta la orden vigente antes de viajar. La declaración sanitaria de embarque sobre RD del Congo es un trámite distinto.",
+      "action": "Revisa si la orden te cubre según los países que visitaste en los últimos 21 días.",
+      "source": "https://www.cdc.gov/port-health/legal-authorities/evdorder.html",
+      "sourceLabel": "CDC: orden del 10 de noviembre",
+      "route": "/visa/uganda/estados-unidos",
+      "routeLabel": "Uganda → Estados Unidos"
+    },
+    {
+      "title": "Siria · Retiro de aprobación previa temporal",
+      "explanation": "Desde el 13 de noviembre de 2026 se retiró la aprobación previa temporal para ciudadanos de Estados Unidos y Reino Unido y se restablecieron los procedimientos anteriores. Confirma con el consulado qué visa y modalidad corresponden a tu pasaporte y punto de entrada antes de viajar.",
+      "action": "Consulta los procedimientos para el punto de entrada que usarás.",
+      "source": "https://sana.sy/en/politics/2358517/",
+      "sourceLabel": "SANA: declaración del viceministro",
+      "route": "/visa/estados-unidos/siria",
+      "routeLabel": "Estados Unidos → Siria"
+    },
+    {
+      "title": "Islas Vírgenes Británicas · Excepción por permiso",
+      "explanation": "Con vigencia desde el 15 de noviembre, determinados titulares de Entry Permit, dependientes elegibles y trabajadores con permiso aprobado mediante Immigration Clearance Letter quedan exentos de tramitar una eVisa separada. Las solicitudes ya iniciadas deben completarse y pagar la tasa aplicable.",
+      "action": "Comprueba si tu permiso califica. Para turismo, consulta el requisito general de tu pasaporte.",
+      "source": "https://www.gov.vg/news/government-approves-removal-evisa-requirement-eligible-entry-permit-work-permit-holders",
+      "sourceLabel": "Departamento de Inmigración"
+    },
+    {
+      "title": "Cabo Verde · Aumento de la tasa aeroportuaria",
+      "explanation": "Desde el 4 de noviembre de 2026, la Tasa de Seguridad Aeroportuaria (TSA) de vuelos internacionales es de 4.400 CVE cuando corresponde pagarla. Se elimina el límite de edad para la exención de hijos de personas nacidas en Cabo Verde. Verifica tu exención y el prerregistro EASE antes de viajar. La tasa también puede corresponder a viajeros exentos de visa.",
+      "action": "Confirma la exención si corresponde y revisa la guía antes del viaje. Si necesitas visa previa, consulta con el consulado qué canal puedes usar.",
+      "source": "https://boe.incv.cv/Bulletins/View/114435",
+      "sourceLabel": "Boletín Oficial de Cabo Verde",
+      "route": "/documentos/tasa-aeroportuaria-cabo-verde",
+      "routeLabel": "Tasa y prerregistro de Cabo Verde"
+    },
+    {
+      "title": "Nueva Zelanda · Carga de escaneo digital prevista para el 23 de noviembre",
+      "explanation": "Immigration New Zealand aplazó del 16 al 23 de noviembre la ampliación de la carga de escaneo digital para solicitudes de visa de visitante y de trabajo AEWV.",
+      "action": "Para solicitudes de esos tipos, consulta las instrucciones correspondientes a la fecha de presentación.",
+      "source": "https://www.immigration.govt.nz/about-us/news-centre/impact-of-microsoft-outage/",
+      "sourceLabel": "Immigration New Zealand: aviso del 13 de noviembre"
+    }
+  ]
+},
+{
   "slug": "cambios-visas-2-9-noviembre-2026",
   "title": "Cambios de visas y entrada del 2 al 9 de noviembre de 2026",
   "period": "2 al 9 de noviembre de 2026",

@@ -400,5 +400,46 @@
       ]
     ],
     "verifiedAt": "2026-11-09"
+  },
+  {
+    "slug": "tasa-aeroportuaria-cabo-verde",
+    "title": "Tasa aeroportuaria de Cabo Verde",
+    "destination": "Cape Verde",
+    "destinationSlug": "cabo-verde",
+    "kind": "Tasa y prerregistro",
+    "summary": "Importe de la TSA internacional, exenciones y prerregistro EASE.",
+    "eligibility": "Pasajeros de vuelos internacionales, según las exenciones del Decreto-Ley 49/2026.",
+    "facts": [
+      [
+        "Importe desde el 4 de noviembre de 2026",
+        "4.400 CVE, frente a los 3.400 CVE anteriores."
+      ],
+      [
+        "Exención por filiación",
+        "Los hijos de personas nacidas en Cabo Verde pueden acogerse a la exención sin límite de edad."
+      ]
+    ],
+    "steps": [
+      "Comprueba si te corresponde pagar la TSA y si debes completar el prerregistro EASE.",
+      "Si tu pasaporte exige visa previa, confirma con el consulado el canal de solicitud disponible para tu nacionalidad."
+    ],
+    "faq": [
+      [
+        "¿La tasa también puede aplicarse si viajo sin visa?",
+        "Sí. Comprueba por separado los requisitos de visa, prerregistro y pago de la tasa."
+      ]
+    ],
+    "applyUrl": "https://www.ease.gov.cv/",
+    "sources": [
+      [
+        "Boletín Oficial: Decreto-Ley 49/2026",
+        "https://boe.incv.cv/Bulletins/View/114435"
+      ],
+      [
+        "Gobierno de Cabo Verde: solicitud de visa",
+        "https://www.gov.cv/en/pedir-visto"
+      ]
+    ],
+    "verifiedAt": "2026-11-16"
   }
 ]

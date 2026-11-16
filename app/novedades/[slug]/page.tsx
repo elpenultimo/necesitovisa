@@ -52,7 +52,9 @@ export default function NewsEdition({ params }: Props) {
           <p>{change.action}</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-sky-800">
             <a className="underline underline-offset-4" href={change.source}>{change.sourceLabel}</a>
-            <Link prefetch={false} className="underline underline-offset-4" href={change.route}>{change.routeLabel}</Link>
+            {change.route && (
+              <Link prefetch={false} className="underline underline-offset-4" href={change.route}>{change.routeLabel}</Link>
+            )}
           </div>
         </section>
       ))}
