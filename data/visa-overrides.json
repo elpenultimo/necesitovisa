@@ -895,6 +895,16 @@
       "verifiedAt": "2026-11-09",
       "source": "https://visa.visitsaudi.com/",
       "note": "Pasaportes de esta nacionalidad: elegibles para eVisa turística de un año y múltiples entradas, con hasta 90 días en el país. Permite turismo, eventos, visitas y Umrah; no Hajj ni estudios. El pasaporte debe tener al menos seis meses de vigencia desde la entrada. Confirma condiciones y tarifa en el portal oficial. La elegibilidad está vigente; el portal saudí no publica la fecha exacta de incorporación de cada nacionalidad."
+    },
+    {
+      "origin": "Kuwait",
+      "destination": "New Zealand",
+      "requirement": "visa required",
+      "effectiveFrom": "2026-11-12",
+      "expiresAt": "2027-02-11",
+      "verifiedAt": "2026-11-16",
+      "source": "https://www.immigration.govt.nz/about-us/news-centre/visa-waiver-travel-changes-for-kuwait-nationals/",
+      "note": "Suspensión temporal para visitas por vía aérea con pasaporte kuwaití. Desde las 23:59 del 12 de noviembre de 2026 hasta las 23:59 del 11 de febrero de 2027, hora de Nueva Zelanda, salvo prórroga, se debe obtener la visa correspondiente antes de viajar. Una NZeTA ya emitida no sirve para esta vía de visita. Las visas vigentes conservan su validez. Para escalas, comprueba las reglas específicas de tránsito."
     }
   ]
 }
