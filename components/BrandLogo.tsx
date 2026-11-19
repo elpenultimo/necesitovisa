@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function BrandLogo({ footer = false }: { footer?: boolean }) {
   return (
-    <Link
+    <Link prefetch={false}
       href="/"
       aria-label="NecesitoVisa.com — Inicio"
       className="inline-flex shrink-0 items-center gap-2 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"

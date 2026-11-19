@@ -21,7 +21,7 @@ export default function VisaIndexPage() {
         </p>
       </section>
 
-      <div className="flex flex-wrap gap-4 text-sm font-semibold text-cyan-700"><Link href="/paises-sin-visa" className="underline">Países sin visa según tu nacionalidad →</Link><Link href="/destinos" className="underline">Todos los destinos →</Link><Link href="/documentos" className="underline">Autorizaciones y formularios →</Link></div>
+      <div className="flex flex-wrap gap-4 text-sm font-semibold text-cyan-700"><Link prefetch={false} href="/paises-sin-visa" className="underline">Países sin visa según tu nacionalidad →</Link><Link prefetch={false} href="/destinos" className="underline">Todos los destinos →</Link><Link prefetch={false} href="/documentos" className="underline">Autorizaciones y formularios →</Link></div>
       <VisaSelector countries={countries} />
 
       <section className="card space-y-3 p-6">
@@ -29,7 +29,7 @@ export default function VisaIndexPage() {
         <p className="text-sm text-slate-600">Explora requisitos agrupados por destino y accede a combinaciones específicas de nacionalidad y país.</p>
         <div className="flex flex-wrap gap-3 text-sm">
           {[['Cabo Verde','cabo-verde'],['Cuba','cuba'],['Perú','peru'],['México','mexico'],['República Dominicana','republica-dominicana']].map(([name, slug]) => (
-            <Link key={slug} href={`/visa/destino/${slug}`} className="font-semibold text-brand-primary hover:underline">{name} →</Link>
+            <Link prefetch={false} key={slug} href={`/visa/destino/${slug}`} className="font-semibold text-brand-primary hover:underline">{name} →</Link>
           ))}
         </div>
       </section>

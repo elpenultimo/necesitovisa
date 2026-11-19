@@ -18,7 +18,7 @@ export function generateMetadata({ params }: { params: { origen: string } }): Me
   if (!resolved) return { title: "País no encontrado" };
 
   const { entry, canonicalSlug } = resolved;
-  const canonical = `https://necesitovisa.com/visa/${canonicalSlug}`;
+  const canonical = `https://www.necesitovisa.com/visa/${canonicalSlug}`;
 
   return {
     title: `Visa para ciudadanos de ${entry.name_es}`,
@@ -62,7 +62,7 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
             {visaData.destinations.map((destination) => (
               <tr key={destination.slug_es} className="border-b last:border-b-0">
                 <td className="px-4 py-2 text-slate-900">
-                  <Link
+                  <Link prefetch={false}
                     href={`/visa/${visaData.origin_slug_es}/${destination.slug_es}`}
                     className="text-brand-primary hover:underline"
                   >

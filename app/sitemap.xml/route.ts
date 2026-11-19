@@ -3,7 +3,7 @@ import { readVisaDataByKey } from "@/lib/visaData";
 import { documentGuides } from "@/lib/documentGuides";
 import { newsEditions } from "@/lib/newsEditions";
 
-const BASE_URL = "https://necesitovisa.com";
+const BASE_URL = "https://www.necesitovisa.com";
 
 type SitemapEntry = {
   loc: string;

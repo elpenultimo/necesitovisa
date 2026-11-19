@@ -57,7 +57,7 @@ export default function HomePage() {
         <section className="space-y-5" aria-labelledby="featured-destinations">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div><p className="section-label text-cyan-700">Inspira tu próximo viaje</p><h2 id="featured-destinations" className="mt-2 text-2xl font-bold">Explora destinos del mundo</h2><p className="mt-2 text-sm text-slate-600">Cada viaje empieza con tu pasaporte. Consulta qué necesitas para entrar.</p></div>
-            <Link href="/destinos" className="text-sm font-semibold text-cyan-700">Ver todos los destinos →</Link>
+            <Link prefetch={false} href="/destinos" className="text-sm font-semibold text-cyan-700">Ver todos los destinos →</Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {popularDestinations.map(slug => {
@@ -75,7 +75,7 @@ export default function HomePage() {
         </section>
         <section className="space-y-5">
           <div><p className="section-label text-cyan-700">Autorizaciones y formularios</p><h2 className="mt-2 text-2xl font-bold">Prepara los documentos de tu viaje</h2><p className="mt-2 text-sm text-slate-600">Guías internacionales para entender el requisito y gestionarlo directamente en el sitio oficial.</p></div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{documentGuides.map(g=><Link key={g.slug} href={`/documentos/${g.slug}`} className="card space-y-3 p-5 hover:border-cyan-300"><span className="text-xs font-semibold text-cyan-700">{g.kind}</span><h3 className="font-bold">{g.title}</h3><span className="text-sm text-cyan-700">Consultar guía →</span></Link>)}</div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{documentGuides.map(g=><Link prefetch={false} key={g.slug} href={`/documentos/${g.slug}`} className="card space-y-3 p-5 hover:border-cyan-300"><span className="text-xs font-semibold text-cyan-700">{g.kind}</span><h3 className="font-bold">{g.title}</h3><span className="text-sm text-cyan-700">Consultar guía →</span></Link>)}</div>
         </section>
 
         <section>
@@ -92,7 +92,7 @@ export default function HomePage() {
               const destination = countries.find((country) => country.slug_es === pair.destination);
               if (!origin || !destination) return null;
               return (
-                <Link
+                <Link prefetch={false}
                   key={`${pair.origin}-${pair.destination}`}
                   href={`/visa/${origin.slug_es}/${destination.slug_es}`}
                   className="group rounded-xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md"
@@ -117,7 +117,7 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3">
             {["Cabo Verde", "Cuba", "Perú", "México", "República Dominicana"].map((name, index) => {
               const slugs = ["cabo-verde", "cuba", "peru", "mexico", "republica-dominicana"];
-              return <Link key={slugs[index]} href={`/visa/destino/${slugs[index]}`} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700">Visa para {name} →</Link>;
+              return <Link prefetch={false} key={slugs[index]} href={`/visa/destino/${slugs[index]}`} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700">Visa para {name} →</Link>;
             })}
           </div>
         </section>
