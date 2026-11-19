@@ -22,7 +22,7 @@ export default function NewsPage() {
           <article key={edition.slug} className="rounded-xl border border-slate-200 bg-white p-6">
             <p className="text-sm font-medium text-slate-600">{edition.period}</p>
             <h3 className="mt-2 text-xl font-semibold">
-              <Link className="text-sky-800 underline-offset-4 hover:underline" href={`/novedades/${edition.slug}`}>{edition.title}</Link>
+              <Link prefetch={false} className="text-sky-800 underline-offset-4 hover:underline" href={`/novedades/${edition.slug}`}>{edition.title}</Link>
             </h3>
             <p className="mt-2 text-slate-700">{edition.summary}</p>
           </article>

@@ -76,7 +76,7 @@ export async function generateMetadata({
   const canonicalSlug = destination.canonicalSlug;
   const originSlug = origin.canonicalSlug;
   const originNameEs = data.origin_name_es || origin.entry.name_es;
-  const canonical = `https://necesitovisa.com/visa/${originSlug}/${canonicalSlug}`;
+  const canonical = `https://www.necesitovisa.com/visa/${originSlug}/${canonicalSlug}`;
 
   return {
     title: `Visa de ${originNameEs} a ${destination.destination.name_es}: requisitos para viajar`,
@@ -192,7 +192,7 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
         <section className="card space-y-4 p-6">
           <h2 className="text-xl font-semibold">Documentos y formularios de este destino</h2>
           <p className="text-sm text-slate-600">Consulta quién necesita cada documento y sus excepciones. La guía no sustituye la verificación de tu caso concreto.</p>
-          {guidesForDestination(destination.key).map(guide => <Link key={guide.slug} href={`/documentos/${guide.slug}`} className="block font-semibold text-cyan-700 underline">{guide.title} →</Link>)}
+          {guidesForDestination(destination.key).map(guide => <Link prefetch={false} key={guide.slug} href={`/documentos/${guide.slug}`} className="block font-semibold text-cyan-700 underline">{guide.title} →</Link>)}
         </section>
       )}
 

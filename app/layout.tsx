@@ -7,7 +7,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 export const metadata: Metadata = {
   title: "NecesitoVisa.com",
   description: "Descubre en segundos si necesitas visa para tu próximo viaje.",
-  metadataBase: new URL("https://necesitovisa.com"),
+  metadataBase: new URL("https://www.necesitovisa.com"),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64 96x96", type: "image/x-icon" },
@@ -31,12 +31,12 @@ export default function RootLayout({
           <div className="container-box flex flex-wrap items-center justify-between gap-3 py-3.5">
             <BrandLogo />
             <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-sky-100">
-              <Link href="/visa" className="hover:text-white">Consultar requisitos</Link>
-              <Link href="/destinos" className="hover:text-white">Destinos</Link>
-              <Link href="/documentos" className="hover:text-white">Documentos</Link>
-              <Link href="/paises-sin-visa" className="hover:text-white">Países sin visa</Link>
+              <Link prefetch={false} href="/visa" className="hover:text-white">Consultar requisitos</Link>
+              <Link prefetch={false} href="/destinos" className="hover:text-white">Destinos</Link>
+              <Link prefetch={false} href="/documentos" className="hover:text-white">Documentos</Link>
+              <Link prefetch={false} href="/paises-sin-visa" className="hover:text-white">Países sin visa</Link>
               <Link href="/novedades" prefetch={false} className="hover:text-white">Novedades</Link>
-              <Link href="/faq" className="hover:text-white">FAQ</Link>
+              <Link prefetch={false} href="/faq" className="hover:text-white">FAQ</Link>
             </nav>
           </div>
         </header>

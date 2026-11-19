@@ -31,14 +31,14 @@ export default function NewsEdition({ params }: Props) {
     "@type": "Article",
     headline: edition.title,
     description: edition.summary,
-    author: { "@type": "Organization", name: "NecesitoVisa.com", url: "https://necesitovisa.com/" },
-    mainEntityOfPage: `https://necesitovisa.com/novedades/${edition.slug}`,
+    author: { "@type": "Organization", name: "NecesitoVisa.com", url: "https://www.necesitovisa.com/" },
+    mainEntityOfPage: `https://www.necesitovisa.com/novedades/${edition.slug}`,
   };
 
   return (
     <article className="container-box max-w-4xl space-y-8 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article).replace(/</g, "\\u003c") }} />
-      <Link href="/novedades" className="font-medium text-sky-800 underline underline-offset-4">← Todas las novedades</Link>
+      <Link prefetch={false} href="/novedades" className="font-medium text-sky-800 underline underline-offset-4">← Todas las novedades</Link>
       <header>
         <p className="text-sm font-medium text-slate-600">Archivo · {edition.period} · NecesitoVisa.com</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{edition.title}</h1>
