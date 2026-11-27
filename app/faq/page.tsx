@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "Preguntas frecuentes sobre visas y autorizaciones | NecesitoVisa.com",
   description:
     "Respuestas claras sobre visas, eVisa y autorizaciones electrónicas como ESTA o eTA. Información general y actualizada.",

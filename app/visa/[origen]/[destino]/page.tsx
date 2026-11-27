@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { resolveOrigin } from "@/lib/countryIndex";
@@ -13,6 +13,13 @@ import { guidesForDestination } from "@/lib/documentGuides";
 import Link from "next/link";
 
 export const runtime = "nodejs";
+
+// Generate routes on first visit and reuse them until the next daily refresh.
+// A new deployment invalidates these pages when the visa dataset changes.
+export const revalidate = 86400;
+export function generateStaticParams() {
+  return [];
+}
 
 type EmojiLabel = { emoji: string; label: string };
 
@@ -91,18 +98,14 @@ export default function VisaDetailPage({ params }: { params: { origen: string; d
   const origin = resolveOrigin(params.origen);
   if (!origin) return notFound();
 
-  if (origin.redirected) {
-    redirect(`/visa/${origin.canonicalSlug}/${params.destino}`);
-  }
-
   const data = readVisaDataByKey(origin.entry.key);
   if (!data) return notFound();
 
   const destinationResolution = resolveDestinationBySlug(data, params.destino);
   if (!destinationResolution) return notFound();
 
-  if (params.destino !== destinationResolution.canonicalSlug) {
-    redirect(`/visa/${data.origin_slug_es}/${destinationResolution.canonicalSlug}`);
+  if (origin.redirected || params.destino !== destinationResolution.canonicalSlug) {
+    permanentRedirect(`/visa/${data.origin_slug_es}/${destinationResolution.canonicalSlug}`);
   }
 
   const { destination } = destinationResolution;

@@ -7,6 +7,7 @@ export const runtime = "nodejs";
 const countries = listAll();
 export const metadata = {
   title: "Visas por país | NecesitoVisa.com",
+  alternates: { canonical: "/visa" },
   description: "Explora combinaciones de origen y destino para saber si necesitas visa.",
 };
 
