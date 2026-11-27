@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
 import { listAll, resolveOrigin } from "@/lib/countryIndex";
@@ -34,7 +34,7 @@ export default function VisaOriginPage({ params }: { params: { origen: string } 
   if (!resolved) return notFound();
 
   if (resolved.redirected) {
-    redirect(`/visa/${resolved.canonicalSlug}`);
+    permanentRedirect(`/visa/${resolved.canonicalSlug}`);
   }
 
   const { entry } = resolved;

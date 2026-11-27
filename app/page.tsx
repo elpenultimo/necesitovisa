@@ -7,6 +7,7 @@ import { documentGuides } from "@/lib/documentGuides";
 import { HomeForm } from "./partials/HomeForm";
 
 export const runtime = "nodejs";
+export const metadata = { alternates: { canonical: "/" } };
 
 const countries = listAll();
 

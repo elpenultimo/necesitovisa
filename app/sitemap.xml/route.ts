@@ -3,6 +3,8 @@ import { readVisaDataByKey } from "@/lib/visaData";
 import { documentGuides } from "@/lib/documentGuides";
 import { newsEditions } from "@/lib/newsEditions";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://www.necesitovisa.com";
 
 type SitemapEntry = {
@@ -21,7 +23,7 @@ function escapeXml(value: string): string {
 }
 
 function buildUrl(path: string): string {
-  if (path === "/") return BASE_URL;
+  if (path === "/") return `${BASE_URL}/`;
   return `${BASE_URL}${path}`;
 }
 
